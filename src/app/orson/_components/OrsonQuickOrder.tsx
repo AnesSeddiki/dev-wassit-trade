@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { orsonText } from "../_i18n/translations";
 
@@ -86,9 +86,9 @@ export default function OrsonQuickOrder({ product }: { product: Product }) {
           <span className="font-semibold text-[#3b2a1a]">
             {totalUnits} {t.unitsWord}
           </span>{" "}
-          {t.atPerUnit(formatUSD(activeTier.price))}
+          {t.atPerUnit(formatPrice(activeTier.price, locale))}
           {nextTier ? (
-            <span className="text-[#a8442e]"> {t.moreGetsYou(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}</span>
+            <span className="text-[#a8442e]"> {t.moreGetsYou(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}</span>
           ) : null}
         </div>
         <button
@@ -98,7 +98,7 @@ export default function OrsonQuickOrder({ product }: { product: Product }) {
         >
           {totalUnits < product.moq
             ? t.moqNotMet(product.moq - totalUnits)
-            : t.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))}
+            : t.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))}
         </button>
       </div>
     </div>

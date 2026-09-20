@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { zorkaText } from "../_i18n/translations";
 
@@ -77,11 +77,11 @@ export default function ZorkaQuickOrder({ product }: { product: Product }) {
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-black/60" style={{ fontFamily: "var(--font-zorka-body)" }}>
-          {totalUnits} {t.quickOrder.unitsWord} · {formatUSD(activeTier.price)} {t.quickOrder.perUnit}
+          {totalUnits} {t.quickOrder.unitsWord} · {formatPrice(activeTier.price, locale)} {t.quickOrder.perUnit}
           {nextTier ? (
             <span className="block text-black/40 sm:inline">
               {" "}
-              {t.quickOrder.addMoreFor(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.quickOrder.addMoreFor(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : null}
         </p>
@@ -96,7 +96,7 @@ export default function ZorkaQuickOrder({ product }: { product: Product }) {
           style={{ fontFamily: "var(--font-zorka-body)" }}
         >
           {metMoq
-            ? t.quickOrder.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.quickOrder.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.quickOrder.moqRemaining(product.moq - totalUnits)}
         </button>
       </div>

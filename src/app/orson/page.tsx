@@ -1,8 +1,14 @@
+"use client";
+
+import { Fragment } from "react";
 import Link from "next/link";
 import { categoryCover, categoryPhotos, categories, products } from "@/lib/products";
 import OrsonProductCard from "./_components/OrsonProductCard";
 import EstStamp from "./_components/EstStamp";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import { orsonText } from "./_i18n/translations";
 
 const CATEGORY_TONES: Record<string, [string, string]> = {
   men: ["#6b6a3d", "#a8442e"],
@@ -10,28 +16,9 @@ const CATEGORY_TONES: Record<string, [string, string]> = {
   kids: ["#d9a441", "#a8442e"],
 };
 
-const CATEGORY_NOTE: Record<string, string> = {
-  men: "Workwear, denim & the staples that reorder themselves",
-  women: "Everyday basics through occasion pieces, always in stock",
-  kids: "Case-packed sets, sized 2T through 14",
-};
-
-const VALUE_PROPS = [
-  {
-    title: "Set your own minimums",
-    body: "Every style lists its own MOQ right on the tag — mix sizes and colors freely to hit it, no guesswork at checkout.",
-  },
-  {
-    title: "Pricing that rewards loyalty",
-    body: "Four tiers on every SKU. Order more, pay less per unit — the same ledger math your grandfather's buyer used, just faster.",
-  },
-  {
-    title: "Reorders in a few clicks",
-    body: "Once you've placed an order, doing it again takes minutes. Same order pad, same friendly pricing, every season.",
-  },
-];
-
 export default function OrsonHome() {
+  const { locale } = useLanguage();
+  const t = orsonText(locale).home;
   const featured = products.slice(0, 8);
 
   return (
@@ -51,44 +38,42 @@ export default function OrsonHome() {
             <div className="mb-5 flex items-center gap-3">
               <EstStamp size={52} />
               <p className="text-xs uppercase tracking-[0.3em] text-[#a8442e]">
-                A general store, reborn for wholesale
+                {t.eyebrow}
               </p>
             </div>
             <h1
               className="text-4xl leading-[1.08] tracking-tight text-[#3b2a1a] sm:text-5xl lg:text-[3.4rem]"
               style={{ fontFamily: "var(--font-orson-display)" }}
             >
-              Good goods,
+              {t.headline1}
               <br />
-              sold plainly.
+              {t.headline2}
             </h1>
             <p className="mt-5 max-w-md text-base leading-relaxed text-[#3b2a1a]/75">
-              Orson &amp; Co. has been outfitting shopkeepers, boutiques and
-              corner stores with dependable apparel for generations. Browse
-              the catalog, fill your order pad, and let tiered pricing do the
-              rest — no account manager required to reorder.
+              {t.sub}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/orson/shop"
                 className="rounded-full bg-[#a8442e] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-[#f4e8d0] transition-colors hover:bg-[#8f3624]"
               >
-                Browse the catalog
+                {t.browseCatalog}
               </Link>
               <Link
                 href="/orson/shop"
                 className="rounded-full border-2 border-[#3b2a1a] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-[#3b2a1a] transition-colors hover:bg-[#3b2a1a] hover:text-[#f4e8d0]"
               >
-                See wholesale terms
+                {t.seeTerms}
               </Link>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-2 text-xs uppercase tracking-[0.15em] text-[#3b2a1a]/55">
-              <span>Trusted by 2,600+ shopkeepers</span>
-              <span className="text-[#d9a441]">★</span>
-              <span>Tiered pricing on every style</span>
-              <span className="text-[#d9a441]">★</span>
-              <span>Ships in 2–4 business days</span>
+              {t.trust.map((line, i) => (
+                <Fragment key={line}>
+                  {i > 0 ? <span className="text-[#d9a441]">★</span> : null}
+                  <span>{line}</span>
+                </Fragment>
+              ))}
             </div>
           </div>
 
@@ -99,7 +84,7 @@ export default function OrsonHome() {
               image={categoryCover("men")}
               colorFrom="#c98a4b"
               colorTo="#a8442e"
-              label="CATALOG NO. 01"
+              label={t.catalogLabel}
               className="h-full w-full"
             />
           </div>
@@ -113,10 +98,10 @@ export default function OrsonHome() {
             className="text-2xl tracking-tight text-[#3b2a1a]"
             style={{ fontFamily: "var(--font-orson-display)" }}
           >
-            Shop by department
+            {t.departmentsHeading}
           </h2>
           <span className="hidden text-xs uppercase tracking-[0.2em] text-[#3b2a1a]/50 sm:inline">
-            Three counters, one catalog
+            {t.departmentsNote}
           </span>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -141,10 +126,10 @@ export default function OrsonHome() {
                   className="relative text-2xl tracking-tight text-[#f4e8d0]"
                   style={{ fontFamily: "var(--font-orson-display)" }}
                 >
-                  {c.label}
+                  {categoryTranslations[c.id][locale].label}
                 </span>
                 <span className="relative mt-1 text-[11px] uppercase tracking-wide text-[#f4e8d0]/80">
-                  {CATEGORY_NOTE[c.id]}
+                  {t.categoryNotes[c.id]}
                 </span>
               </Link>
             );
@@ -159,13 +144,13 @@ export default function OrsonHome() {
             className="text-2xl tracking-tight text-[#3b2a1a]"
             style={{ fontFamily: "var(--font-orson-display)" }}
           >
-            This week's picks
+            {t.picksHeading}
           </h2>
           <Link
             href="/orson/shop"
             className="text-xs uppercase tracking-[0.2em] text-[#a8442e] underline decoration-dotted underline-offset-4 hover:text-[#8f3624]"
           >
-            View full catalog →
+            {t.viewFullCatalog}
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -180,17 +165,17 @@ export default function OrsonHome() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-8">
           <div className="mb-8 text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#a8442e]">
-              A note from the counter
+              {t.valueEyebrow}
             </p>
             <h2
               className="mt-2 text-2xl tracking-tight text-[#3b2a1a] sm:text-3xl"
               style={{ fontFamily: "var(--font-orson-display)" }}
             >
-              Wholesale, the way it should feel
+              {t.valueHeading}
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {VALUE_PROPS.map((v, i) => (
+            {t.valueProps.map((v, i) => (
               <div
                 key={v.title}
                 className="relative rounded-md border-2 border-[#3b2a1a]/20 bg-[#fbf2df] p-6"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { subtleText } from "../_i18n/translations";
 
@@ -91,13 +91,13 @@ export default function SubtleQuickOrder({ product }: { product: Product }) {
           <span>
             {t.currentPricePrefix}{" "}
             <span className="text-[#3a3a34]">
-              {formatUSD(activeTier.price)}
+              {formatPrice(activeTier.price, locale)}
               {t.perUnit}
             </span>
           </span>
           {nextTier ? (
             <span className="text-[#9caf88]">
-              {t.moreUnitsUnlocks(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.moreUnitsUnlocks(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : (
             <span className="text-[#9caf88]">{t.bestPriceReached}</span>
@@ -123,7 +123,7 @@ export default function SubtleQuickOrder({ product }: { product: Product }) {
           className="rounded-full bg-[#3a3a34] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white transition-colors enabled:hover:bg-[#9caf88] disabled:cursor-not-allowed disabled:opacity-35"
         >
           {meetsMoq && totalUnits > 0
-            ? t.ctaAdd(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.ctaAdd(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.ctaMoqNotMet(Math.max(product.moq - totalUnits, 0))}
         </button>
       </div>

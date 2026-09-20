@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { b2bText } from "../_i18n/translations";
@@ -59,7 +59,7 @@ export default function B2BProductCard({ product }: { product: Product }) {
             {t.from}
           </span>
           <span className="font-semibold text-[#0b2545]" style={{ fontFamily: "var(--font-b2b-mono)" }}>
-            {formatUSD(lowestTier.price)}{t.perUnit}
+            {formatPrice(lowestTier.price, locale)}{t.perUnit}
           </span>
         </div>
       </div>

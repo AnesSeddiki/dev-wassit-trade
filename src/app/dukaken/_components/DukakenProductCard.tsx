@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { CATEGORY_THEME } from "./theme";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { categoryTranslations, translateProduct } from "@/lib/i18n/productTranslations";
@@ -51,7 +51,7 @@ export default function DukakenProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex items-baseline justify-between border-t border-dashed border-[#111827]/15 pt-1.5 text-xs">
           <span className="text-[#111827]/40">{t.productCard.from}</span>
           <span className="font-black" style={{ color: theme.accent }}>
-            {formatUSD(lowestTier.price)}{t.productCard.perUnit}
+            {formatPrice(lowestTier.price, locale)}{t.productCard.perUnit}
           </span>
         </div>
       </div>

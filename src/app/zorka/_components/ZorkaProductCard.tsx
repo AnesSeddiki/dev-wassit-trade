@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { zorkaText } from "../_i18n/translations";
@@ -49,7 +49,7 @@ export default function ZorkaProductCard({ product }: { product: Product }) {
           className="whitespace-nowrap text-xs text-black/50"
           style={{ fontFamily: "var(--font-zorka-body)" }}
         >
-          {t.productCard.from} {formatUSD(lowestTier.price)}
+          {t.productCard.from} {formatPrice(lowestTier.price, locale)}
         </p>
       </div>
     </Link>

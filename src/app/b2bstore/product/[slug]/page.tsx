@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import B2BQuickOrder from "../../_components/B2BQuickOrder";
 import B2BProductCard from "../../_components/B2BProductCard";
@@ -89,7 +89,7 @@ export default function B2BStoreProduct() {
                 {product.tierPricing.map((tier, i) => (
                   <tr key={tier.minQty} className={i % 2 ? "bg-[#f7f9fb]" : "bg-white"}>
                     <td className="p-2 text-[#142433]/70">{tier.minQty}+</td>
-                    <td className="p-2 text-right font-semibold text-[#0b2545]">{formatUSD(tier.price)}</td>
+                    <td className="p-2 text-right font-semibold text-[#0b2545]">{formatPrice(tier.price, locale)}</td>
                   </tr>
                 ))}
               </tbody>

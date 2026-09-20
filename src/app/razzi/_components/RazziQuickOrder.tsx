@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { ColorDot } from "./swatch";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { razziText } from "../_i18n/translations";
@@ -93,12 +93,12 @@ export default function RazziQuickOrder({ product }: { product: Product }) {
           </span>
           {" · "}
           <span className="font-extrabold text-[#ff3d81]">
-            {formatUSD(activeTier.price)}
+            {formatPrice(activeTier.price, locale)}
             {t.perUnit}
           </span>
           {nextTier ? (
             <span className="block text-xs font-semibold text-[#1a1a1a]/50 sm:inline sm:pl-1">
-              {t.addMoreForNext(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.addMoreForNext(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : null}
         </div>
@@ -108,7 +108,7 @@ export default function RazziQuickOrder({ product }: { product: Product }) {
           className="rounded-full border-[3px] border-[#1a1a1a] bg-[#ffe14d] px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-[#1a1a1a] shadow-[3px_3px_0_0_#1a1a1a] transition-transform enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:border-[#1a1a1a]/20 disabled:bg-[#eee] disabled:text-[#1a1a1a]/40 disabled:shadow-none"
         >
           {metMoq
-            ? t.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.moqNotMet(product.moq - totalUnits, product.moq)}
         </button>
       </div>

@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import SubtleQuickOrder from "../../_components/SubtleQuickOrder";
 import SubtleProductCard from "../../_components/SubtleProductCard";
@@ -95,7 +95,7 @@ export default function SubtleProduct() {
                   <tr key={tr.minQty} className="border-t border-[#3a3a34]/8">
                     <td className="px-5 py-2.5 text-[#3a3a34]/70">{tr.minQty}+ units</td>
                     <td className="px-5 py-2.5 text-right font-semibold text-[#3a3a34]">
-                      {formatUSD(tr.price)}
+                      {formatPrice(tr.price, locale)}
                     </td>
                   </tr>
                 ))}

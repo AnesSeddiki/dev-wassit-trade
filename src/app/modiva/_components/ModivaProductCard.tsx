@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { modivaText } from "../_i18n/translations";
@@ -59,7 +59,7 @@ export default function ModivaProductCard({
           {product.sku} · {t.moqPrefix} {product.moq}
         </p>
         <p className="mt-1 text-xs text-[#2b2420]/60">
-          {t.from} <span className="font-medium text-[#c1602f]">{formatUSD(lowestTier.price)}</span> {t.perUnit}
+          {t.from} <span className="font-medium text-[#c1602f]">{formatPrice(lowestTier.price, locale)}</span> {t.perUnit}
         </p>
       </div>
     </Link>

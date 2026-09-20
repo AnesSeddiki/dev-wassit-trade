@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { wsText } from "../_i18n/translations";
@@ -58,7 +58,7 @@ export default function WSProductCard({ product }: { product: Product }) {
         >
           <span className="text-[#1c1c1c]/50">{t.from}</span>
           <span className="font-bold text-[#1c1c1c]">
-            {formatUSD(lowestTier.price)}{t.perUnit}
+            {formatPrice(lowestTier.price, locale)}{t.perUnit}
           </span>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import type { Locale } from "./i18n/locales";
+
 export type Category = "men" | "women" | "kids";
 
 export interface TierPrice {
@@ -320,6 +322,7 @@ export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
-export function formatUSD(value: number): string {
-  return `$${value.toFixed(2)}`;
+export function formatPrice(value: number, locale: Locale): string {
+  const unit = locale === "ar" ? "دج" : "DA";
+  return `${value.toFixed(2)} ${unit}`;
 }

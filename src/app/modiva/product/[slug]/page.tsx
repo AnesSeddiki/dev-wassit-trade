@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import ModivaQuickOrder from "../../_components/ModivaQuickOrder";
 import ModivaProductCard from "../../_components/ModivaProductCard";
@@ -92,7 +92,7 @@ export default function ModivaProduct() {
                   <tr key={tier.minQty} className="border-b border-[#2b2420]/8">
                     <td className="py-2 text-[#2b2420]/70">{tier.minQty}+ {t.unitsSuffix}</td>
                     <td className="py-2 text-right font-medium text-[#c1602f]">
-                      {formatUSD(tier.price)}
+                      {formatPrice(tier.price, locale)}
                     </td>
                   </tr>
                 ))}

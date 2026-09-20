@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { hyperText } from "../_i18n/translations";
@@ -54,7 +54,7 @@ export default function HyperProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex items-baseline justify-between border-t border-[#d4af37]/10 pt-2 text-xs">
           <span className="uppercase tracking-[0.16em] text-[#f5f2ea]/40">{t.from}</span>
           <span className="font-semibold text-[#d4af37]">
-            {formatUSD(lowestTier.price)}
+            {formatPrice(lowestTier.price, locale)}
             {t.perUnit}
           </span>
         </div>

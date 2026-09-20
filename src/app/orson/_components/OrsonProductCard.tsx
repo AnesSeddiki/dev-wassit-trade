@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { orsonText } from "../_i18n/translations";
@@ -56,7 +56,7 @@ export default function OrsonProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex items-baseline justify-between border-t border-dashed border-[#3b2a1a]/25 pt-1.5 text-sm">
           <span className="text-[11px] uppercase tracking-wide text-[#3b2a1a]/50">{t.productCard.from}</span>
           <span className="font-semibold text-[#a8442e]">
-            {formatUSD(lowestTier.price)}{t.productCard.perUnit}
+            {formatPrice(lowestTier.price, locale)}{t.productCard.perUnit}
           </span>
         </div>
       </div>

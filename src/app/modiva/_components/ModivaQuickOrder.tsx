@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { modivaText } from "../_i18n/translations";
 
@@ -86,10 +86,10 @@ export default function ModivaQuickOrder({ product }: { product: Product }) {
         <div className="text-xs text-[#2b2420]/65">
           <span className="font-medium text-[#2b2420]">{totalUnits} {t.unitsSuffix}</span>
           {" · "}
-          <span>{formatUSD(activeTier.price)} {t.perUnit}</span>
+          <span>{formatPrice(activeTier.price, locale)} {t.perUnit}</span>
           {nextTier ? (
             <div className="mt-1 text-[#c1602f]">
-              {t.unlockMessage(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.unlockMessage(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </div>
           ) : null}
         </div>
@@ -99,7 +99,7 @@ export default function ModivaQuickOrder({ product }: { product: Product }) {
           className="bg-[#c1602f] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-[#f7f1e8] transition-colors enabled:hover:bg-[#a34f26] disabled:cursor-not-allowed disabled:bg-[#2b2420]/20 disabled:text-[#2b2420]/50"
         >
           {metMoq
-            ? t.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.moqNotMet(product.moq - totalUnits)}
         </button>
       </div>

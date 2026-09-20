@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { hyperText } from "../_i18n/translations";
 
@@ -83,12 +83,12 @@ export default function HyperQuickOrder({ product }: { product: Product }) {
         <div className="text-xs uppercase tracking-[0.1em] text-[#f5f2ea]/60">
           {totalUnits} {t.unitsSuffix} &middot;{" "}
           <span className="text-[#d4af37]">
-            {formatUSD(activeTier.price)}
+            {formatPrice(activeTier.price, locale)}
             {t.perUnit}
           </span>
           {nextTier ? (
             <span className="ml-1 text-[#f5f2ea]/40">
-              {t.addMoreForNext(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.addMoreForNext(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : null}
         </div>
@@ -98,7 +98,7 @@ export default function HyperQuickOrder({ product }: { product: Product }) {
           className="bg-[#d4af37] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] transition-colors enabled:hover:bg-[#e8c869] disabled:cursor-not-allowed disabled:bg-[#d4af37]/25 disabled:text-[#f5f2ea]/40"
         >
           {meetsMoq
-            ? t.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.moqNotMet(product.moq - totalUnits)}
         </button>
       </div>

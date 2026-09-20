@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { tradeText } from "../_i18n/translations";
@@ -60,7 +60,7 @@ export default function ProductCard({ product }: { product: Product }) {
         >
           <span className="text-[#0f172a]/50">{t.from}</span>
           <span className="font-semibold text-[#0f172a]">
-            {formatUSD(lowestTier.price)}{t.perUnit}
+            {formatPrice(lowestTier.price, locale)}{t.perUnit}
           </span>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { wsText } from "../_i18n/translations";
 
@@ -98,11 +98,11 @@ export default function WSQuickOrder({ product }: { product: Product }) {
             {t.unitsTotal(totalUnits)}
           </span>
           <span className="text-xs text-[#1c1c1c]/70" style={{ fontFamily: "var(--font-ws-mono)" }}>
-            {t.tierPrice(formatUSD(activeTier.price))}
+            {t.tierPrice(formatPrice(activeTier.price, locale))}
             {nextTier ? (
               <span className="text-[#ff5a1f]">
                 {" "}
-                {t.moreForNext(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+                {t.moreForNext(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
               </span>
             ) : null}
           </span>
@@ -121,7 +121,7 @@ export default function WSQuickOrder({ product }: { product: Product }) {
           style={{ fontFamily: "var(--font-ws-display)" }}
         >
           {moqMet
-            ? t.addUnits(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.addUnits(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.moqNotMet(product.moq - totalUnits)}
         </button>
       </div>

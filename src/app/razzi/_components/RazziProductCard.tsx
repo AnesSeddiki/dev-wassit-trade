@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { ColorDot } from "./swatch";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
@@ -74,7 +74,7 @@ export default function RazziProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex items-baseline justify-between border-t-2 border-dashed border-[#1a1a1a]/15 pt-2 text-sm">
           <span className="text-[#1a1a1a]/50">{t.from}</span>
           <span className="font-extrabold text-[#ff3d81]">
-            {formatUSD(lowestTier.price)}
+            {formatPrice(lowestTier.price, locale)}
             <span className="text-[#1a1a1a]/50 font-medium">{t.perUnit}</span>
           </span>
         </div>

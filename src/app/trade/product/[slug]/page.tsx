@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import QuickOrderMatrix from "../../_components/QuickOrderMatrix";
 import ProductCard from "../../_components/ProductCard";
@@ -89,7 +89,7 @@ export default function TradeProduct() {
                   <tr key={tier.minQty} className={i % 2 ? "bg-[#f7f6f2]" : "bg-white"}>
                     <td className="p-2 text-[#0f172a]/70">{tier.minQty}+</td>
                     <td className="p-2 text-right font-semibold text-[#0f172a]">
-                      {formatUSD(tier.price)}
+                      {formatPrice(tier.price, locale)}
                     </td>
                   </tr>
                 ))}

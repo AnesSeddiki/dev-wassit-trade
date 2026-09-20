@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { tradeText } from "../_i18n/translations";
 
@@ -75,11 +75,11 @@ export default function QuickOrderMatrix({ product }: { product: Product }) {
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#0f172a]/15 px-4 py-3">
         <div className="text-xs text-[#0f172a]/60" style={{ fontFamily: "var(--font-trade-mono)" }}>
-          {totalUnits} {t.unitsSuffix} · {formatUSD(activeTier.price)}{t.perUnit}
+          {totalUnits} {t.unitsSuffix} · {formatPrice(activeTier.price, locale)}{t.perUnit}
           {nextTier ? (
             <span className="text-amber-600">
               {" "}
-              {t.addMoreForNext(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.addMoreForNext(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : null}
         </div>
@@ -91,7 +91,7 @@ export default function QuickOrderMatrix({ product }: { product: Product }) {
         >
           {totalUnits < product.moq
             ? t.moqNotMet(product.moq - totalUnits)
-            : t.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))}
+            : t.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))}
         </button>
       </div>
     </div>

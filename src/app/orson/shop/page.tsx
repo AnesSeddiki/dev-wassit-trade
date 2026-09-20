@@ -1,13 +1,27 @@
+"use client";
+
+import { Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { categories, products, type Category } from "@/lib/products";
 import OrsonProductCard from "../_components/OrsonProductCard";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import { orsonText } from "../_i18n/translations";
 
-export default async function OrsonShop({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
-  const { category } = await searchParams;
+export default function OrsonShop() {
+  return (
+    <Suspense fallback={null}>
+      <OrsonShopContent />
+    </Suspense>
+  );
+}
+
+function OrsonShopContent() {
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category") ?? undefined;
+  const { locale } = useLanguage();
+  const t = orsonText(locale).shop;
   const active = categories.find((c) => c.id === category)?.id as Category | undefined;
   const list = active ? products.filter((p) => p.category === active) : products;
 
@@ -16,13 +30,13 @@ export default async function OrsonShop({
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b-[3px] border-[#3b2a1a] pb-6">
         <div>
           <p className="text-xs uppercase tracking-[0.28em] text-[#a8442e]">
-            {list.length} styles in the ledger
+            {t.stylesInLedger(list.length)}
           </p>
           <h1
             className="mt-1 text-3xl tracking-tight text-[#3b2a1a] sm:text-4xl"
             style={{ fontFamily: "var(--font-orson-display)" }}
           >
-            {active ? categories.find((c) => c.id === active)?.label : "The full catalog"}
+            {active ? categoryTranslations[active][locale].label : t.fullCatalog}
           </h1>
         </div>
         <div className="flex flex-wrap gap-2 text-xs">
@@ -34,7 +48,7 @@ export default async function OrsonShop({
                 : "border-[#3b2a1a]/25 text-[#3b2a1a]/65 hover:border-[#3b2a1a]"
             }`}
           >
-            All departments
+            {t.allDepartments}
           </Link>
           {categories.map((c) => (
             <Link
@@ -46,7 +60,7 @@ export default async function OrsonShop({
                   : "border-[#3b2a1a]/25 text-[#3b2a1a]/65 hover:border-[#3b2a1a]"
               }`}
             >
-              {c.label}
+              {categoryTranslations[c.id][locale].label}
             </Link>
           ))}
         </div>

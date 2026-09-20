@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { b2bText } from "../_i18n/translations";
 
@@ -87,11 +87,11 @@ export default function B2BQuickOrder({ product }: { product: Product }) {
           <span className="font-semibold text-[#0b2545]">
             {totalUnits} {t.unitsSuffix}
           </span>{" "}
-          {formatUSD(activeTier.price)}{t.perUnit}
+          {formatPrice(activeTier.price, locale)}{t.perUnit}
           {nextTier ? (
             <span className="text-[#134074]">
               {" "}
-              {t.addMoreForNext(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.addMoreForNext(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : null}
           {!moqMet ? (
@@ -105,7 +105,7 @@ export default function B2BQuickOrder({ product }: { product: Product }) {
           style={{ fontFamily: "var(--font-b2b-mono)" }}
         >
           {moqMet
-            ? t.addCta(formatUSD(activeTier.price * totalUnits))
+            ? t.addCta(formatPrice(activeTier.price * totalUnits, locale))
             : t.needMoreCta(product.moq - totalUnits)}
         </button>
       </div>

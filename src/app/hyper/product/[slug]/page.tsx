@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import HyperQuickOrder from "../../_components/HyperQuickOrder";
 import HyperProductCard, { HYPER_TONES } from "../../_components/HyperProductCard";
@@ -92,7 +92,7 @@ export default function HyperProduct() {
                       className="p-3 text-right text-base text-[#d4af37]"
                       style={{ fontFamily: "var(--font-hyper-display)" }}
                     >
-                      {formatUSD(tier.price)}
+                      {formatPrice(tier.price, locale)}
                     </td>
                   </tr>
                 ))}

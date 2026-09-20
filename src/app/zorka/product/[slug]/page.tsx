@@ -2,7 +2,7 @@
 
 import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import ZorkaQuickOrder from "../../_components/ZorkaQuickOrder";
 import ZorkaProductCard from "../../_components/ZorkaProductCard";
@@ -90,7 +90,7 @@ export default function ZorkaProduct() {
                     <td className="py-2 text-black/50">
                       {tier.minQty}+ {t.tierUnitsSuffix}
                     </td>
-                    <td className="py-2 text-right font-medium text-black">{formatUSD(tier.price)}</td>
+                    <td className="py-2 text-right font-medium text-black">{formatPrice(tier.price, locale)}</td>
                   </tr>
                 ))}
               </tbody>

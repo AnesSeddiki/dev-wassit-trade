@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { subtleText } from "../_i18n/translations";
@@ -80,7 +80,7 @@ export default function SubtleProductCard({ product }: { product: Product }) {
           <div className="mt-auto flex items-baseline justify-between pt-2 text-xs">
             <span className="text-[#3a3a34]/45">{t.asLowAs}</span>
             <span className="font-semibold text-[#3a3a34]">
-              {formatUSD(lowestTier.price)}<span className="text-[#3a3a34]/45">{t.perUnit}</span>
+              {formatPrice(lowestTier.price, locale)}<span className="text-[#3a3a34]/45">{t.perUnit}</span>
             </span>
           </div>
         </div>

@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getProduct, formatUSD, products } from "@/lib/products";
+import { getProduct, formatPrice, products } from "@/lib/products";
 import GarmentPlaceholder from "@/components/shared/GarmentPlaceholder";
 import WSQuickOrder from "../../_components/WSQuickOrder";
 import WSProductCard from "../../_components/WSProductCard";
@@ -103,7 +103,7 @@ export default function WholesaleStoresProduct() {
                   >
                     <td className="p-2 text-[#1c1c1c]/70">{tier.minQty}+ units</td>
                     <td className="p-2 text-right font-bold text-[#1c1c1c]">
-                      {formatUSD(tier.price)}
+                      {formatPrice(tier.price, locale)}
                     </td>
                   </tr>
                 ))}

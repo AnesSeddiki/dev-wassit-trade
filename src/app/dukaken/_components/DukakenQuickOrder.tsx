@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { formatUSD, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import { CATEGORY_THEME } from "./theme";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { dukakenText } from "../_i18n/translations";
@@ -85,10 +85,10 @@ export default function DukakenQuickOrder({ product }: { product: Product }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-t-4 border-[#111827] px-4 py-3">
         <div className="text-xs font-semibold text-[#111827]/70">
           <span className="font-black text-[#111827]">{totalUnits}</span> {t.unitsSuffix} ·{" "}
-          <span className="font-black text-[#111827]">{formatUSD(activeTier.price)}</span>{t.perUnit}
+          <span className="font-black text-[#111827]">{formatPrice(activeTier.price, locale)}</span>{t.perUnit}
           {nextTier ? (
             <span className="ml-1" style={{ color: theme.accent }}>
-              {t.addMoreForNext(nextTier.minQty - totalUnits, formatUSD(nextTier.price))}
+              {t.addMoreForNext(nextTier.minQty - totalUnits, formatPrice(nextTier.price, locale))}
             </span>
           ) : null}
           <div className="mt-0.5 text-[10px] uppercase tracking-wider text-[#111827]/40">
@@ -102,7 +102,7 @@ export default function DukakenQuickOrder({ product }: { product: Product }) {
           style={{ backgroundColor: theme.accent, fontFamily: "var(--font-dukaken-display)" }}
         >
           {metMoq
-            ? t.addCta(totalUnits, formatUSD(activeTier.price * totalUnits))
+            ? t.addCta(totalUnits, formatPrice(activeTier.price * totalUnits, locale))
             : t.moqNotMet(product.moq - totalUnits)}
         </button>
       </div>

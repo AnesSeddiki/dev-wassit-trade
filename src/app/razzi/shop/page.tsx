@@ -1,15 +1,29 @@
+"use client";
+
+import { Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { categories, products, type Category } from "@/lib/products";
 import RazziProductCard from "../_components/RazziProductCard";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import { razziText } from "../_i18n/translations";
 
 const PILL_COLORS = ["#ff3d81", "#2dd4ff", "#ffe14d"];
 
-export default async function RazziShop({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
-  const { category } = await searchParams;
+export default function RazziShop() {
+  return (
+    <Suspense fallback={null}>
+      <RazziShopContent />
+    </Suspense>
+  );
+}
+
+function RazziShopContent() {
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category") ?? undefined;
+  const { locale } = useLanguage();
+  const t = razziText(locale).shop;
   const active = categories.find((c) => c.id === category)?.id as Category | undefined;
   const list = active ? products.filter((p) => p.category === active) : products;
 
@@ -18,13 +32,13 @@ export default async function RazziShop({
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b-[3px] border-[#1a1a1a] pb-6">
         <div>
           <span className="inline-block rounded-full border-2 border-[#1a1a1a] bg-[#ffe14d] px-3 py-0.5 text-[11px] font-bold uppercase tracking-wide">
-            {list.length} styles
+            {list.length} {t.skuSuffix}
           </span>
           <h1
             className="mt-2 text-4xl font-extrabold tracking-tight"
             style={{ fontFamily: "var(--font-razzi-display)" }}
           >
-            {active ? categories.find((c) => c.id === active)?.label : "Full catalog"}
+            {active ? categoryTranslations[active][locale].label : t.fullCatalog}
           </h1>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -34,7 +48,7 @@ export default async function RazziShop({
               !active ? "bg-[#1a1a1a] text-white" : "bg-white text-[#1a1a1a]"
             }`}
           >
-            All
+            {t.all}
           </Link>
           {categories.map((c, i) => (
             <Link
@@ -46,7 +60,7 @@ export default async function RazziShop({
                 color: "#1a1a1a",
               }}
             >
-              {c.label}
+              {categoryTranslations[c.id][locale].label}
             </Link>
           ))}
         </div>
