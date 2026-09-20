@@ -12,6 +12,10 @@ const dict = {
     inspiredBy: "Inspired by",
     viewTemplate: "View template",
     footerNote: "Frontend only — pricing, accounts & inventory connect once a client signs.",
+    staticNotice: {
+      label: "Note",
+      body: "This is a static preview only, so you can get a feel for the look and direction of your future website. As soon as we start working together, we'll build out your database, your ordering workflow, and take care of component layouts, styling, colors, payment integration, AI features, and anything else you'd like to add or change.",
+    },
     customTemplate: {
       card: {
         title: "Custom template",
@@ -51,6 +55,10 @@ const dict = {
     inspiredBy: "Inspiré de",
     viewTemplate: "Voir le modèle",
     footerNote: "Frontend uniquement — tarifs, comptes & inventaire connectés dès qu'un client signe.",
+    staticNotice: {
+      label: "Remarque",
+      body: "Ceci n'est qu'un aperçu statique, pour vous donner une idée du style et de la direction de votre futur site. Dès que nous commencerons à travailler ensemble, nous mettrons en place votre base de données, votre flux de commande, et nous nous chargerons de la disposition des composants, du style, des couleurs, de l'intégration des paiements, des fonctionnalités IA et de tout ce que vous souhaiterez ajouter ou modifier.",
+    },
     customTemplate: {
       card: {
         title: "Modèle personnalisé",
@@ -90,6 +98,10 @@ const dict = {
     inspiredBy: "مستوحى من",
     viewTemplate: "عرض النموذج",
     footerNote: "الواجهة الأمامية فقط — يتم ربط الأسعار والحسابات والمخزون بمجرد توقيع العميل.",
+    staticNotice: {
+      label: "ملاحظة",
+      body: "هذا مجرد عرض ثابت، ليعطيكم فكرة عن الشكل والاتجاه العام لموقعكم المستقبلي. بمجرد أن نبدأ العمل معكم، سنعمل على بناء قاعدة بياناتكم، وسير عمل الطلبات، والاعتناء بشكل المكونات، والتنسيق، والألوان، ودمج الدفع، ودمج ميزات الذكاء الاصطناعي، وأي شيء آخر ترغبون في إضافته أو تغييره.",
+    },
     customTemplate: {
       card: {
         title: "نموذج مخصص",

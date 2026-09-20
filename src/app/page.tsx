@@ -62,7 +62,16 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-20 sm:px-10 sm:pt-24">
+      <div className="relative z-10 mx-auto mt-8 max-w-6xl px-6 sm:px-10">
+        <div className="flex gap-3 rounded-xl border border-amber-400/25 bg-amber-400/[0.06] px-4 py-3">
+          <span className="mt-0.5 font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">
+            {t.staticNotice.label}
+          </span>
+          <p className="text-[13px] leading-relaxed text-white/70">{t.staticNotice.body}</p>
+        </div>
+      </div>
+
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pt-10 pb-20 sm:px-10 sm:pt-14">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
           {t.eyebrow}
         </p>

@@ -13,7 +13,7 @@ export const LOCALES: LocaleMeta[] = [
   { code: "ar", label: "Arabic", nativeLabel: "العربية", dir: "rtl" },
 ];
 
-export const DEFAULT_LOCALE: Locale = "en";
+export const DEFAULT_LOCALE: Locale = "ar";
 
 export function dirFor(locale: Locale): "ltr" | "rtl" {
   return LOCALES.find((l) => l.code === locale)?.dir ?? "ltr";
