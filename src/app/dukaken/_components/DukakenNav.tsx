@@ -6,6 +6,9 @@ import { CATEGORY_THEME } from "./theme";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations, translateProduct } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { dukakenText } from "../_i18n/translations";
 
 export default function DukakenNav() {
@@ -33,7 +36,9 @@ export default function DukakenNav() {
         </span>
         <span className="hidden text-white/55 sm:inline">{t.ticker.trailing}</span>
 
-        <div className="ml-auto flex items-center gap-1 border-l border-white/20 pl-3">
+        <div className="ml-auto flex items-center gap-3">
+          <AdminDashboardLink className="hidden text-white/55 normal-case tracking-normal transition-colors hover:text-white sm:inline" />
+          <div className="flex items-center gap-1 border-l border-white/20 pl-3">
           {LOCALES.map((l) => (
             <button
               key={l.code}
@@ -50,6 +55,7 @@ export default function DukakenNav() {
               {l.code.toUpperCase()}
             </button>
           ))}
+          </div>
         </div>
       </div>
 
@@ -130,12 +136,19 @@ export default function DukakenNav() {
           })}
         </div>
 
-        <Link
-          href="/dukaken/shop"
-          className="shrink-0 border-2 border-[#111827] px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#111827] transition-colors hover:bg-[#111827] hover:text-white"
-        >
-          {t.shopAllTop}
-        </Link>
+        <div className="flex shrink-0 items-center gap-2">
+          <CartButton
+            className="border-2 border-[#111827] p-2 text-[#111827] transition-colors hover:bg-[#111827] hover:text-white"
+            badgeClassName="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full border-2 border-[#111827] bg-white px-1 text-[9px] font-black leading-none text-[#111827]"
+          />
+          <RequestTemplateButton templateName="Dukaken" />
+          <Link
+            href="/dukaken/shop"
+            className="border-2 border-[#111827] px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#111827] transition-colors hover:bg-[#111827] hover:text-white"
+          >
+            {t.shopAllTop}
+          </Link>
+        </div>
       </nav>
     </div>
   );

@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { wsText } from "../_i18n/translations";
 
 const HAZARD_STRIPES = {
@@ -26,6 +29,7 @@ export default function WSNav() {
         <span>{t.manifestLine1}</span>
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline">{t.manifestLine2}</span>
+          <AdminDashboardLink className="hidden text-[#e5e2da]/70 normal-case tracking-normal transition-colors hover:text-[#e5e2da] sm:inline" />
           <div className="flex items-center gap-1 border-l-2 border-[#e5e2da]/25 pl-2">
             {LOCALES.map((l) => (
               <button
@@ -75,6 +79,11 @@ export default function WSNav() {
           >
             {t.fullInventory}
           </Link>
+          <CartButton
+            className="border-[3px] border-[#1c1c1c] p-1.5 text-[#1c1c1c] transition-colors hover:bg-[#1c1c1c] hover:text-[#e5e2da]"
+            badgeClassName="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center border-2 border-[#1c1c1c] bg-[#ff5a1f] px-1 text-[9px] font-bold leading-none text-[#1c1c1c]"
+          />
+          <RequestTemplateButton templateName="Wholesale Stores" />
         </div>
       </nav>
     </div>

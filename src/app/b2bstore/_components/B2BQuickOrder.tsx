@@ -3,10 +3,12 @@
 import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { b2bText } from "../_i18n/translations";
 
 export default function B2BQuickOrder({ product }: { product: Product }) {
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = b2bText(locale).quickOrder;
   const [qty, setQty] = useState<Record<string, number>>({});
 
@@ -25,6 +27,18 @@ export default function B2BQuickOrder({ product }: { product: Product }) {
 
   function setCell(color: string, size: string, value: number) {
     setQty((prev) => ({ ...prev, [`${color}__${size}`]: value }));
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
+    setQty({});
   }
 
   return (
@@ -100,6 +114,7 @@ export default function B2BQuickOrder({ product }: { product: Product }) {
         </div>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!moqMet}
           className="bg-[#0b2545] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors enabled:hover:bg-[#134074] disabled:cursor-not-allowed disabled:opacity-40"
           style={{ fontFamily: "var(--font-b2b-mono)" }}

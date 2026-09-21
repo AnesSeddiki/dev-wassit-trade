@@ -3,10 +3,12 @@
 import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { wsText } from "../_i18n/translations";
 
 export default function WSQuickOrder({ product }: { product: Product }) {
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = wsText(locale).quickOrder;
   const [qty, setQty] = useState<Record<string, number>>({});
 
@@ -28,6 +30,18 @@ export default function WSQuickOrder({ product }: { product: Product }) {
   }
 
   function clearAll() {
+    setQty({});
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
     setQty({});
   }
 
@@ -116,6 +130,7 @@ export default function WSQuickOrder({ product }: { product: Product }) {
         </div>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!moqMet}
           className="border-[3px] border-[#1c1c1c] bg-[#ff5a1f] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#1c1c1c] transition-colors enabled:hover:bg-[#1c1c1c] enabled:hover:text-[#ff5a1f] disabled:cursor-not-allowed disabled:border-[#1c1c1c]/30 disabled:bg-[#1c1c1c]/10 disabled:text-[#1c1c1c]/40"
           style={{ fontFamily: "var(--font-ws-display)" }}

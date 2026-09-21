@@ -3,10 +3,12 @@
 import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { modivaText } from "../_i18n/translations";
 
 export default function ModivaQuickOrder({ product }: { product: Product }) {
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = modivaText(locale).quickOrder;
   const [qty, setQty] = useState<Record<string, number>>({});
 
@@ -25,6 +27,18 @@ export default function ModivaQuickOrder({ product }: { product: Product }) {
 
   function setCell(color: string, size: string, value: number) {
     setQty((prev) => ({ ...prev, [`${color}__${size}`]: value }));
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
+    setQty({});
   }
 
   return (
@@ -95,6 +109,7 @@ export default function ModivaQuickOrder({ product }: { product: Product }) {
         </div>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!metMoq}
           className="bg-[#c1602f] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-[#f7f1e8] transition-colors enabled:hover:bg-[#a34f26] disabled:cursor-not-allowed disabled:bg-[#2b2420]/20 disabled:text-[#2b2420]/50"
         >

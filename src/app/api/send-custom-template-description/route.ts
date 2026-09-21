@@ -4,6 +4,7 @@ import { Resend } from "resend";
 interface CustomTemplateRequest {
   name: string;
   email: string;
+  phone?: string;
   company?: string;
   description: string;
 }
@@ -24,9 +25,12 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const bodyText = body.company
-    ? `${body.description}\n\n—\nFrom: ${body.name} <${body.email}>\nCompany: ${body.company}`
-    : `${body.description}\n\n—\nFrom: ${body.name} <${body.email}>`;
+  const contactLines = [
+    `From: ${body.name} <${body.email}>`,
+    body.phone ? `Phone: ${body.phone}` : null,
+    body.company ? `Company: ${body.company}` : null,
+  ].filter(Boolean);
+  const bodyText = `${body.description}\n\n—\n${contactLines.join("\n")}`;
 
   const { error } = await resend.emails.send({
     from: "Wassit DEV <onboarding@resend.dev>",

@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { b2bText } from "../_i18n/translations";
 
 export default function B2BNav() {
@@ -30,6 +33,8 @@ export default function B2BNav() {
           <Link href="/b2bstore/shop" className="hidden text-white/80 hover:text-white sm:inline">
             {t.accountSignIn}
           </Link>
+          <span className="hidden text-white/40 sm:inline">|</span>
+          <AdminDashboardLink className="hidden text-white/80 hover:text-white sm:inline" />
           <div className="flex items-center gap-1 border-l border-white/20 pl-3">
             {LOCALES.map((l) => (
               <button
@@ -77,13 +82,17 @@ export default function B2BNav() {
             {t.fullCatalog}
           </Link>
         </div>
-        <Link
-          href="/b2bstore/shop"
-          className="rounded-sm bg-[#0b2545] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#134074]"
-          style={{ fontFamily: "var(--font-b2b-mono)" }}
-        >
-          {t.openCatalog}
-        </Link>
+        <div className="flex items-center gap-3">
+          <CartButton className="rounded-sm p-1.5 text-[#0b2545] transition-colors hover:text-[#134074]" />
+          <RequestTemplateButton templateName="B2Bstore" />
+          <Link
+            href="/b2bstore/shop"
+            className="rounded-sm bg-[#0b2545] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#134074]"
+            style={{ fontFamily: "var(--font-b2b-mono)" }}
+          >
+            {t.openCatalog}
+          </Link>
+        </div>
       </nav>
     </div>
   );

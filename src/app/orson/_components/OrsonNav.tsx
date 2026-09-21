@@ -6,6 +6,9 @@ import EstStamp from "./EstStamp";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { orsonText } from "../_i18n/translations";
 
 export default function OrsonNav() {
@@ -21,6 +24,7 @@ export default function OrsonNav() {
         <span>{t.topBar.welcome}</span>
         <span className="text-[#d9a441]">★</span>
         <span className="hidden sm:inline">{t.topBar.tagline}</span>
+        <AdminDashboardLink className="hidden text-[#f4e8d0]/70 normal-case tracking-normal transition-colors hover:text-[#f4e8d0] sm:inline" />
         <div className="flex items-center gap-1 border-l border-[#f4e8d0]/25 pl-3">
           {LOCALES.map((l) => (
             <button
@@ -74,6 +78,8 @@ export default function OrsonNav() {
         </div>
 
         <div className="flex items-center gap-3">
+          <CartButton className="rounded-full p-1.5 text-[#a8442e] transition-colors hover:text-[#8f3624]" />
+          <RequestTemplateButton templateName="Orson" />
           <Link
             href="/orson/shop"
             className="rounded-full border-2 border-[#a8442e] bg-[#a8442e] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#f4e8d0] transition-colors hover:bg-[#8f3624]"

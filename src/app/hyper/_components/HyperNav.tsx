@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { hyperText } from "../_i18n/translations";
 
 export default function HyperNav() {
@@ -19,6 +22,7 @@ export default function HyperNav() {
         <span className="truncate">{t.announcement1}</span>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">{t.announcement2}</span>
+          <AdminDashboardLink className="hidden text-[#f5f2ea]/45 transition-colors hover:text-[#d4af37] sm:inline" />
           <div className="flex items-center gap-1 border-l border-[#d4af37]/20 pl-4">
             {LOCALES.map((l) => (
               <button
@@ -60,12 +64,16 @@ export default function HyperNav() {
             {t.fullCollection}
           </Link>
         </div>
-        <Link
-          href="/hyper/shop"
-          className="border border-[#d4af37] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#d4af37] transition-colors hover:bg-[#d4af37] hover:text-[#0a0a0a]"
-        >
-          {t.requestAccess}
-        </Link>
+        <div className="flex items-center gap-3">
+          <CartButton className="rounded p-1.5 text-[#f5f2ea]/70 transition-colors hover:text-[#d4af37]" />
+          <RequestTemplateButton templateName="Hyper" />
+          <Link
+            href="/hyper/shop"
+            className="border border-[#d4af37] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#d4af37] transition-colors hover:bg-[#d4af37] hover:text-[#0a0a0a]"
+          >
+            {t.requestAccess}
+          </Link>
+        </div>
       </nav>
     </div>
   );

@@ -4,10 +4,12 @@ import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { ColorDot } from "./swatch";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { razziText } from "../_i18n/translations";
 
 export default function RazziQuickOrder({ product }: { product: Product }) {
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = razziText(locale).quickOrder;
   const [qty, setQty] = useState<Record<string, number>>({});
 
@@ -26,6 +28,18 @@ export default function RazziQuickOrder({ product }: { product: Product }) {
 
   function setCell(color: string, size: string, value: number) {
     setQty((prev) => ({ ...prev, [`${color}__${size}`]: Math.max(0, value || 0) }));
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
+    setQty({});
   }
 
   return (
@@ -104,6 +118,7 @@ export default function RazziQuickOrder({ product }: { product: Product }) {
         </div>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!metMoq}
           className="rounded-full border-[3px] border-[#1a1a1a] bg-[#ffe14d] px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-[#1a1a1a] shadow-[3px_3px_0_0_#1a1a1a] transition-transform enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:border-[#1a1a1a]/20 disabled:bg-[#eee] disabled:text-[#1a1a1a]/40 disabled:shadow-none"
         >

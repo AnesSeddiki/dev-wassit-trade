@@ -3,11 +3,13 @@
 import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { subtleText } from "../_i18n/translations";
 
 export default function SubtleQuickOrder({ product }: { product: Product }) {
   const [qty, setQty] = useState<Record<string, number>>({});
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = subtleText(locale).quickOrder;
 
   const totalUnits = useMemo(
@@ -30,6 +32,18 @@ export default function SubtleQuickOrder({ product }: { product: Product }) {
 
   function setCell(color: string, size: string, value: number) {
     setQty((prev) => ({ ...prev, [`${color}__${size}`]: Math.max(0, value) }));
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
+    setQty({});
   }
 
   const progressToNext = nextTier
@@ -119,6 +133,7 @@ export default function SubtleQuickOrder({ product }: { product: Product }) {
         </p>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!meetsMoq || totalUnits === 0}
           className="rounded-full bg-[#3a3a34] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white transition-colors enabled:hover:bg-[#9caf88] disabled:cursor-not-allowed disabled:opacity-35"
         >

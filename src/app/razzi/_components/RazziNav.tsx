@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { razziText } from "../_i18n/translations";
 
 const PILL_COLORS = ["#ff3d81", "#2dd4ff", "#ffe14d"];
@@ -56,6 +59,7 @@ export default function RazziNav() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2.5">
+          <AdminDashboardLink className="hidden text-xs font-semibold uppercase tracking-wide text-[#1a1a1a]/50 transition-colors hover:text-[#1a1a1a] sm:inline" />
           <div
             className="flex items-center gap-0.5 rounded-full border-[3px] border-[#1a1a1a] bg-white p-0.5 shadow-[3px_3px_0_0_#1a1a1a]"
             role="group"
@@ -80,6 +84,11 @@ export default function RazziNav() {
               </button>
             ))}
           </div>
+          <CartButton
+            className="rounded-full border-[3px] border-[#1a1a1a] bg-white p-1.5 text-[#1a1a1a] shadow-[2px_2px_0_0_#1a1a1a] transition-transform hover:-translate-y-0.5"
+            badgeClassName="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full border-2 border-[#1a1a1a] bg-[#ff3d81] px-1 text-[9px] font-extrabold leading-none text-white"
+          />
+          <RequestTemplateButton templateName="Razzi" />
           <Link
             href="/razzi/shop"
             className="rounded-full border-[3px] border-[#1a1a1a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-[3px_3px_0_0_#ff3d81] transition-transform hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_#ff3d81] sm:px-5"

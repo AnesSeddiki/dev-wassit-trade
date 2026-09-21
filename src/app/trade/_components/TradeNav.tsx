@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { tradeText } from "../_i18n/translations";
 
 export default function TradeNav() {
@@ -20,6 +23,7 @@ export default function TradeNav() {
         <span className="truncate">{t.termsNotice}</span>
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline">{t.acctNotice}</span>
+          <AdminDashboardLink className="hidden text-white/60 underline decoration-white/30 underline-offset-2 transition-colors hover:text-white sm:inline" />
           <div className="flex items-center gap-1 border-l border-white/20 pl-3">
             {LOCALES.map((l) => (
               <button
@@ -59,6 +63,8 @@ export default function TradeNav() {
           </Link>
         </div>
         <div className="flex items-center gap-3">
+          <CartButton className="rounded-sm p-1.5 text-[#0f172a]/70 transition-colors hover:text-[#0f172a]" />
+          <RequestTemplateButton templateName="Trade" />
           <Link
             href="/trade/shop"
             className="rounded-sm border border-[#0f172a] px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors hover:bg-[#0f172a] hover:text-white"

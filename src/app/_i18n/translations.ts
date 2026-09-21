@@ -7,7 +7,6 @@ const dict = {
     headline2: "one catalog of styles.",
     description:
       "Wassit TradeDEV presents our suppliers' storefronts — each concept below is inspired by a leading wholesale & B2B commerce theme, rebuilt from scratch in React so we can reskin fast and hand a finished site to a client without licensing anything. Pick a direction, we build the backend once you're in.",
-    adminDashboard: "Admin dashboard →",
     builtBadge: "10 / 10 built",
     inspiredBy: "Inspired by",
     viewTemplate: "View template",
@@ -15,34 +14,13 @@ const dict = {
     staticNotice: {
       label: "Note",
       body: "This is a static preview only, so you can get a feel for the look and direction of your future website. As soon as we start working together, we'll build out your database, your ordering workflow, and take care of component layouts, styling, colors, payment integration, AI features, and anything else you'd like to add or change.",
+      paymentNote: "🚀 We build your website before you pay a single fee — payment is only requested after your site is delivered. ✅",
     },
-    customTemplate: {
-      card: {
-        title: "Custom template",
-        tagline: "Tell us about your business and we'll design a storefront around it.",
-        cta: "Start custom template",
-      },
-      modal: {
-        heading: "Request a custom template",
-        subheading: "Describe your website and we'll get back to you with a plan.",
-        nameLabel: "Full name",
-        namePlaceholder: "Jane Doe",
-        emailLabel: "Email",
-        emailPlaceholder: "jane@yourcompany.com",
-        companyLabel: "Company (optional)",
-        companyPlaceholder: "Your company name",
-        descriptionLabel: "Describe your website",
-        descriptionPlaceholder:
-          "Tell us about your products, your buyers, the look you're after, and any must-have features...",
-        cancel: "Cancel",
-        submit: "Send request",
-        sending: "Sending…",
-        successTitle: "Request sent",
-        successMessage: "Thanks — we'll review your request and get back to you shortly.",
-        close: "Close",
-        errorMessage: "Something went wrong. Please try again.",
-      },
-    },
+    trustBadges: [
+      { emoji: "🤝", label: "Trust" },
+      { emoji: "🛠️", label: "Maintenance" },
+      { emoji: "🎧", label: "Support & tracking" },
+    ],
   },
   fr: {
     eyebrow: "Vente en gros pour hommes, femmes & enfants",
@@ -50,7 +28,6 @@ const dict = {
     headline2: "un seul catalogue de styles.",
     description:
       "Wassit TradeDEV présente les boutiques de nos fournisseurs — chaque concept ci-dessous s'inspire d'un thème e-commerce B2B et grossiste de référence, reconstruit de zéro en React afin de pouvoir le reskinner rapidement et livrer un site terminé à un client sans aucune licence à payer. Choisissez une direction, nous construisons le backend une fois que vous êtes prêt.",
-    adminDashboard: "Tableau de bord admin →",
     builtBadge: "10 / 10 réalisés",
     inspiredBy: "Inspiré de",
     viewTemplate: "Voir le modèle",
@@ -58,34 +35,13 @@ const dict = {
     staticNotice: {
       label: "Remarque",
       body: "Ceci n'est qu'un aperçu statique, pour vous donner une idée du style et de la direction de votre futur site. Dès que nous commencerons à travailler ensemble, nous mettrons en place votre base de données, votre flux de commande, et nous nous chargerons de la disposition des composants, du style, des couleurs, de l'intégration des paiements, des fonctionnalités IA et de tout ce que vous souhaiterez ajouter ou modifier.",
+      paymentNote: "🚀 Nous construisons votre site avant que vous ne payiez le moindre frais — le paiement n'est demandé qu'après la livraison de votre site. ✅",
     },
-    customTemplate: {
-      card: {
-        title: "Modèle personnalisé",
-        tagline: "Décrivez votre activité et nous concevrons une boutique sur mesure.",
-        cta: "Démarrer un modèle personnalisé",
-      },
-      modal: {
-        heading: "Demander un modèle personnalisé",
-        subheading: "Décrivez votre site et nous vous recontacterons avec une proposition.",
-        nameLabel: "Nom complet",
-        namePlaceholder: "Jeanne Dupont",
-        emailLabel: "E-mail",
-        emailPlaceholder: "jeanne@votreentreprise.com",
-        companyLabel: "Entreprise (facultatif)",
-        companyPlaceholder: "Nom de votre entreprise",
-        descriptionLabel: "Décrivez votre site",
-        descriptionPlaceholder:
-          "Parlez-nous de vos produits, de vos acheteurs, du style recherché et des fonctionnalités indispensables...",
-        cancel: "Annuler",
-        submit: "Envoyer la demande",
-        sending: "Envoi en cours…",
-        successTitle: "Demande envoyée",
-        successMessage: "Merci — nous allons examiner votre demande et revenir vers vous rapidement.",
-        close: "Fermer",
-        errorMessage: "Une erreur s'est produite. Veuillez réessayer.",
-      },
-    },
+    trustBadges: [
+      { emoji: "🤝", label: "Confiance" },
+      { emoji: "🛠️", label: "Maintenance" },
+      { emoji: "🎧", label: "Assistance & suivi" },
+    ],
   },
   ar: {
     eyebrow: "لتجارة الجملة للرجال والنساء والأطفال",
@@ -93,7 +49,6 @@ const dict = {
     headline2: "كتالوج واحد من الأنماط.",
     description:
       "واسط ترايد ديف تقدّم متاجر موردينا — كل نموذج أدناه مستوحى من قالب تجارة جملة أو B2B رائد، أُعيد بناؤه بالكامل باستخدام React لنتمكن من تغيير مظهره بسرعة وتسليم موقع جاهز للعميل دون أي رسوم ترخيص. اختر اتجاهًا، ونحن نبني الواجهة الخلفية بمجرد انضمامك.",
-    adminDashboard: "← لوحة تحكم الإدارة",
     builtBadge: "10 / 10 مكتمل",
     inspiredBy: "مستوحى من",
     viewTemplate: "عرض النموذج",
@@ -101,34 +56,13 @@ const dict = {
     staticNotice: {
       label: "ملاحظة",
       body: "هذا مجرد عرض ثابت، ليعطيكم فكرة عن الشكل والاتجاه العام لموقعكم المستقبلي. بمجرد أن نبدأ العمل معكم، سنعمل على بناء قاعدة بياناتكم، وسير عمل الطلبات، والاعتناء بشكل المكونات، والتنسيق، والألوان، ودمج الدفع، ودمج ميزات الذكاء الاصطناعي، وأي شيء آخر ترغبون في إضافته أو تغييره.",
+      paymentNote: "🚀 ننشئ لك موقعك قبل أن تدفع أي رسوم، يُطلب منك الدفع بعد تسليم موقعك ✅",
     },
-    customTemplate: {
-      card: {
-        title: "نموذج مخصص",
-        tagline: "أخبرنا عن نشاطك التجاري وسنصمم لك متجرًا يناسبه.",
-        cta: "ابدأ نموذجًا مخصصًا",
-      },
-      modal: {
-        heading: "طلب نموذج مخصص",
-        subheading: "صف موقعك وسنعاود التواصل معك باقتراح.",
-        nameLabel: "الاسم الكامل",
-        namePlaceholder: "مثال: سارة أحمد",
-        emailLabel: "البريد الإلكتروني",
-        emailPlaceholder: "sara@yourcompany.com",
-        companyLabel: "الشركة (اختياري)",
-        companyPlaceholder: "اسم شركتك",
-        descriptionLabel: "صف موقعك",
-        descriptionPlaceholder:
-          "أخبرنا عن منتجاتك، وعملائك، والمظهر الذي تريده، وأي ميزات أساسية لا يمكن الاستغناء عنها...",
-        cancel: "إلغاء",
-        submit: "إرسال الطلب",
-        sending: "جارٍ الإرسال…",
-        successTitle: "تم إرسال الطلب",
-        successMessage: "شكرًا لك — سنراجع طلبك ونعاود التواصل معك قريبًا.",
-        close: "إغلاق",
-        errorMessage: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
-      },
-    },
+    trustBadges: [
+      { emoji: "🤝", label: "ثقة" },
+      { emoji: "🛠️", label: "صيانة" },
+      { emoji: "🎧", label: "مساعدة وتتبع" },
+    ],
   },
 } satisfies Record<Locale, unknown>;
 

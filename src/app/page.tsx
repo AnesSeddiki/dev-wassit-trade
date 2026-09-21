@@ -50,12 +50,6 @@ export default function Home() {
               </button>
             ))}
           </div>
-          <Link
-            href="/admin"
-            className="rounded-full border border-white/15 px-3 py-1.5 font-mono text-[11px] tracking-[0.2em] text-white/70 uppercase transition-colors hover:border-white/40 hover:text-white"
-          >
-            {t.adminDashboard}
-          </Link>
           <div className="font-mono text-xs tracking-[0.3em] text-white/50 uppercase">
             {t.builtBadge}
           </div>
@@ -63,28 +57,66 @@ export default function Home() {
       </header>
 
       <div className="relative z-10 mx-auto mt-8 max-w-6xl px-6 sm:px-10">
-        <div className="flex gap-3 rounded-xl border border-amber-400/25 bg-amber-400/[0.06] px-4 py-3">
-          <span className="mt-0.5 font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">
-            {t.staticNotice.label}
-          </span>
-          <p className="text-[13px] leading-relaxed text-white/70">{t.staticNotice.body}</p>
+        <div className="flex flex-col gap-3 rounded-xl border border-amber-400/25 bg-amber-400/[0.06] px-4 py-3">
+          <div className="flex gap-3">
+            <span className="mt-0.5 font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">
+              {t.staticNotice.label}
+            </span>
+            <p className="text-[13px] leading-relaxed text-white/70">{t.staticNotice.body}</p>
+          </div>
+          <div
+            className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold text-white"
+            style={{
+              background: "linear-gradient(120deg, #059669, #06b6d4, #059669)",
+              backgroundSize: "300% 300%",
+              animation: "gradient-shift 5s ease infinite, pulse-glow 2.4s ease-in-out infinite",
+            }}
+          >
+            {t.staticNotice.paymentNote}
+          </div>
         </div>
       </div>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pt-10 pb-20 sm:px-10 sm:pt-14">
-        <p className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
-          {t.eyebrow}
-        </p>
-        <h1
-          className="mt-6 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[1.05] font-light italic text-white sm:text-6xl"
-        >
-          {t.headline1}
-          <br />
-          {t.headline2}
-        </h1>
-        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
-          {t.description}
-        </p>
+        <div className="flex items-start gap-6 sm:gap-8" style={{ direction: "ltr" }}>
+          <div className="hidden shrink-0 flex-col gap-6 pt-3 sm:flex">
+            {t.trustBadges.map((badge, i) => (
+              <div key={badge.label} className="flex flex-col items-center gap-1.5">
+                <span
+                  aria-hidden
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-xl backdrop-blur-sm"
+                  style={{
+                    animation: "fade-pulse 3s ease-in-out infinite",
+                    animationDelay: `${i * 0.6}s`,
+                  }}
+                >
+                  {badge.emoji}
+                </span>
+                <span
+                  className="whitespace-nowrap font-mono text-[9px] uppercase tracking-wider text-white/40"
+                  style={{ direction: locale === "ar" ? "rtl" : "ltr" }}
+                >
+                  {badge.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="min-w-0 flex-1" style={{ direction: locale === "ar" ? "rtl" : "ltr" }}>
+            <p className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
+              {t.eyebrow}
+            </p>
+            <h1
+              className="mt-6 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[1.05] font-light italic text-white sm:text-6xl"
+            >
+              {t.headline1}
+              <br />
+              {t.headline2}
+            </h1>
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
+              {t.description}
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-28 sm:px-10">

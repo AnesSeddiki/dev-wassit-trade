@@ -4,10 +4,12 @@ import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { CATEGORY_THEME } from "./theme";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { dukakenText } from "../_i18n/translations";
 
 export default function DukakenQuickOrder({ product }: { product: Product }) {
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = dukakenText(locale).quickOrder;
   const theme = CATEGORY_THEME[product.category];
   const [qty, setQty] = useState<Record<string, number>>({});
@@ -27,6 +29,18 @@ export default function DukakenQuickOrder({ product }: { product: Product }) {
 
   function setCell(color: string, size: string, value: number) {
     setQty((prev) => ({ ...prev, [`${color}__${size}`]: Math.max(0, value || 0) }));
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
+    setQty({});
   }
 
   return (
@@ -97,6 +111,7 @@ export default function DukakenQuickOrder({ product }: { product: Product }) {
         </div>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!metMoq}
           className="px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-35"
           style={{ backgroundColor: theme.accent, fontFamily: "var(--font-dukaken-display)" }}

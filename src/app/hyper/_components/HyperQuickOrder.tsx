@@ -3,10 +3,12 @@
 import { useMemo, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useCart } from "@/lib/cart/CartContext";
 import { hyperText } from "../_i18n/translations";
 
 export default function HyperQuickOrder({ product }: { product: Product }) {
   const { locale } = useLanguage();
+  const { addItems } = useCart();
   const t = hyperText(locale).quickOrder;
   const [qty, setQty] = useState<Record<string, number>>({});
 
@@ -25,6 +27,18 @@ export default function HyperQuickOrder({ product }: { product: Product }) {
 
   function setCell(color: string, size: string, value: number) {
     setQty((prev) => ({ ...prev, [`${color}__${size}`]: value }));
+  }
+
+  function handleAddToCart() {
+    const lines = Object.entries(qty)
+      .map(([key, quantity]) => {
+        const [color, size] = key.split("__");
+        return { color, size, quantity: quantity || 0 };
+      })
+      .filter((l) => l.quantity > 0);
+    if (lines.length === 0) return;
+    addItems(product.id, lines);
+    setQty({});
   }
 
   return (
@@ -94,6 +108,7 @@ export default function HyperQuickOrder({ product }: { product: Product }) {
         </div>
         <button
           type="button"
+          onClick={handleAddToCart}
           disabled={!meetsMoq}
           className="bg-[#d4af37] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] transition-colors enabled:hover:bg-[#e8c869] disabled:cursor-not-allowed disabled:bg-[#d4af37]/25 disabled:text-[#f5f2ea]/40"
         >

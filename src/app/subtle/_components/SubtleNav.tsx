@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { subtleText } from "../_i18n/translations";
 
 export default function SubtleNav() {
@@ -49,6 +52,7 @@ export default function SubtleNav() {
         </div>
 
         <div className="flex items-center gap-2">
+          <AdminDashboardLink className="hidden rounded-full px-3.5 py-2 text-xs font-semibold text-[#3a3a34]/60 transition-colors hover:bg-[#f6f3ef] hover:text-[#3a3a34] sm:inline" />
           <div className="hidden items-center gap-0.5 rounded-full border border-[#3a3a34]/10 bg-[#f6f3ef] p-0.5 sm:flex">
             {LOCALES.map((l) => (
               <button
@@ -77,6 +81,8 @@ export default function SubtleNav() {
             </svg>
             {t.smartList}
           </button>
+          <CartButton className="rounded-full p-2 text-[#3a3a34]/70 transition-colors hover:bg-[#f6f3ef] hover:text-[#3a3a34]" />
+          <RequestTemplateButton templateName="Subtle" />
           <Link
             href="/subtle/shop"
             className="rounded-full bg-[#3a3a34] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#f6f3ef] transition-colors hover:bg-[#3a3a34]/85"

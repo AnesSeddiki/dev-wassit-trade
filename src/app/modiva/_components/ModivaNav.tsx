@@ -5,6 +5,9 @@ import { categories } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
+import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
+import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import CartButton from "@/components/shared/CartButton";
 import { modivaText } from "../_i18n/translations";
 
 export default function ModivaNav() {
@@ -17,6 +20,7 @@ export default function ModivaNav() {
         <span className="truncate">{t.issueLine}</span>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">{t.buyersLine}</span>
+          <AdminDashboardLink className="hidden normal-case tracking-normal text-[#2b2420]/50 transition-colors hover:text-[#c1602f] sm:inline" />
           <div className="flex items-center gap-2 border-l border-[#2b2420]/15 pl-4 normal-case tracking-normal">
             {LOCALES.map((l, i) => (
               <span key={l.code} className="flex items-center gap-2">
@@ -66,12 +70,16 @@ export default function ModivaNav() {
             {t.fullCollection}
           </Link>
         </div>
-        <Link
-          href="/modiva/shop"
-          className="shrink-0 border border-[#2b2420] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-[#2b2420] transition-colors hover:border-[#c1602f] hover:text-[#c1602f]"
-        >
-          {t.placeOrder}
-        </Link>
+        <div className="flex shrink-0 items-center gap-3">
+          <CartButton className="rounded p-1.5 text-[#2b2420]/70 transition-colors hover:text-[#c1602f]" />
+          <RequestTemplateButton templateName="Modiva" />
+          <Link
+            href="/modiva/shop"
+            className="border border-[#2b2420] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-[#2b2420] transition-colors hover:border-[#c1602f] hover:text-[#c1602f]"
+          >
+            {t.placeOrder}
+          </Link>
+        </div>
       </nav>
     </div>
   );
