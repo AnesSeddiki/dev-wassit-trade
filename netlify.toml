@@ -1,0 +1,7 @@
+[build.environment]
+  # RESEND_API_KEY is read only server-side in src/app/api/send-custom-template-description/route.ts
+  # (never NEXT_PUBLIC_-prefixed, never sent to the client). Next.js legitimately snapshots resolved
+  # server env vars into its own internal build output for the serverless function bundle, which trips
+  # Netlify's secrets scanner as a false positive. This tells the scanner to skip that specific key
+  # rather than disabling scanning altogether.
+  SECRETS_SCAN_OMIT_KEYS = "RESEND_API_KEY"
