@@ -21,6 +21,10 @@ const dict = {
       { emoji: "🛠️", label: "Maintenance" },
       { emoji: "🎧", label: "Support & tracking" },
     ],
+    whatsapp: {
+      ariaLabel: "Chat on WhatsApp",
+      message: "Hello! I'd like to know more about your wholesale website service.",
+    },
   },
   fr: {
     eyebrow: "Vente en gros pour hommes, femmes & enfants",
@@ -42,6 +46,10 @@ const dict = {
       { emoji: "🛠️", label: "Maintenance" },
       { emoji: "🎧", label: "Assistance & suivi" },
     ],
+    whatsapp: {
+      ariaLabel: "Discuter sur WhatsApp",
+      message: "Bonjour ! J'aimerais en savoir plus sur votre service de sites de vente en gros.",
+    },
   },
   ar: {
     eyebrow: "لتجارة الجملة للرجال والنساء والأطفال",
@@ -63,6 +71,10 @@ const dict = {
       { emoji: "🛠️", label: "صيانة" },
       { emoji: "🎧", label: "مساعدة وتتبع" },
     ],
+    whatsapp: {
+      ariaLabel: "تواصل عبر واتساب",
+      message: "مرحبًا! أرغب في معرفة المزيد عن خدمة مواقع البيع بالجملة الخاصة بكم.",
+    },
   },
 } satisfies Record<Locale, unknown>;
 
