@@ -80,44 +80,45 @@ export default function Home() {
       </div>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pt-10 pb-20 sm:px-10 sm:pt-14">
-        <div className="flex items-start gap-6 sm:gap-8" style={{ direction: "ltr" }}>
-          <div className="hidden shrink-0 flex-col gap-6 pt-3 sm:flex">
-            {t.trustBadges.map((badge, i) => (
-              <div key={badge.label} className="flex flex-col items-center gap-1.5">
-                <span
-                  aria-hidden
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-xl backdrop-blur-sm"
-                  style={{
-                    animation: "fade-pulse 3s ease-in-out infinite",
-                    animationDelay: `${i * 0.6}s`,
-                  }}
-                >
-                  {badge.emoji}
-                </span>
-                <span
-                  className="whitespace-nowrap font-mono text-[9px] uppercase tracking-wider text-white/40"
-                  style={{ direction: locale === "ar" ? "rtl" : "ltr" }}
-                >
-                  {badge.label}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="min-w-0 flex-1" style={{ direction: locale === "ar" ? "rtl" : "ltr" }}>
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
-              {t.eyebrow}
-            </p>
-            <h1
-              className="mt-6 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[1.05] font-light italic text-white sm:text-6xl"
+        <p className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
+          {t.eyebrow}
+        </p>
+        <h1
+          className="mt-6 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[1.05] font-light italic text-white sm:text-6xl"
+        >
+          {t.headline1}
+          <br />
+          {t.headline2}
+        </h1>
+        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
+          {t.description}
+        </p>
+
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {t.heroHighlights.map((highlight, i) => (
+            <div
+              key={highlight.label}
+              className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
+              style={{
+                animation: "card-in 0.5s ease-out both",
+                animationDelay: `${i * 100}ms`,
+              }}
             >
-              {t.headline1}
-              <br />
-              {t.headline2}
-            </h1>
-            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
-              {t.description}
-            </p>
-          </div>
+              <span
+                aria-hidden
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-400/10 text-lg"
+                style={{
+                  animation: "fade-pulse 3s ease-in-out infinite",
+                  animationDelay: `${i * 0.6}s`,
+                }}
+              >
+                {highlight.emoji}
+              </span>
+              <span className="text-[13px] font-medium leading-snug text-white/80">
+                {highlight.label}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 

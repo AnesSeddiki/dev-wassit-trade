@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { customTemplateText } from "@/lib/i18n/customTemplateTranslations";
+import { trackPixelEvent } from "@/lib/metaPixel";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -59,6 +60,7 @@ export default function CustomTemplateModal({ trigger, initialDescription }: Cus
         body: JSON.stringify({ name, email, phone, company, description }),
       });
       if (!res.ok) throw new Error("Request failed");
+      trackPixelEvent("Lead", { content_name: initialDescription ? "template_request" : "custom_template_request" });
       setStatus("success");
     } catch {
       setStatus("error");
