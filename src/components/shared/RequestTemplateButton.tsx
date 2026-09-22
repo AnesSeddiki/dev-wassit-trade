@@ -33,6 +33,7 @@ export default function RequestTemplateButton({ templateName }: RequestTemplateB
   return (
     <CustomTemplateModal
       initialDescription={t.requestMessage(templateName)}
+      templateName={templateName}
       trigger={(open) => {
         if (!mounted) return null;
         return createPortal(

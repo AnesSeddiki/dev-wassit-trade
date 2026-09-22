@@ -13,9 +13,11 @@ interface CustomTemplateModalProps {
   trigger: (open: () => void) => React.ReactNode;
   /** Pre-fills the description field when the modal opens (e.g. "I want to request the Trade template..."). */
   initialDescription?: string;
+  /** Name of the template this form was opened from (e.g. "Trade"). Omit for the generic custom-template card. */
+  templateName?: string;
 }
 
-export default function CustomTemplateModal({ trigger, initialDescription }: CustomTemplateModalProps) {
+export default function CustomTemplateModal({ trigger, initialDescription, templateName }: CustomTemplateModalProps) {
   const { locale } = useLanguage();
   const t = customTemplateText(locale);
   const [open, setOpen] = useState(false);
@@ -60,7 +62,10 @@ export default function CustomTemplateModal({ trigger, initialDescription }: Cus
         body: JSON.stringify({ name, email, phone, company, description }),
       });
       if (!res.ok) throw new Error("Request failed");
-      trackPixelEvent("Lead", { content_name: initialDescription ? "template_request" : "custom_template_request" });
+      trackPixelEvent("Lead", {
+        content_name: templateName ?? "Custom template",
+        content_category: templateName ? "template_request" : "custom_template_request",
+      });
       setStatus("success");
     } catch {
       setStatus("error");

@@ -4,4 +4,8 @@
   # server env vars into its own internal build output for the serverless function bundle, which trips
   # Netlify's secrets scanner as a false positive. This tells the scanner to skip that specific key
   # rather than disabling scanning altogether.
-  SECRETS_SCAN_OMIT_KEYS = "RESEND_API_KEY"
+  #
+  # NEXT_PUBLIC_META_PIXEL_ID is intentionally public (it's meant to run in every visitor's browser,
+  # see src/app/layout.tsx) and will legitimately appear in the client JS bundle, which would otherwise
+  # be flagged as a true positive by the scanner.
+  SECRETS_SCAN_OMIT_KEYS = "RESEND_API_KEY,NEXT_PUBLIC_META_PIXEL_ID"
