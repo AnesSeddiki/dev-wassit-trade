@@ -29,7 +29,7 @@ export default function WSNav() {
         <span>{t.manifestLine1}</span>
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline">{t.manifestLine2}</span>
-          <AdminDashboardLink className="hidden text-[#e5e2da]/70 normal-case tracking-normal transition-colors hover:text-[#e5e2da] sm:inline" />
+          <AdminDashboardLink templateName="Wholesale Stores" className="hidden text-[#e5e2da]/70 normal-case tracking-normal transition-colors hover:text-[#e5e2da] sm:inline" />
           <div className="flex items-center gap-1 border-l-2 border-[#e5e2da]/25 pl-2">
             {LOCALES.map((l) => (
               <button

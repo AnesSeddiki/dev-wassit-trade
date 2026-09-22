@@ -8,7 +8,7 @@ import type { Locale } from "@/lib/i18n/locales";
 interface Product {
   id: string;
   name: string;
-  category: "Accessories" | "Home & Kitchen" | "Apparel" | "Workspace" | "Stationery";
+  category: "Men" | "Women" | "Kids";
   price: string;
   stock: number;
   status: "In Stock" | "Low Stock" | "Out of Stock" | "Archived";
@@ -16,57 +16,107 @@ interface Product {
   sales: number;
 }
 
-// Demo data matching the sidebar aesthetic
+// Pulled from the real product catalog (src/lib/products.ts) for a realistic dashboard
 const products: Product[] = [
   {
     id: "PRD-101",
-    name: "Minimalist Leather Cardholder",
-    category: "Accessories",
-    price: "$45.00",
-    stock: 84,
+    name: "Heavyweight Crew Tee",
+    category: "Men",
+    price: "1,200 DA",
+    stock: 340,
     status: "In Stock",
-    sku: "ACC-LDR-001",
-    sales: 342,
+    sku: "MN-TEE-001",
+    sales: 4320,
   },
   {
     id: "PRD-102",
-    name: "Matte Ceramic Coffee Mug (350ml)",
-    category: "Home & Kitchen",
-    price: "$28.00",
-    stock: 12,
-    status: "Low Stock",
-    sku: "HM-CRM-042",
-    sales: 890,
+    name: "Canvas Work Jacket",
+    category: "Men",
+    price: "3,800 DA",
+    stock: 85,
+    status: "In Stock",
+    sku: "MN-JKT-014",
+    sales: 1180,
   },
   {
     id: "PRD-103",
-    name: "Merino Wool Knit Beanie",
-    category: "Apparel",
-    price: "$58.00",
-    stock: 0,
-    status: "Out of Stock",
-    sku: "APP-WOL-009",
-    sales: 120,
+    name: "Selvedge Denim, Straight",
+    category: "Men",
+    price: "4,200 DA",
+    stock: 12,
+    status: "Low Stock",
+    sku: "MN-DNM-009",
+    sales: 640,
   },
   {
     id: "PRD-104",
-    name: "Aluminum Desk Cable Organizer",
-    category: "Workspace",
-    price: "$22.50",
-    stock: 145,
+    name: "Modal Wrap Dress",
+    category: "Women",
+    price: "2,600 DA",
+    stock: 210,
     status: "In Stock",
-    sku: "WRK-ALM-015",
-    sales: 512,
+    sku: "WM-DRS-041",
+    sales: 3810,
   },
   {
     id: "PRD-105",
-    name: "Linen Journal & Pen Set",
-    category: "Stationery",
-    price: "$34.00",
+    name: "Tailored Blazer",
+    category: "Women",
+    price: "4,600 DA",
+    stock: 64,
+    status: "In Stock",
+    sku: "WM-BLZ-007",
+    sales: 940,
+  },
+  {
+    id: "PRD-106",
+    name: "Ribbed Seamless Legging",
+    category: "Women",
+    price: "1,800 DA",
+    stock: 0,
+    status: "Out of Stock",
+    sku: "WM-LEG-055",
+    sales: 2960,
+  },
+  {
+    id: "PRD-107",
+    name: "Quilted Vest",
+    category: "Women",
+    price: "3,100 DA",
+    stock: 95,
+    status: "In Stock",
+    sku: "WM-VST-028",
+    sales: 720,
+  },
+  {
+    id: "PRD-108",
+    name: "Graphic Tee, 3-Pack",
+    category: "Kids",
+    price: "1,500 DA",
+    stock: 480,
+    status: "In Stock",
+    sku: "KD-TEE-011",
+    sales: 3390,
+  },
+  {
+    id: "PRD-109",
+    name: "Fleece Zip Hoodie",
+    category: "Kids",
+    price: "1,700 DA",
+    stock: 150,
+    status: "In Stock",
+    sku: "KD-HOD-019",
+    sales: 2540,
+  },
+  {
+    id: "PRD-110",
+    name: "Rain Shell Jacket",
+    category: "Kids",
+    price: "2,100 DA",
     stock: 0,
     status: "Archived",
-    sku: "STN-LNN-088",
-    sales: 64,
+    sku: "KD-JKT-033",
+    sales: 310,
   },
 ];
 
@@ -95,10 +145,10 @@ export default function ProductsPage() {
 
       {/* Stats Quick Grid */}
       <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <StatCard label={t.stats.totalProducts.label} value="142" change={t.stats.totalProducts.change} />
-        <StatCard label={t.stats.lowStockItems.label} value="5" change={t.stats.lowStockItems.change} warning />
-        <StatCard label={t.stats.outOfStock.label} value="3" change={t.stats.outOfStock.change} />
-        <StatCard label={t.stats.totalValue.label} value="$48,290" change={t.stats.totalValue.change} />
+        <StatCard label={t.stats.totalProducts.label} value="18" change={t.stats.totalProducts.change} />
+        <StatCard label={t.stats.lowStockItems.label} value="2" change={t.stats.lowStockItems.change} warning />
+        <StatCard label={t.stats.outOfStock.label} value="1" change={t.stats.outOfStock.change} />
+        <StatCard label={t.stats.totalValue.label} value="3,450,000 DA" change={t.stats.totalValue.change} />
       </div>
 
       {/* Products Table Container */}
@@ -113,11 +163,9 @@ export default function ProductsPage() {
           <div className="flex items-center gap-2">
             <select className="rounded-md border border-[#0b0b0b]/10 bg-[#fcfcfb] px-2.5 py-1.5 text-xs text-[#52514e] outline-none dark:border-white/10 dark:bg-[#1a1a19] dark:text-[#c3c2b7]">
               <option value="all">{t.allCategories}</option>
-              <option value="accessories">{t.categories.Accessories}</option>
-              <option value="apparel">{t.categories.Apparel}</option>
-              <option value="home">{t.categories["Home & Kitchen"]}</option>
-              <option value="workspace">{t.categories.Workspace}</option>
-              <option value="stationery">{t.categories.Stationery}</option>
+              <option value="men">{t.categories.Men}</option>
+              <option value="women">{t.categories.Women}</option>
+              <option value="kids">{t.categories.Kids}</option>
             </select>
             <select className="rounded-md border border-[#0b0b0b]/10 bg-[#fcfcfb] px-2.5 py-1.5 text-xs text-[#52514e] outline-none dark:border-white/10 dark:bg-[#1a1a19] dark:text-[#c3c2b7]">
               <option value="all">{common.allStatuses}</option>
@@ -183,7 +231,7 @@ export default function ProductsPage() {
 
         {/* Footer / Pagination */}
         <div className="flex items-center justify-between border-t border-[#0b0b0b]/10 px-5 py-3 text-xs text-[#898781] dark:border-white/10 dark:text-[#a09e96]">
-          <span>{t.showing(products.length, "142")}</span>
+          <span>{t.showing(products.length, "18")}</span>
           <div className="flex gap-1">
             <button className="rounded px-2.5 py-1 border border-[#0b0b0b]/10 hover:bg-[#0b0b0b]/5 dark:border-white/10 dark:hover:bg-white/5">
               {common.previous}

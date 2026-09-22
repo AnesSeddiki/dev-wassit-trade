@@ -24,7 +24,7 @@ const accounts: Account[] = [
     role: "Admin",
     status: "Active",
     joinedDate: "Jan 12, 2025",
-    totalSpent: "$1,450.00",
+    totalSpent: "98,600 DA",
   },
   {
     id: "USR-002",
@@ -33,7 +33,7 @@ const accounts: Account[] = [
     role: "Manager",
     status: "Active",
     joinedDate: "Mar 04, 2025",
-    totalSpent: "$820.50",
+    totalSpent: "55,800 DA",
   },
   {
     id: "USR-003",
@@ -42,7 +42,7 @@ const accounts: Account[] = [
     role: "Customer",
     status: "Active",
     joinedDate: "Jul 19, 2025",
-    totalSpent: "$3,120.00",
+    totalSpent: "212,000 DA",
   },
   {
     id: "USR-004",
@@ -51,7 +51,7 @@ const accounts: Account[] = [
     role: "Support",
     status: "Pending",
     joinedDate: "Sep 01, 2026",
-    totalSpent: "$0.00",
+    totalSpent: "0 DA",
   },
   {
     id: "USR-005",
@@ -60,7 +60,7 @@ const accounts: Account[] = [
     role: "Customer",
     status: "Suspended",
     joinedDate: "Feb 11, 2026",
-    totalSpent: "$142.20",
+    totalSpent: "9,670 DA",
   },
 ];
 

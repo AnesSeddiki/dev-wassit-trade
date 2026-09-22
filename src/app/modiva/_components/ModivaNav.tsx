@@ -20,7 +20,7 @@ export default function ModivaNav() {
         <span className="truncate">{t.issueLine}</span>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">{t.buyersLine}</span>
-          <AdminDashboardLink className="hidden normal-case tracking-normal text-[#2b2420]/50 transition-colors hover:text-[#c1602f] sm:inline" />
+          <AdminDashboardLink templateName="Modiva" className="hidden normal-case tracking-normal text-[#2b2420]/50 transition-colors hover:text-[#c1602f] sm:inline" />
           <div className="flex items-center gap-2 border-l border-[#2b2420]/15 pl-4 normal-case tracking-normal">
             {LOCALES.map((l, i) => (
               <span key={l.code} className="flex items-center gap-2">

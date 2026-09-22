@@ -9,7 +9,7 @@ export default function SettingsPage() {
   const t = adminText(locale).settings;
   const [storeName, setStoreName] = useState("Store Admin");
   const [supportEmail, setSupportEmail] = useState("support@example.com");
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("DZD");
   const [darkMode, setDarkMode] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(true);
 
@@ -68,10 +68,9 @@ export default function SettingsPage() {
                 onChange={(e) => setCurrency(e.target.value)}
                 className="mt-1.5 w-full rounded-md border border-[#0b0b0b]/10 bg-[#fcfcfb] px-2.5 py-1.5 text-xs text-[#52514e] outline-none dark:border-white/10 dark:bg-[#1a1a19] dark:text-[#c3c2b7]"
               >
+                <option value="DZD">DZD (دج)</option>
                 <option value="USD">USD ($)</option>
                 <option value="EUR">EUR (€)</option>
-                <option value="GBP">GBP (£)</option>
-                <option value="CAD">CAD ($)</option>
               </select>
             </div>
           </div>

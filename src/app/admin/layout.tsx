@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import AdminSidebar from "./_components/AdminSidebar";
 import AdminTopbar from "./_components/AdminTopbar";
+import AdminTemplateBadge from "./_components/AdminTemplateBadge";
 
 export const metadata: Metadata = {
   title: "Admin — Wholesale Dashboard",
@@ -18,6 +20,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <AdminTopbar />
         <main className="flex-1 overflow-x-hidden px-4 py-6 sm:px-8">{children}</main>
       </div>
+      <Suspense fallback={null}>
+        <AdminTemplateBadge />
+      </Suspense>
     </div>
   );
 }

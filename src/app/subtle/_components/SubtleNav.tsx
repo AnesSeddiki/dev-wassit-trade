@@ -52,7 +52,7 @@ export default function SubtleNav() {
         </div>
 
         <div className="flex items-center gap-2">
-          <AdminDashboardLink className="hidden rounded-full px-3.5 py-2 text-xs font-semibold text-[#3a3a34]/60 transition-colors hover:bg-[#f6f3ef] hover:text-[#3a3a34] sm:inline" />
+          <AdminDashboardLink templateName="Subtle" className="hidden rounded-full px-3.5 py-2 text-xs font-semibold text-[#3a3a34]/60 transition-colors hover:bg-[#f6f3ef] hover:text-[#3a3a34] sm:inline" />
           <div className="hidden items-center gap-0.5 rounded-full border border-[#3a3a34]/10 bg-[#f6f3ef] p-0.5 sm:flex">
             {LOCALES.map((l) => (
               <button

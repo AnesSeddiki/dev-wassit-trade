@@ -59,7 +59,7 @@ export default function RazziNav() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2.5">
-          <AdminDashboardLink className="hidden text-xs font-semibold uppercase tracking-wide text-[#1a1a1a]/50 transition-colors hover:text-[#1a1a1a] sm:inline" />
+          <AdminDashboardLink templateName="Razzi" className="hidden text-xs font-semibold uppercase tracking-wide text-[#1a1a1a]/50 transition-colors hover:text-[#1a1a1a] sm:inline" />
           <div
             className="flex items-center gap-0.5 rounded-full border-[3px] border-[#1a1a1a] bg-white p-0.5 shadow-[3px_3px_0_0_#1a1a1a]"
             role="group"

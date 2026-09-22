@@ -22,7 +22,7 @@ export default function HyperNav() {
         <span className="truncate">{t.announcement1}</span>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">{t.announcement2}</span>
-          <AdminDashboardLink className="hidden text-[#f5f2ea]/45 transition-colors hover:text-[#d4af37] sm:inline" />
+          <AdminDashboardLink templateName="Hyper" className="hidden text-[#f5f2ea]/45 transition-colors hover:text-[#d4af37] sm:inline" />
           <div className="flex items-center gap-1 border-l border-[#d4af37]/20 pl-4">
             {LOCALES.map((l) => (
               <button

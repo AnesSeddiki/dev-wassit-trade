@@ -31,10 +31,10 @@ export interface RecentOrder {
 export const kpis = [
   {
     id: "revenue" as const,
-    value: "$184,200",
+    value: "12,526,000 DA",
     delta: "+12.4%",
     trend: "up" as const,
-    sparkline: [96, 108, 121, 99, 112, 129, 134, 142, 138, 153, 167, 184],
+    sparkline: [6528, 7378, 8248, 6786, 7643, 8765, 9119, 9636, 9398, 10377, 11376, 12526],
   },
   {
     id: "orders" as const,
@@ -52,35 +52,35 @@ export const kpis = [
   },
   {
     id: "aov" as const,
-    value: "$538",
+    value: "36,614 DA",
     delta: "-2.3%",
     trend: "down" as const,
-    sparkline: [560, 555, 549, 552, 547, 543, 546, 541, 539, 544, 540, 538],
+    sparkline: [38080, 37740, 37332, 37536, 37196, 36924, 37128, 36788, 36652, 36992, 36720, 36614],
   },
 ];
 
 export const revenueSeries: RevenuePoint[] = [
-  { month: "Oct", revenue: 96000 },
-  { month: "Nov", revenue: 108500 },
-  { month: "Dec", revenue: 121300 },
-  { month: "Jan", revenue: 99800 },
-  { month: "Feb", revenue: 112400 },
-  { month: "Mar", revenue: 128900 },
-  { month: "Apr", revenue: 134100 },
-  { month: "May", revenue: 141700 },
-  { month: "Jun", revenue: 138200 },
-  { month: "Jul", revenue: 152600 },
-  { month: "Aug", revenue: 167300 },
-  { month: "Sep", revenue: 184200 },
+  { month: "Oct", revenue: 6528000 },
+  { month: "Nov", revenue: 7378000 },
+  { month: "Dec", revenue: 8248000 },
+  { month: "Jan", revenue: 6786000 },
+  { month: "Feb", revenue: 7643000 },
+  { month: "Mar", revenue: 8765000 },
+  { month: "Apr", revenue: 9119000 },
+  { month: "May", revenue: 9636000 },
+  { month: "Jun", revenue: 9398000 },
+  { month: "Jul", revenue: 10377000 },
+  { month: "Aug", revenue: 11376000 },
+  { month: "Sep", revenue: 12526000 },
 ];
 
 export const categorySeries: CategoryPoint[] = [
-  { month: "Apr", men: 41200, women: 52300, kids: 40600 },
-  { month: "May", men: 44500, women: 55800, kids: 41400 },
-  { month: "Jun", men: 42100, women: 53900, kids: 42200 },
-  { month: "Jul", men: 47800, women: 61200, kids: 43600 },
-  { month: "Aug", men: 52300, women: 67100, kids: 47900 },
-  { month: "Sep", men: 58600, women: 72400, kids: 53200 },
+  { month: "Apr", men: 2802000, women: 3556000, kids: 2761000 },
+  { month: "May", men: 3026000, women: 3794000, kids: 2815000 },
+  { month: "Jun", men: 2863000, women: 3665000, kids: 2870000 },
+  { month: "Jul", men: 3250000, women: 4162000, kids: 2965000 },
+  { month: "Aug", men: 3556000, women: 4563000, kids: 3257000 },
+  { month: "Sep", men: 3985000, women: 4923000, kids: 3618000 },
 ];
 
 export const topProducts: TopProduct[] = [
@@ -93,10 +93,10 @@ export const topProducts: TopProduct[] = [
 ];
 
 export const recentOrders: RecentOrder[] = [
-  { id: "WO-10482", account: "Northline Apparel Co.", category: "Women", units: 288, total: 6912, status: "Fulfilled", placed: "2 hours ago" },
-  { id: "WO-10481", account: "Kidmark Distributors", category: "Kids", units: 432, total: 5184, status: "Processing", placed: "5 hours ago" },
-  { id: "WO-10480", account: "Union Trade Supply", category: "Men", units: 144, total: 3888, status: "Fulfilled", placed: "Yesterday" },
-  { id: "WO-10479", account: "Coastal Retail Group", category: "Mixed", units: 612, total: 14208, status: "Backordered", placed: "Yesterday" },
-  { id: "WO-10478", account: "Bramwell & Sons", category: "Women", units: 96, total: 2496, status: "Cancelled", placed: "2 days ago" },
-  { id: "WO-10477", account: "Northline Apparel Co.", category: "Men", units: 216, total: 5832, status: "Fulfilled", placed: "3 days ago" },
+  { id: "WO-10482", account: "Northline Apparel Co.", category: "Women", units: 288, total: 432000, status: "Fulfilled", placed: "2 hours ago" },
+  { id: "WO-10481", account: "Kidmark Distributors", category: "Kids", units: 432, total: 518000, status: "Processing", placed: "5 hours ago" },
+  { id: "WO-10480", account: "Union Trade Supply", category: "Men", units: 144, total: 259000, status: "Fulfilled", placed: "Yesterday" },
+  { id: "WO-10479", account: "Coastal Retail Group", category: "Mixed", units: 612, total: 857000, status: "Backordered", placed: "Yesterday" },
+  { id: "WO-10478", account: "Bramwell & Sons", category: "Women", units: 96, total: 144000, status: "Cancelled", placed: "2 days ago" },
+  { id: "WO-10477", account: "Northline Apparel Co.", category: "Men", units: 216, total: 389000, status: "Fulfilled", placed: "3 days ago" },
 ];

@@ -27,7 +27,7 @@ function CustomTooltip({
   return (
     <div className="rounded-md border border-[#0b0b0b]/10 bg-[#fcfcfb] px-3 py-2 text-xs shadow-sm dark:border-white/10 dark:bg-[#1a1a19]">
       <p className="font-medium text-[#0b0b0b] dark:text-white">{label}</p>
-      <p className="tabular-nums text-[#2a78d6]">${payload[0].value.toLocaleString()}</p>
+      <p className="tabular-nums text-[#2a78d6]">{payload[0].value.toLocaleString()} DA</p>
     </div>
   );
 }
@@ -58,7 +58,7 @@ export default function RevenueChart() {
               tickLine={false}
               axisLine={false}
               tick={{ fill: VIZ.muted, fontSize: 12 }}
-              tickFormatter={(v) => `$${Math.round(v / 1000)}k`}
+              tickFormatter={(v) => `${(v / 1_000_000).toFixed(1)}M`}
               width={48}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: VIZ.axis, strokeWidth: 1 }} />

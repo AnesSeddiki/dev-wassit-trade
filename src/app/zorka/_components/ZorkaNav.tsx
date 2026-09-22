@@ -36,7 +36,7 @@ export default function ZorkaNav() {
           ))}
           <RequestTemplateButton templateName="Zorka" />
           <CartButton className="text-black/70 transition-colors hover:text-black" badgeClassName="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-black px-1 text-[9px] font-bold leading-none text-white" />
-          <AdminDashboardLink className="hidden text-black/40 transition-colors hover:text-black/70 sm:inline" />
+          <AdminDashboardLink templateName="Zorka" className="hidden text-black/40 transition-colors hover:text-black/70 sm:inline" />
           <div className="flex items-center gap-2">
             {LOCALES.map((l, i) => (
               <span key={l.code} className="flex items-center gap-2">

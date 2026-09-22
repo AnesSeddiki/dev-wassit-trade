@@ -45,7 +45,7 @@ function CustomTooltip({
         return (
           <p key={p.dataKey} className="flex items-center gap-1.5 tabular-nums">
             <span className="inline-block h-2 w-2 rounded-full" style={{ background: s?.color }} />
-            {s?.label}: ${p.value.toLocaleString()}
+            {s?.label}: {p.value.toLocaleString()} DA
           </p>
         );
       })}
@@ -78,7 +78,7 @@ export default function CategoryBarChart() {
               tickLine={false}
               axisLine={false}
               tick={{ fill: VIZ.muted, fontSize: 12 }}
-              tickFormatter={(v) => `$${Math.round(v / 1000)}k`}
+              tickFormatter={(v) => `${(v / 1_000_000).toFixed(1)}M`}
               width={48}
             />
             <Tooltip content={<CustomTooltip series={series} />} cursor={{ fill: "rgba(11,11,11,0.04)" }} />
