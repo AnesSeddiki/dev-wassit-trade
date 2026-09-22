@@ -156,7 +156,7 @@ export default function Home() {
               width={165}
               height={220}
               className="h-full w-full object-cover object-top"
-              style={{ filter: "drop-shadow(6px 10px 10px rgba(0,0,0,0.35))" }}
+              style={{ filter: "drop-shadow(0 3px 6px rgba(0,0,0,0.3))" }}
             />
           </div>
           <div className="min-w-0">
