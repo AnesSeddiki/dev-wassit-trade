@@ -75,8 +75,51 @@ export default function Home() {
         <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
           {t.description}
         </p>
+      </section>
 
-        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
+        <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-amber-400/[0.06] to-transparent p-5 sm:p-7">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl italic text-white">
+            {t.results.title}
+          </h2>
+          <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {t.results.checklist.map((item, i) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-[14px] leading-snug text-white/75"
+                style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
+              >
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-400">
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="mt-7 font-mono text-xs uppercase tracking-[0.3em] text-amber-400">
+            {t.results.whyTitle}
+          </h3>
+          <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+            {t.results.whyPoints.map((item, i) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-[13px] leading-snug text-white/60"
+                style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
+              >
+                <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-400" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
+        <h2 className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
+          {t.highlightsTitle}
+        </h2>
+        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {t.heroHighlights.map((highlight, i) => (
             <div
               key={highlight.label}

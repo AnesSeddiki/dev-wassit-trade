@@ -3,10 +3,28 @@
 @theme inline {
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
+  --font-arabic: var(--font-arabic);
 }
 
 body {
   font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* JetBrains Mono has no Arabic glyphs, so Arabic text was silently falling back to a
+   thin system default font. Switch to a proper Arabic webfont with a slightly heavier
+   base weight (Arabic script reads better a touch bolder, especially on phone screens).
+   Elements with their own explicit Tailwind font-weight class are unaffected — this
+   only sets the inherited default. */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+}
+
+/* Headings/names use font-[family-name:var(--font-display)] directly (Fraunces, also
+   Latin-only). Redefining the variable itself means every element referencing it picks
+   up the Arabic font automatically, no per-component changes needed. */
+html[dir="rtl"] {
+  --font-display: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
 }
 
 .grain {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Fraunces, JetBrains_Mono } from "next/font/google";
+import { Fraunces, JetBrains_Mono, Cairo } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { CartProvider } from "@/lib/cart/CartContext";
 import { DEFAULT_LOCALE, dirFor } from "@/lib/i18n/locales";
@@ -19,6 +19,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const cairo = Cairo({
+  variable: "--font-arabic",
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Wassit DEV",
   description:
@@ -33,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang={DEFAULT_LOCALE}
       dir={dirFor(DEFAULT_LOCALE)}
-      className={`${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${jetbrainsMono.variable} ${cairo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0b0b0d] text-white">
         {META_PIXEL_ID ? (

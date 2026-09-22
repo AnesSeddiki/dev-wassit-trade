@@ -16,11 +16,31 @@ const dict = {
       body: "This is a static preview only, so you can get a feel for the look and direction of your future website. As soon as we start working together, we'll build out your database, your ordering workflow, and take care of component layouts, styling, colors, payment integration, AI features, and anything else you'd like to add or change.",
       paymentNote: "🚀 We build your website before you pay a single fee — payment is only requested after your site is delivered. ✅",
     },
+    highlightsTitle: "What sets us apart",
     heroHighlights: [
       { emoji: "🎨", label: "10+ ready-to-preview templates" },
       { emoji: "💳", label: "Pay only after delivery" },
       { emoji: "🎧", label: "Support & follow-up after launch" },
     ],
+    results: {
+      title: "What you get",
+      checklist: [
+        "We build your entire website for you",
+        "Showcase all your products easily",
+        "Receive customer orders directly",
+        "Track and manage every order in one place",
+        "Your own independent website — not stuck relying on Facebook",
+      ],
+      whyTitle: "Why a website beats relying only on an online store",
+      whyPoints: [
+        "Protects you from fake orders",
+        "You can change the colors or design anytime",
+        "Protects your products and data from being copied or stolen",
+        "Your business keeps running even if your Facebook page gets banned or hacked",
+        "Builds more trust with customers, especially for large orders",
+        "Your products stay organized and easy to find, instead of getting lost in posts",
+      ],
+    },
     howItWorks: {
       title: "How it works",
       steps: [
@@ -62,11 +82,31 @@ const dict = {
       body: "Ceci n'est qu'un aperçu statique, pour vous donner une idée du style et de la direction de votre futur site. Dès que nous commencerons à travailler ensemble, nous mettrons en place votre base de données, votre flux de commande, et nous nous chargerons de la disposition des composants, du style, des couleurs, de l'intégration des paiements, des fonctionnalités IA et de tout ce que vous souhaiterez ajouter ou modifier.",
       paymentNote: "🚀 Nous construisons votre site avant que vous ne payiez le moindre frais — le paiement n'est demandé qu'après la livraison de votre site. ✅",
     },
+    highlightsTitle: "Ce qui nous distingue",
     heroHighlights: [
       { emoji: "🎨", label: "10+ modèles prêts à consulter" },
       { emoji: "💳", label: "Paiement uniquement après livraison" },
       { emoji: "🎧", label: "Assistance & suivi après lancement" },
     ],
+    results: {
+      title: "Ce que vous obtenez",
+      checklist: [
+        "Nous construisons votre site entièrement",
+        "Présentez tous vos produits facilement",
+        "Recevez les commandes de vos clients directement",
+        "Suivez et gérez toutes vos commandes au même endroit",
+        "Votre propre site indépendant, sans dépendre uniquement de Facebook",
+      ],
+      whyTitle: "Pourquoi un site vaut mieux qu'une simple boutique en ligne",
+      whyPoints: [
+        "Vous protège des fausses commandes",
+        "Vous pouvez changer les couleurs ou le design à tout moment",
+        "Protège vos produits et vos données du vol ou de la copie",
+        "Votre activité continue même si votre page Facebook est bannie ou piratée",
+        "Inspire plus de confiance à vos clients, surtout pour les grosses commandes",
+        "Vos produits restent organisés et faciles à trouver, au lieu de se perdre dans les publications",
+      ],
+    },
     howItWorks: {
       title: "Comment ça marche",
       steps: [
@@ -108,11 +148,31 @@ const dict = {
       body: "هذا مجرد عرض ثابت، ليعطيكم فكرة عن الشكل والاتجاه العام لموقعكم المستقبلي. بمجرد أن نبدأ العمل معكم، سنعمل على بناء قاعدة بياناتكم، وسير عمل الطلبات، والاعتناء بشكل المكونات، والتنسيق، والألوان، ودمج الدفع، ودمج ميزات الذكاء الاصطناعي، وأي شيء آخر ترغبون في إضافته أو تغييره.",
       paymentNote: "🚀 ننشئ لك موقعك قبل أن تدفع أي رسوم، يُطلب منك الدفع بعد تسليم موقعك ✅",
     },
+    highlightsTitle: "ما يميزنا",
     heroHighlights: [
       { emoji: "🎨", label: "+10 قوالب جاهزة للمعاينة" },
       { emoji: "💳", label: "الدفع فقط بعد التسليم" },
       { emoji: "🎧", label: "دعم ومتابعة بعد الإطلاق" },
     ],
+    results: {
+      title: "ماذا نقدم لك؟",
+      checklist: [
+        "نبني لك موقعك بالكامل",
+        "تعرض كل منتجاتك بسهولة",
+        "تستقبل طلبات الزبائن مباشرة",
+        "تتابع وتدير طلباتك بسهولة",
+        "يكون عندك موقع خاص بك، مستقل تمامًا",
+      ],
+      whyTitle: "لماذا موقع أفضل من الاعتماد على متجر إلكتروني فقط؟",
+      whyPoints: [
+        "يحميك من الطلبات المزورة",
+        "تقدر تغيّر الألوان أو الشكل في أي وقت",
+        "يحمي منتجاتك وبياناتك من التقليد أو السرقة",
+        "عملك يستمر حتى لو تم حظر أو اختراق صفحتك على فيسبوك",
+        "يعطي ثقة أكبر لعملائك، خصوصًا في الطلبيات الكبيرة",
+        "منتجاتك تبقى منظمة وسهلة الوصول، ما تضيعش بين المنشورات",
+      ],
+    },
     howItWorks: {
       title: "كيف تسير العملية",
       steps: [
