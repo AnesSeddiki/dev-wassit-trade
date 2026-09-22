@@ -62,7 +62,7 @@ export default function Home() {
       </header>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pt-10 pb-20 sm:px-10 sm:pt-14">
-        <p className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
+        <p className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
           {t.eyebrow}
         </p>
         <h1
@@ -97,7 +97,7 @@ export default function Home() {
             ))}
           </ul>
 
-          <h3 className="mt-7 font-mono text-xs uppercase tracking-[0.3em] text-amber-400">
+          <h3 className="mt-7 font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
             {t.results.whyTitle}
           </h3>
           <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
-        <h2 className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
+        <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
           {t.highlightsTitle}
         </h2>
         <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -160,7 +160,7 @@ export default function Home() {
             />
           </div>
           <div className="min-w-0">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-400">
+            <p className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
               {t.about.eyebrow}
             </p>
             <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl italic text-white">
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
-        <h2 className="font-mono text-xs uppercase tracking-[0.35em] text-amber-400">
+        <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
           {t.howItWorks.title}
         </h2>
         <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -322,7 +322,7 @@ export default function Home() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-10 sm:px-10">
         <div className="flex flex-col gap-3 rounded-xl border border-amber-400/25 bg-amber-400/[0.06] px-4 py-3">
           <div className="flex gap-3">
-            <span className="mt-0.5 font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">
+            <span className="mt-0.5 font-mono text-2xl font-semibold uppercase tracking-wider text-amber-400">
               {t.staticNotice.label}
             </span>
             <p className="text-[13px] leading-relaxed text-white/70">{t.staticNotice.body}</p>
