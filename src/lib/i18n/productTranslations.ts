@@ -68,7 +68,10 @@ const ar: Record<string, TextPair> = {
 
 const byLocale: Record<Exclude<Locale, "en">, Record<string, TextPair>> = { fr, ar };
 
-export function translateProduct(product: Product, locale: Locale): TextPair {
+export function translateProduct(
+  product: Pick<Product, "id" | "name" | "description">,
+  locale: Locale
+): TextPair {
   if (locale === "en") return { name: product.name, description: product.description };
   return byLocale[locale][product.id] ?? { name: product.name, description: product.description };
 }

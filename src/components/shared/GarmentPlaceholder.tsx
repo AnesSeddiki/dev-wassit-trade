@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import type { Category } from "@/lib/products";
 
 interface GarmentPlaceholderProps {
-  category: Category;
+  /** Not read internally — kept for call-site clarity/typing across different product catalogs. */
+  category: string;
   seed: string;
   image?: string;
   images?: string[];

@@ -58,6 +58,11 @@ const fr: Record<string, TemplateTextPair> = {
     direction: "Rétro / bazar vintage",
     inspiredBy: "Orson (thème boutique WordPress)",
   },
+  "auto-parts": {
+    tagline: "Une commande aussi rapide qu'une fiche technique, pour des garagistes qui connaissent leurs références.",
+    direction: "Technique industriel / automobile",
+    inspiredBy: "Catalogues de pièces auto modernes (style RockAuto / O'Reilly Pro)",
+  },
 };
 
 const ar: Record<string, TemplateTextPair> = {
@@ -110,6 +115,11 @@ const ar: Record<string, TemplateTextPair> = {
     tagline: "أجواء دافئة أشبه بمتجر عام يلبي احتياجات الجميع.",
     direction: "متجر عام بطابع كلاسيكي",
     inspiredBy: "Orson (قالب متجر WordPress)",
+  },
+  "auto-parts": {
+    tagline: "طلب سريع كجدول تقني، لأصحاب الورشات والموزعين الذين يعرفون أرقام قطعهم.",
+    direction: "تقني صناعي / سيارات",
+    inspiredBy: "كتالوجات قطع غيار السيارات الحديثة (بطراز RockAuto / O'Reilly Pro)",
   },
 };
 

@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { templates } from "@/lib/templates";
+import { templates, type TemplateCategory } from "@/lib/templates";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { translateTemplate } from "@/lib/i18n/templateTranslations";
+import { templateCategoryText, CATEGORY_ORDER } from "@/lib/i18n/templateCategoryTranslations";
 import { homeText } from "./_i18n/translations";
 import CustomTemplateCard from "./_components/CustomTemplateCard";
 import CustomTemplateModal from "@/components/shared/CustomTemplateModal";
@@ -17,6 +19,10 @@ export default function Home() {
   const { locale, setLocale } = useLanguage();
   const t = homeText(locale);
   const ct = customTemplateText(locale);
+  const ctg = templateCategoryText(locale);
+  const [selectedCategory, setSelectedCategory] = useState<TemplateCategory | "all">("all");
+  const filteredTemplates =
+    selectedCategory === "all" ? templates : templates.filter((t2) => t2.category === selectedCategory);
 
   return (
     <div className="grain relative flex-1 overflow-hidden">
@@ -229,8 +235,43 @@ export default function Home() {
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-28 sm:px-10">
+        <p className="mb-4 font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
+          {t.templatesEyebrow}
+        </p>
+        <div className="mb-6 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setSelectedCategory("all")}
+            className={`rounded-full border px-3.5 py-1.5 font-mono text-xs transition-colors ${
+              selectedCategory === "all"
+                ? "border-amber-400 bg-amber-400 text-[#0b0b0d]"
+                : "border-white/15 text-white/60 hover:border-white/40 hover:text-white"
+            }`}
+          >
+            {ctg.all}
+          </button>
+          {CATEGORY_ORDER.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setSelectedCategory(cat)}
+              className={`rounded-full border px-3.5 py-1.5 font-mono text-xs transition-colors ${
+                selectedCategory === cat
+                  ? "border-amber-400 bg-amber-400 text-[#0b0b0d]"
+                  : "border-white/15 text-white/60 hover:border-white/40 hover:text-white"
+              }`}
+            >
+              {ctg.categories[cat]}
+            </button>
+          ))}
+        </div>
+
+        {filteredTemplates.length === 0 ? (
+          <p className="mb-6 text-sm text-white/50">{ctg.comingSoon}</p>
+        ) : null}
+
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {templates.map((t2, i) => {
+          {filteredTemplates.map((t2, i) => {
             const tt = translateTemplate(t2, locale);
             return (
               <div

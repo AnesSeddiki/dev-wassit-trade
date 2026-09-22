@@ -2,12 +2,13 @@ import type { Locale } from "@/lib/i18n/locales";
 
 const dict = {
   en: {
-    eyebrow: "For men's, women's & kids' wholesale",
+    eyebrow: "For wholesale stores",
     headline1: "Ten storefronts,",
     headline2: "one catalog of styles.",
     description:
       "Wassit TradeDEV presents our suppliers' storefronts — each concept below is inspired by a leading wholesale & B2B commerce theme, rebuilt from scratch in React so we can reskin fast and hand a finished site to a client without licensing anything. Pick a direction, we build the backend once you're in.",
     builtBadge: "10 / 10 built",
+    templatesEyebrow: "Pick the website built for your business",
     inspiredBy: "Inspired by",
     viewTemplate: "View template",
     footerNote: "Frontend only — pricing, accounts & inventory connect once a client signs.",
@@ -68,12 +69,13 @@ const dict = {
     },
   },
   fr: {
-    eyebrow: "Vente en gros pour hommes, femmes & enfants",
+    eyebrow: "Vente en gros",
     headline1: "Dix boutiques,",
     headline2: "un seul catalogue de styles.",
     description:
       "Wassit TradeDEV présente les boutiques de nos fournisseurs — chaque concept ci-dessous s'inspire d'un thème e-commerce B2B et grossiste de référence, reconstruit de zéro en React afin de pouvoir le reskinner rapidement et livrer un site terminé à un client sans aucune licence à payer. Choisissez une direction, nous construisons le backend une fois que vous êtes prêt.",
     builtBadge: "10 / 10 réalisés",
+    templatesEyebrow: "Choisissez le site adapté à votre activité",
     inspiredBy: "Inspiré de",
     viewTemplate: "Voir le modèle",
     footerNote: "Frontend uniquement — tarifs, comptes & inventaire connectés dès qu'un client signe.",
@@ -134,12 +136,13 @@ const dict = {
     },
   },
   ar: {
-    eyebrow: "لتجارة الجملة للرجال والنساء والأطفال",
+    eyebrow: "لتجار الجملة",
     headline1: "10 مواقع جاهزة،",
     headline2: "كل واحد بتصميم مختلف.",
     description:
       "واسط ترايد ديف يعرض لكم مواقع جاهزة لتجارة الجملة، كل موقع مستوحى من مواقع عالمية ناجحة في هذا المجال. اختاروا الموقع الذي يناسب نشاطكم، وبعد التواصل معنا نجهز لكم كل شيء.",
     builtBadge: "10 / 10 مكتمل",
+    templatesEyebrow: "اختر الموقع المناسب لنوع تجارتك",
     inspiredBy: "مستوحى من",
     viewTemplate: "شاهد الموقع",
     footerNote: "هذا عرض تصميم فقط — الأسعار والحسابات والمخزون تُفعّل بعد توقيع العقد.",

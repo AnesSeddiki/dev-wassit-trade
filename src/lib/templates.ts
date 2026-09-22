@@ -1,5 +1,15 @@
+export type TemplateCategory =
+  | "apparel"
+  | "auto-parts"
+  | "food"
+  | "construction"
+  | "cosmetics"
+  | "electronics"
+  | "stationery";
+
 export interface TemplateMeta {
   slug: string;
+  category: TemplateCategory;
   name: string;
   inspiredBy: string;
   tagline: string;
@@ -11,6 +21,7 @@ export interface TemplateMeta {
 
 export const templates: TemplateMeta[] = [
   {
+    category: "apparel",
     slug: "trade",
     name: "Trade",
     inspiredBy: "Shopify's Trade theme",
@@ -21,6 +32,7 @@ export const templates: TemplateMeta[] = [
     to: "#0f172a",
   },
   {
+    category: "apparel",
     slug: "hyper",
     name: "Hyper",
     inspiredBy: "Hyper by FoxEcom (Shopify Plus)",
@@ -31,6 +43,7 @@ export const templates: TemplateMeta[] = [
     to: "#0a0a0a",
   },
   {
+    category: "apparel",
     slug: "modiva",
     name: "Modiva",
     inspiredBy: "Modiva (fashion boutique theme)",
@@ -41,6 +54,7 @@ export const templates: TemplateMeta[] = [
     to: "#e8c4a0",
   },
   {
+    category: "apparel",
     slug: "subtle",
     name: "Subtle",
     inspiredBy: "Subtle (Shopify B2B toolkit theme)",
@@ -51,6 +65,7 @@ export const templates: TemplateMeta[] = [
     to: "#f0c9c0",
   },
   {
+    category: "apparel",
     slug: "dukaken",
     name: "Dukaken",
     inspiredBy: "Dukaken (WooCommerce multipurpose)",
@@ -61,6 +76,7 @@ export const templates: TemplateMeta[] = [
     to: "#db2777",
   },
   {
+    category: "apparel",
     slug: "razzi",
     name: "Razzi",
     inspiredBy: "Razzi (WooCommerce + Elementor)",
@@ -71,6 +87,7 @@ export const templates: TemplateMeta[] = [
     to: "#2dd4ff",
   },
   {
+    category: "apparel",
     slug: "wholesale-stores",
     name: "Wholesale Stores",
     inspiredBy: "Wholesale Stores (bulk-selling WP theme)",
@@ -81,6 +98,7 @@ export const templates: TemplateMeta[] = [
     to: "#2b2b2b",
   },
   {
+    category: "apparel",
     slug: "b2bstore",
     name: "B2Bstore",
     inspiredBy: "B2Bstore (PrestaShop theme)",
@@ -91,6 +109,7 @@ export const templates: TemplateMeta[] = [
     to: "#134074",
   },
   {
+    category: "apparel",
     slug: "zorka",
     name: "Zorka",
     inspiredBy: "Zorka (fashion WooCommerce theme)",
@@ -101,6 +120,7 @@ export const templates: TemplateMeta[] = [
     to: "#3a3a3a",
   },
   {
+    category: "apparel",
     slug: "orson",
     name: "Orson",
     inspiredBy: "Orson (WordPress store theme)",
@@ -109,5 +129,16 @@ export const templates: TemplateMeta[] = [
     accent: "#a8442e",
     from: "#d9a441",
     to: "#a8442e",
+  },
+  {
+    category: "auto-parts",
+    slug: "auto-parts",
+    name: "Partline",
+    inspiredBy: "Modern auto-parts wholesale catalogs (RockAuto / O'Reilly Pro style)",
+    tagline: "Spec-sheet-fast ordering for garages and resellers who know their part numbers.",
+    direction: "Industrial technical / automotive",
+    accent: "#ff7a1a",
+    from: "#3a3f47",
+    to: "#16181c",
   },
 ];

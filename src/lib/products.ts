@@ -1,4 +1,5 @@
 import type { Locale } from "./i18n/locales";
+import { getAutoPart, type AutoPart } from "./autoParts";
 
 export type Category = "men" | "women" | "kids";
 
@@ -320,6 +321,13 @@ export function categoryPhotos(category: Category): string[] {
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+/** Searches every industry catalog (apparel + auto parts, more to come) — used by the
+ * shared cart, which only needs the common id/name/description/tierPricing shape, not
+ * the apparel-specific fields `getProduct` guarantees for the 10 apparel templates. */
+export function getCatalogItem(slug: string): Product | AutoPart | undefined {
+  return getProduct(slug) ?? getAutoPart(slug);
 }
 
 export function formatPrice(value: number, locale: Locale): string {

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { getProduct, formatPrice } from "@/lib/products";
+import { getCatalogItem, formatPrice } from "@/lib/products";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translateProduct } from "@/lib/i18n/productTranslations";
 import { cartText } from "@/lib/i18n/cartTranslations";
@@ -156,7 +156,7 @@ function CartPanel() {
   }, {});
 
   const lines = items.map((item) => {
-    const product = getProduct(item.productId);
+    const product = getCatalogItem(item.productId);
     const text = product ? translateProduct(product, locale) : null;
     let unitPrice = product?.tierPricing[0]?.price ?? 0;
     if (product) {
