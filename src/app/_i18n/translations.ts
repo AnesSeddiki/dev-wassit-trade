@@ -14,6 +14,10 @@ const dict = {
         "Sorry — we've temporarily switched to this link due to a technical issue with our domain dev.wassittrade.com. It'll be back online within a few hours.",
       close: "Dismiss",
     },
+    paymentWarning: {
+      label: "⚠️ Note",
+      body: "Once your website's development is complete and you've approved its launch, payment is required to finalize activation. Failure to complete payment may result in us discontinuing future business with your account.",
+    },
     inspiredBy: "Inspired by",
     viewTemplate: "View template",
     footerNote: "Frontend only — pricing, accounts & inventory connect once a client signs.",
@@ -27,6 +31,8 @@ const dict = {
       { emoji: "🎨", label: "10+ ready-to-preview templates" },
       { emoji: "💳", label: "Pay only after delivery" },
       { emoji: "🎧", label: "Support & follow-up after launch" },
+      { emoji: "💡", label: "Answers & advice on everything about your website" },
+      { emoji: "🤝", label: "No online payment required — pay in person, hand to hand" },
     ],
     results: {
       title: "What you get",
@@ -36,15 +42,67 @@ const dict = {
         "Receive customer orders directly",
         "Track and manage every order in one place",
         "Your own independent website — not stuck relying on Facebook",
+        "AI features built into your website",
+        "Automate your repetitive tasks to save time and effort",
+        "Add and search your products easily by barcode",
+        "Online payment integration for your website",
       ],
       whyTitle: "Why a website beats relying only on an online store",
       whyPoints: [
-        "Protects you from fake orders",
-        "You can change the colors or design anytime",
-        "Protects your products and data from being copied or stolen",
-        "Your business keeps running even if your Facebook page gets banned or hacked",
-        "Builds more trust with customers, especially for large orders",
-        "Your products stay organized and easy to find, instead of getting lost in posts",
+        {
+          icon: "💰",
+          header: "No commission on your orders",
+          description:
+            "When you sign up with a ready-made online store platform, they charge you 3-5% or more on every order you make. With your own website, you get rid of that completely.",
+        },
+        {
+          icon: "🎛️",
+          header: "Full control over your website's design and features",
+          description:
+            "You can change your website's design or how it works anytime you want, based on your customers' feedback — building more trust and keeping your business running smoothly.",
+        },
+        {
+          icon: "🔍",
+          header: "Show up in Google search results",
+          description:
+            "Your website becomes visible on Google, increasing your reach and bringing in new customers who are searching for your products themselves.",
+        },
+        {
+          icon: "🚚",
+          header: "Automatic integration with delivery companies",
+          description:
+            "The website prints your shipping label and barcode automatically, and sends the order straight into your delivery company's system (Yalidine, Maystro, ZR Express, EcoTrack) with one click — no manual typing.",
+        },
+        {
+          icon: "🛡️",
+          header: "No more fake orders or return losses",
+          description:
+            "The website confirms every order automatically by SMS or WhatsApp, blocking fake or prank orders — cutting down the return rate that eats into your profit.",
+        },
+        {
+          icon: "🧮",
+          header: "Automatic wholesale pricing by quantity",
+          description:
+            "The website calculates the price automatically based on quantity. One box gets one price, 10 boxes get a lower wholesale price — no more calls asking \"how much for 10 pieces?\"",
+        },
+        {
+          icon: "🔕",
+          header: "Escape the endless messages and calls",
+          description:
+            "The website becomes your live, 24/7 catalog. Customers browse stock, photos, and details themselves, and place their own order without needing you.",
+        },
+        {
+          icon: "📦",
+          header: "Precise, automatic stock control",
+          description:
+            "The website tracks your stock automatically — every sale deducts from inventory instantly, and out-of-stock items are marked unavailable on their own.",
+        },
+        {
+          icon: "🏢",
+          header: "No more \"price in private message\"",
+          description:
+            "Serious buyers and bigger clients prefer a clear, professional storefront. A real website gives you credibility against competitors and makes you look like an established business.",
+        },
       ],
     },
     howItWorks: {
@@ -70,6 +128,7 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "Chat on WhatsApp",
+      inquiryText: "For any inquiry, contact us on WhatsApp",
       message: "Hello! I'd like to know more about your wholesale website service.",
     },
   },
@@ -86,6 +145,10 @@ const dict = {
         "Désolé — nous avons temporairement basculé sur ce lien en raison d'un problème technique avec notre domaine dev.wassittrade.com. Il sera de nouveau en ligne dans quelques heures.",
       close: "Fermer",
     },
+    paymentWarning: {
+      label: "⚠️ Remarque",
+      body: "Une fois le développement de votre site terminé et son lancement approuvé, le paiement est requis pour finaliser l'activation. Le non-paiement peut entraîner l'arrêt de toute collaboration future avec votre compte.",
+    },
     inspiredBy: "Inspiré de",
     viewTemplate: "Voir le modèle",
     footerNote: "Frontend uniquement — tarifs, comptes & inventaire connectés dès qu'un client signe.",
@@ -99,6 +162,8 @@ const dict = {
       { emoji: "🎨", label: "10+ modèles prêts à consulter" },
       { emoji: "💳", label: "Paiement uniquement après livraison" },
       { emoji: "🎧", label: "Assistance & suivi après lancement" },
+      { emoji: "💡", label: "Réponses et conseils sur tout ce qui concerne votre site" },
+      { emoji: "🤝", label: "Aucun paiement en ligne requis — payez en personne, de la main à la main" },
     ],
     results: {
       title: "Ce que vous obtenez",
@@ -108,15 +173,67 @@ const dict = {
         "Recevez les commandes de vos clients directement",
         "Suivez et gérez toutes vos commandes au même endroit",
         "Votre propre site indépendant, sans dépendre uniquement de Facebook",
+        "Fonctionnalités d'intelligence artificielle intégrées à votre site",
+        "Automatisez vos tâches répétitives pour gagner du temps et de l'énergie",
+        "Ajoutez et recherchez vos produits facilement par code-barres",
+        "Intégration des moyens de paiement en ligne pour votre site",
       ],
       whyTitle: "Pourquoi un site vaut mieux qu'une simple boutique en ligne",
       whyPoints: [
-        "Vous protège des fausses commandes",
-        "Vous pouvez changer les couleurs ou le design à tout moment",
-        "Protège vos produits et vos données du vol ou de la copie",
-        "Votre activité continue même si votre page Facebook est bannie ou piratée",
-        "Inspire plus de confiance à vos clients, surtout pour les grosses commandes",
-        "Vos produits restent organisés et faciles à trouver, au lieu de se perdre dans les publications",
+        {
+          icon: "💰",
+          header: "Aucune commission sur vos commandes",
+          description:
+            "Quand vous vous inscrivez sur une plateforme e-commerce prête à l'emploi, elle vous prélève 3 à 5 % ou plus sur chaque commande. Avec votre propre site, vous éliminez complètement ces frais.",
+        },
+        {
+          icon: "🎛️",
+          header: "Contrôle total sur le design et les fonctionnalités de votre site",
+          description:
+            "Vous pouvez changer le design ou le fonctionnement de votre site à tout moment, selon les retours de vos clients — renforçant la confiance et assurant une activité plus fluide.",
+        },
+        {
+          icon: "🔍",
+          header: "Visibilité dans les résultats de recherche Google",
+          description:
+            "Votre site devient visible sur Google, augmentant votre portée et attirant de nouveaux clients qui recherchent vos produits par eux-mêmes.",
+        },
+        {
+          icon: "🚚",
+          header: "Intégration automatique avec les sociétés de livraison",
+          description:
+            "Le site imprime votre bordereau et votre code-barres automatiquement, et transmet la commande directement dans le système de votre société de livraison (Yalidine, Maystro, ZR Express, EcoTrack) en un clic — sans aucune saisie manuelle.",
+        },
+        {
+          icon: "🛡️",
+          header: "Fini les fausses commandes et les pertes sur retours",
+          description:
+            "Le site confirme chaque commande automatiquement par SMS ou WhatsApp, bloquant les commandes fictives — réduisant le taux de retour qui grignote votre marge.",
+        },
+        {
+          icon: "🧮",
+          header: "Tarification de gros automatique selon la quantité",
+          description:
+            "Le site calcule le prix automatiquement selon la quantité. Un carton a un prix, 10 cartons ont un prix de gros réduit — plus besoin de répondre à chaque appel pour donner un tarif.",
+        },
+        {
+          icon: "🔕",
+          header: "Échappez aux messages et appels constants",
+          description:
+            "Le site devient votre catalogue en direct, 24h/24. Le client consulte le stock, les photos et les détails, et passe sa commande seul, sans vous déranger.",
+        },
+        {
+          icon: "📦",
+          header: "Contrôle précis et automatique du stock",
+          description:
+            "Le site suit votre stock automatiquement — chaque vente est déduite instantanément, et les produits épuisés sont marqués indisponibles tout seuls.",
+        },
+        {
+          icon: "🏢",
+          header: "Fini le \"prix en message privé\"",
+          description:
+            "Les acheteurs sérieux et les gros clients préfèrent une boutique claire et professionnelle. Un vrai site vous donne de la crédibilité face à la concurrence et vous fait paraître comme une entreprise établie.",
+        },
       ],
     },
     howItWorks: {
@@ -142,6 +259,7 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "Discuter sur WhatsApp",
+      inquiryText: "Pour toute question, contactez-nous sur WhatsApp",
       message: "Bonjour ! J'aimerais en savoir plus sur votre service de sites de vente en gros.",
     },
   },
@@ -157,6 +275,10 @@ const dict = {
       message: "نعتذر — قمنا بتحويل الموقع مؤقتًا إلى هذا الرابط بسبب خطأ تقني في نطاقنا dev.wassittrade.com، وسيعود للعمل خلال بضع ساعات.",
       close: "إغلاق",
     },
+    paymentWarning: {
+      label: "⚠️ تنويه",
+      body: "بعد إتمام تطوير موقعكم وموافقتكم على إطلاقه، يُطلب استكمال عملية الدفع لتفعيله بشكل نهائي. عدم الالتزام بالدفع قد يؤدي إلى توقفنا عن التعامل مع حسابكم مستقبلاً.",
+    },
     inspiredBy: "مستوحى من",
     viewTemplate: "شاهد الموقع",
     footerNote: "هذا عرض تصميم فقط — الأسعار والحسابات والمخزون تُفعّل بعد توقيع العقد.",
@@ -170,6 +292,8 @@ const dict = {
       { emoji: "🎨", label: "+10 قوالب جاهزة للمعاينة" },
       { emoji: "💳", label: "الدفع فقط بعد التسليم" },
       { emoji: "🎧", label: "دعم ومتابعة بعد الإطلاق" },
+      { emoji: "💡", label: "أجوبة ونصائح في كل ما يخص موقعكم" },
+      { emoji: "🤝", label: "لا يُطلب منكم دفع إلكتروني، يمكنكم الدفع يدًا بيد" },
     ],
     results: {
       title: "ماذا نقدم لك؟",
@@ -179,15 +303,67 @@ const dict = {
         "تستقبل طلبات الزبائن مباشرة",
         "تتابع وتدير طلباتك بسهولة",
         "يكون عندك موقع خاص بك، مستقل تمامًا",
+        "تستفيد من ميزات الذكاء الاصطناعي داخل موقعك",
+        "أتمتة مهامك المتكررة لتوفير وقتك وجهدك",
+        "تضيف وتبحث عن منتجاتك بسهولة عبر الباركود",
+        "دمج وسائل الدفع الإلكتروني في موقعك",
       ],
       whyTitle: "لماذا موقع أفضل من الاعتماد على متجر إلكتروني فقط؟",
       whyPoints: [
-        "يحميك من الطلبات المزورة",
-        "تقدر تغيّر الألوان أو الشكل في أي وقت",
-        "يحمي منتجاتك وبياناتك من التقليد أو السرقة",
-        "عملك يستمر حتى لو تم حظر أو اختراق صفحتك على فيسبوك",
-        "يعطي ثقة أكبر لعملائك، خصوصًا في الطلبيات الكبيرة",
-        "منتجاتك تبقى منظمة وسهلة الوصول، ما تضيعش بين المنشورات",
+        {
+          icon: "💰",
+          header: "بدون عمولة على طلبياتك",
+          description:
+            "عندما تشترك في منصة تجارة إلكترونية جاهزة، تخصم منك عمولة تصل إلى 3-5% أو أكثر عن كل طلبية تتم. مع موقعك الخاص، تتخلص من هذه الرسوم نهائيًا.",
+        },
+        {
+          icon: "🎛️",
+          header: "تحكم كامل في شكل وعمل موقعك",
+          description:
+            "تقدر تغيّر تصميم موقعك أو طريقة عمله في أي وقت تريده، وحسب آراء زبائنك، مما يزيد ثقتهم فيك ويخلي تجارتك تسير بسلاسة أكبر.",
+        },
+        {
+          icon: "🔍",
+          header: "ظهورك في نتائج البحث على Google",
+          description:
+            "موقعك يصبح مرئيًا على محرك البحث Google، مما يزيد من انتشارك ويجلب لك زبائن جدد يبحثون عن منتجاتك بأنفسهم.",
+        },
+        {
+          icon: "🚚",
+          header: "ربط تلقائي مع شركات التوصيل",
+          description:
+            "الموقع يطبع لك البوردرو (ورقة الشحن) ويصدر الكود بار كود، وتدخل الطلبية مباشرة في نظام شركة التوصيل (Yalidine, Maystro, ZR Express, EcoTrack) بضغطة زر واحدة، بلا ما تكتب أي شيء يدويًا.",
+        },
+        {
+          icon: "🛡️",
+          header: "التخلص من مشاكل الإرجاع والطلبيات الوهمية",
+          description:
+            "الموقع يثبّت الطلبية تلقائيًا عبر رسالة SMS أو واتساب، ويمنع أصحاب الطلبيات الوهمية، فتقل نسبة الإرجاع (Retour) التي تأكل من أرباحك.",
+        },
+        {
+          icon: "🧮",
+          header: "تنظيم أسعار الجملة ونصف الجملة تلقائيًا",
+          description:
+            "الموقع يحسب السعر تلقائيًا حسب الكمية. من يشتري كرتونة واحدة يظهر له سعر، ومن يشتري 10 كراتين يظهر له سعر جملة أقل، بدون أي اتصال أو استفسار يدوي.",
+        },
+        {
+          icon: "🔕",
+          header: "الهروب من الرسائل والمكالمات المستمرة",
+          description:
+            "الموقع يصبح كتالوجك المباشر على مدار الساعة. الزبون يدخل، يشاهد السلعة والصور والتفاصيل، ويكمل الطلب بنفسه بدون إزعاجك.",
+        },
+        {
+          icon: "📦",
+          header: "التحكم الدقيق في المخزون",
+          description:
+            "الموقع يحسب المخزون تلقائيًا؛ كل قطعة تُباع تُخصم فورًا من النظام، وعند نفاد السلعة يظهر (غير متوفر) تلقائيًا بدون أي خطأ.",
+        },
+        {
+          icon: "🏢",
+          header: "التخلص من عقلية \"السعر في الخاص\"",
+          description:
+            "التجار الجادون والزبائن الكبار يفضلون الشراء من مكان احترافي وواضح. الموقع يمنحك هيبة أمام المنافسين ويجعلك تبدو كشركة رسمية.",
+        },
       ],
     },
     howItWorks: {
@@ -213,6 +389,7 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "تواصل عبر واتساب",
+      inquiryText: "لأي استفسار تواصل معنا عبر الواتساب",
       message: "مرحبًا! أرغب في معرفة المزيد عن خدمة مواقع البيع بالجملة الخاصة بكم.",
     },
   },

@@ -39,6 +39,22 @@ html[dir="rtl"] {
   position: relative;
 }
 
+/* Accordion rows in the "why a website" section (native <details>/<summary> — no JS
+   needed for the expand/collapse behavior itself). Hide the default browser disclosure
+   marker so the custom chevron span is the only indicator, and rotate that chevron when
+   open. */
+.why-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.why-accordion summary {
+  list-style: none;
+}
+
+.why-accordion[open] .why-chevron {
+  transform: rotate(180deg);
+}
+
 .grain::before {
   content: "";
   position: absolute;

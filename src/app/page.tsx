@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { templates, type TemplateCategory } from "@/lib/templates";
@@ -23,6 +23,12 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<TemplateCategory | "all">("all");
   const filteredTemplates =
     selectedCategory === "all" ? templates : templates.filter((t2) => t2.category === selectedCategory);
+  const [showWaText, setShowWaText] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowWaText(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="grain relative flex-1 overflow-hidden">
@@ -85,7 +91,31 @@ export default function Home() {
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
         <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-amber-400/[0.06] to-transparent p-5 sm:p-7">
-          <h2 className="font-[family-name:var(--font-display)] text-2xl italic text-white">
+          <h3 className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
+            {t.results.whyTitle}
+          </h3>
+          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {t.results.whyPoints.map((item, i) => (
+              <details
+                key={item.header}
+                className="why-accordion group rounded-lg border border-white/10 bg-white/[0.02] px-3.5 py-2.5 transition-colors open:border-pink-400/30 open:bg-white/[0.04]"
+                style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
+              >
+                <summary className="flex cursor-pointer list-none items-center gap-2.5 text-[13px] font-medium leading-snug text-white/80">
+                  <span aria-hidden className="shrink-0 text-base">
+                    {item.icon}
+                  </span>
+                  <span className="flex-1">{item.header}</span>
+                  <span aria-hidden className="why-chevron shrink-0 text-white/35 transition-transform duration-200">
+                    ▾
+                  </span>
+                </summary>
+                <p className="mt-2 pl-[26px] text-[12.5px] leading-relaxed text-white/55">{item.description}</p>
+              </details>
+            ))}
+          </div>
+
+          <h2 className="mt-8 font-[family-name:var(--font-display)] text-2xl italic text-white">
             {t.results.title}
           </h2>
           <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -102,22 +132,6 @@ export default function Home() {
               </li>
             ))}
           </ul>
-
-          <h3 className="mt-7 font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
-            {t.results.whyTitle}
-          </h3>
-          <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-            {t.results.whyPoints.map((item, i) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-[13px] leading-snug text-white/60"
-                style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
-              >
-                <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-400" />
-                {item}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
@@ -125,7 +139,7 @@ export default function Home() {
         <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
           {t.highlightsTitle}
         </h2>
-        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {t.heroHighlights.map((highlight, i) => (
             <div
               key={highlight.label}
@@ -150,6 +164,13 @@ export default function Home() {
               </span>
             </div>
           ))}
+        </div>
+
+        <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-amber-400/15 bg-amber-400/[0.03] px-4 py-3">
+          <span className="mt-0.5 shrink-0 font-mono text-xs font-semibold text-amber-400/90">
+            {t.paymentWarning.label}
+          </span>
+          <p className="text-[12.5px] leading-relaxed text-white/50">{t.paymentWarning.body}</p>
         </div>
       </section>
 
@@ -387,18 +408,30 @@ export default function Home() {
         </p>
       </footer>
 
-      <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t.whatsapp.message)}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t.whatsapp.ariaLabel}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/40 transition-transform hover:scale-110"
-        style={{ animation: "pulse-glow 2.4s ease-in-out infinite" }}
-      >
-        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.17 0 4.21.84 5.74 2.37a8.07 8.07 0 0 1 2.38 5.74c0 4.48-3.64 8.12-8.12 8.12a8.1 8.1 0 0 1-4.14-1.13l-.3-.17-3.11.82.83-3.03-.19-.31a8.07 8.07 0 0 1-1.24-4.3c0-4.48 3.65-8.11 8.15-8.11zm-4.52 4.64c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28-.25-.13-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.13-.16.25-.63.79-.77.95-.14.16-.28.18-.53.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.28.38-.42.13-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.13-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47z" />
-        </svg>
-      </a>
+      <div dir="ltr" className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5">
+        <span
+          className="whitespace-nowrap rounded-full bg-[#1a1a1d] px-3.5 py-2 text-[12.5px] font-medium text-white/85 shadow-lg shadow-black/40 transition-all duration-500"
+          style={{
+            opacity: showWaText ? 1 : 0,
+            transform: showWaText ? "translateX(0)" : "translateX(8px)",
+            pointerEvents: showWaText ? "auto" : "none",
+          }}
+        >
+          {t.whatsapp.inquiryText}
+        </span>
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t.whatsapp.message)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.whatsapp.ariaLabel}
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/40 transition-transform hover:scale-110"
+          style={{ animation: "pulse-glow 2.4s ease-in-out infinite" }}
+        >
+          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.17 0 4.21.84 5.74 2.37a8.07 8.07 0 0 1 2.38 5.74c0 4.48-3.64 8.12-8.12 8.12a8.1 8.1 0 0 1-4.14-1.13l-.3-.17-3.11.82.83-3.03-.19-.31a8.07 8.07 0 0 1-1.24-4.3c0-4.48 3.65-8.11 8.15-8.11zm-4.52 4.64c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28-.25-.13-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.13-.16.25-.63.79-.77.95-.14.16-.28.18-.53.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.28.38-.42.13-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.13-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47z" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 }

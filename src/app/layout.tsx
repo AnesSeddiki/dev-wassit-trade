@@ -27,7 +27,7 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "Wassit DEV",
+  title: "Wassit Dev - ابدأ موقعك معنا",
   description:
     "Wassit TradeDEV presents our suppliers' storefronts — ten wholesale template concepts for apparel buyers, each inspired by a leading B2B commerce theme.",
   icons: {
