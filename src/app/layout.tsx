@@ -23,11 +23,13 @@ const jetbrainsMono = JetBrains_Mono({
 const cairo = Cairo({
   variable: "--font-arabic",
   subsets: ["arabic"],
-  // Wide weight range on purpose: this font now covers Arabic text across all 11
+  // Variable weight range on purpose: this font now covers Arabic text across all 11
   // templates (see globals.css), several of which use extrabold/black weights
   // (e.g. Razzi's font-extrabold) that would otherwise fall back to a synthesized
-  // or mismatched weight.
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  // or mismatched weight. Cairo ships as a variable font, so a single range covers
+  // every weight in one font-file query (an array of discrete weights breaks the
+  // Turbopack Google-font resolver on Netlify's build image).
+  weight: "variable",
 });
 
 export const metadata: Metadata = {
