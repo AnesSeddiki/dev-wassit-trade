@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import AdminSidebar from "./_components/AdminSidebar";
 import AdminTopbar from "./_components/AdminTopbar";
 import AdminTemplateBadge from "./_components/AdminTemplateBadge";
+import AdminBottomNav from "./_components/AdminBottomNav";
 
 export const metadata: Metadata = {
   title: "Admin — Wholesale Dashboard",
@@ -18,8 +19,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <AdminSidebar />
       <div className="flex min-w-0 flex-1 flex-col">
         <AdminTopbar />
-        <main className="flex-1 overflow-x-hidden px-4 py-6 sm:px-8">{children}</main>
+        <main className="flex-1 overflow-x-hidden px-4 py-6 pb-24 sm:px-8 sm:pb-6">{children}</main>
       </div>
+      <AdminBottomNav />
       <Suspense fallback={null}>
         <AdminTemplateBadge />
       </Suspense>

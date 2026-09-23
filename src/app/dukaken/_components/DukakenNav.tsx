@@ -37,7 +37,7 @@ export default function DukakenNav() {
         <span className="hidden text-white/55 sm:inline">{t.ticker.trailing}</span>
 
         <div className="ml-auto flex items-center gap-3">
-          <AdminDashboardLink templateName="Dukaken" className="hidden text-white/55 normal-case tracking-normal transition-colors hover:text-white sm:inline" />
+          <AdminDashboardLink templateName="Dukaken" />
           <div className="flex items-center gap-1 border-l border-white/20 pl-3">
           {LOCALES.map((l) => (
             <button

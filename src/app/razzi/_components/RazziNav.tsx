@@ -58,8 +58,8 @@ export default function RazziNav() {
           </Link>
         </div>
 
-        <div className="flex shrink-0 items-center gap-2.5">
-          <AdminDashboardLink templateName="Razzi" className="hidden text-xs font-semibold uppercase tracking-wide text-[#1a1a1a]/50 transition-colors hover:text-[#1a1a1a] sm:inline" />
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
+          <AdminDashboardLink templateName="Razzi" />
           <div
             className="flex items-center gap-0.5 rounded-full border-[3px] border-[#1a1a1a] bg-white p-0.5 shadow-[3px_3px_0_0_#1a1a1a]"
             role="group"
@@ -91,7 +91,7 @@ export default function RazziNav() {
           <RequestTemplateButton templateName="Razzi" />
           <Link
             href="/razzi/shop"
-            className="rounded-full border-[3px] border-[#1a1a1a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-[3px_3px_0_0_#ff3d81] transition-transform hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_#ff3d81] sm:px-5"
+            className="hidden rounded-full border-[3px] border-[#1a1a1a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-[3px_3px_0_0_#ff3d81] transition-transform hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_#ff3d81] sm:inline-block sm:px-5"
           >
             {t.nav.quickOrder}
           </Link>

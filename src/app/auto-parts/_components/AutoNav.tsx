@@ -22,10 +22,7 @@ export default function AutoNav() {
       >
         <span className="truncate uppercase tracking-wider">{t.topBarNotice}</span>
         <div className="flex items-center gap-3">
-          <AdminDashboardLink
-            templateName="Auto Parts"
-            className="hidden text-white/50 underline decoration-white/30 underline-offset-2 transition-colors hover:text-white sm:inline"
-          />
+          <AdminDashboardLink templateName="Auto Parts" />
           <div className="flex items-center gap-1 border-l border-white/15 pl-3">
             {LOCALES.map((l) => (
               <button

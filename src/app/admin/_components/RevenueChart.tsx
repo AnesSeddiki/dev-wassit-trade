@@ -27,7 +27,7 @@ function CustomTooltip({
   return (
     <div className="rounded-md border border-[#0b0b0b]/10 bg-[#fcfcfb] px-3 py-2 text-xs shadow-sm dark:border-white/10 dark:bg-[#1a1a19]">
       <p className="font-medium text-[#0b0b0b] dark:text-white">{label}</p>
-      <p className="tabular-nums text-[#2a78d6]">{payload[0].value.toLocaleString()} DA</p>
+      <p className="tabular-nums text-[#2a78d6]">{payload[0].value.toLocaleString("en-US")} DA</p>
     </div>
   );
 }
@@ -44,22 +44,23 @@ export default function RevenueChart() {
           <p className="text-xs text-[#898781]">{t.subtitle}</p>
         </div>
       </div>
-      <div className="h-64 w-full">
+      <div className="h-56 w-full sm:h-64">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={revenueSeries} margin={{ top: 4, right: 12, bottom: 0, left: -12 }}>
+          <LineChart data={revenueSeries} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
             <CartesianGrid vertical={false} stroke={VIZ.gridline} strokeDasharray="0" />
             <XAxis
               dataKey="month"
               tickLine={false}
               axisLine={{ stroke: VIZ.axis }}
-              tick={{ fill: VIZ.muted, fontSize: 12 }}
+              tick={{ fill: VIZ.muted, fontSize: 11 }}
+              minTickGap={24}
             />
             <YAxis
               tickLine={false}
               axisLine={false}
-              tick={{ fill: VIZ.muted, fontSize: 12 }}
+              tick={{ fill: VIZ.muted, fontSize: 11 }}
               tickFormatter={(v) => `${(v / 1_000_000).toFixed(1)}M`}
-              width={48}
+              width={40}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: VIZ.axis, strokeWidth: 1 }} />
             <Line

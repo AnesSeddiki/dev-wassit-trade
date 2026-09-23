@@ -23,7 +23,7 @@ export default function TradeNav() {
         <span className="truncate">{t.termsNotice}</span>
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline">{t.acctNotice}</span>
-          <AdminDashboardLink templateName="Trade" className="hidden text-white/60 underline decoration-white/30 underline-offset-2 transition-colors hover:text-white sm:inline" />
+          <AdminDashboardLink templateName="Trade" />
           <div className="flex items-center gap-1 border-l border-white/20 pl-3">
             {LOCALES.map((l) => (
               <button

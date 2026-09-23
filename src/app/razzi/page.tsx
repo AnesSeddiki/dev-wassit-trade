@@ -38,14 +38,16 @@ export default function RazziHome() {
             {t.eyebrow}
           </span>
           <h1
-            className="mt-5 max-w-2xl text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl"
+            className="mt-5 flex max-w-2xl flex-col text-5xl font-extrabold tracking-tight sm:text-7xl"
             style={{ fontFamily: "var(--font-razzi-display)" }}
           >
-            {t.headlineLine1}
-            <br />
-            {t.headlineLead} <span className="text-[#ff3d81]">{t.headlineWord1}</span>{" "}
-            <span className="text-[#2dd4ff]">{t.headlineWord2}</span>{" "}
-            <span className="rounded-lg bg-[#ffe14d] px-2">{t.headlineWord3}</span>
+            <span className="leading-[1.25]">{t.headlineLine1}</span>
+            <span className="mt-1 flex flex-wrap items-baseline gap-x-2.5 gap-y-2 leading-[1.25]">
+              <span>{t.headlineLead}</span>
+              <span className="text-[#ff3d81]">{t.headlineWord1}</span>
+              <span className="text-[#2dd4ff]">{t.headlineWord2}</span>
+              <span className="rounded-lg bg-[#ffe14d] px-2">{t.headlineWord3}</span>
+            </span>
           </h1>
           <p className="mt-5 max-w-md text-base leading-relaxed text-[#1a1a1a]/70">{t.sub}</p>
           <div className="mt-8 flex flex-wrap gap-3">

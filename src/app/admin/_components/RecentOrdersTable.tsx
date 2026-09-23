@@ -50,7 +50,7 @@ export default function RecentOrdersTable() {
                   <td className="py-2.5 pr-3 text-[#52514e] dark:text-[#c3c2b7]">{o.account}</td>
                   <td className="py-2.5 pr-3 text-[#52514e] dark:text-[#c3c2b7]">{categoryLabel}</td>
                   <td className="py-2.5 pr-3 text-right tabular-nums">{o.units}</td>
-                  <td className="py-2.5 pr-3 text-right tabular-nums">{o.total.toLocaleString()} DA</td>
+                  <td className="py-2.5 pr-3 text-right tabular-nums">{o.total.toLocaleString("en-US")} DA</td>
                   <td className="py-2.5 pr-3">
                     <span className="inline-flex items-center gap-1.5 text-xs font-medium">
                       <span

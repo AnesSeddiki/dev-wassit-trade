@@ -45,7 +45,7 @@ function CustomTooltip({
         return (
           <p key={p.dataKey} className="flex items-center gap-1.5 tabular-nums">
             <span className="inline-block h-2 w-2 rounded-full" style={{ background: s?.color }} />
-            {s?.label}: {p.value.toLocaleString()} DA
+            {s?.label}: {p.value.toLocaleString("en-US")} DA
           </p>
         );
       })}
@@ -64,22 +64,23 @@ export default function CategoryBarChart() {
         <h2 className="text-sm font-semibold">{t.title}</h2>
         <p className="text-xs text-[#898781]">{t.subtitle}</p>
       </div>
-      <div className="h-64 w-full">
+      <div className="h-56 w-full sm:h-64">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={categorySeries} margin={{ top: 4, right: 12, bottom: 0, left: -12 }} barGap={4} barCategoryGap="20%">
+          <BarChart data={categorySeries} margin={{ top: 4, right: 8, bottom: 0, left: 0 }} barGap={4} barCategoryGap="20%">
             <CartesianGrid vertical={false} stroke={VIZ.gridline} />
             <XAxis
               dataKey="month"
               tickLine={false}
               axisLine={{ stroke: VIZ.axis }}
-              tick={{ fill: VIZ.muted, fontSize: 12 }}
+              tick={{ fill: VIZ.muted, fontSize: 11 }}
+              minTickGap={16}
             />
             <YAxis
               tickLine={false}
               axisLine={false}
-              tick={{ fill: VIZ.muted, fontSize: 12 }}
+              tick={{ fill: VIZ.muted, fontSize: 11 }}
               tickFormatter={(v) => `${(v / 1_000_000).toFixed(1)}M`}
-              width={48}
+              width={40}
             />
             <Tooltip content={<CustomTooltip series={series} />} cursor={{ fill: "rgba(11,11,11,0.04)" }} />
             <Legend

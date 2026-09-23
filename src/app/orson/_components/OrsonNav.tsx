@@ -24,7 +24,7 @@ export default function OrsonNav() {
         <span>{t.topBar.welcome}</span>
         <span className="text-[#d9a441]">★</span>
         <span className="hidden sm:inline">{t.topBar.tagline}</span>
-        <AdminDashboardLink templateName="Orson" className="hidden text-[#f4e8d0]/70 normal-case tracking-normal transition-colors hover:text-[#f4e8d0] sm:inline" />
+        <AdminDashboardLink templateName="Orson" />
         <div className="flex items-center gap-1 border-l border-[#f4e8d0]/25 pl-3">
           {LOCALES.map((l) => (
             <button

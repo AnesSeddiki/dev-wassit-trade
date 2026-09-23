@@ -24,7 +24,7 @@ function CustomTooltip({
     <div className="rounded-md border border-[#0b0b0b]/10 bg-[#fcfcfb] px-3 py-2 text-xs shadow-sm dark:border-white/10 dark:bg-[#1a1a19]">
       <p className="font-medium text-[#0b0b0b] dark:text-white">{p.payload.name}</p>
       <p className="text-[#898781]">{p.payload.sku}</p>
-      <p className="tabular-nums text-[#2a78d6]">{p.value.toLocaleString()} {unitsSuffix}</p>
+      <p className="tabular-nums text-[#2a78d6]">{p.value.toLocaleString("en-US")} {unitsSuffix}</p>
     </div>
   );
 }

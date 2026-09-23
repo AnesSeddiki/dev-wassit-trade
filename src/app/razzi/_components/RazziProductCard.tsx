@@ -33,7 +33,7 @@ export default function RazziProductCard({ product }: { product: Product }) {
       href={`/razzi/product/${product.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border-[3px] border-[#1a1a1a] bg-white shadow-[4px_4px_0_0_#1a1a1a] transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#1a1a1a]"
     >
-      <div className="relative aspect-[4/5] w-full border-b-[3px] border-[#1a1a1a]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden border-b-[3px] border-[#1a1a1a]">
         <GarmentPlaceholder
           category={product.category}
           seed={product.id}
@@ -56,7 +56,7 @@ export default function RazziProductCard({ product }: { product: Product }) {
       </div>
       <div className="flex flex-1 flex-col gap-2 p-3.5">
         <p
-          className="text-base font-bold leading-snug text-[#1a1a1a]"
+          className="text-base font-bold leading-normal text-[#1a1a1a]"
           style={{ fontFamily: "var(--font-razzi-display)" }}
         >
           {text.name}
