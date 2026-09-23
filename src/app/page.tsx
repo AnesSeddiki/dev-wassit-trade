@@ -290,7 +290,7 @@ export default function Home() {
                     }}
                   >
                     <Image
-                      src={`/templates-screenshots/${t2.slug}.png`}
+                      src={`/templates-screenshots/${t2.slug}.jpg`}
                       alt={t2.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
