@@ -1,10 +1,12 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LOCALES } from "@/lib/i18n/locales";
 import { adminText } from "../_i18n/translations";
+import AdminBackLink, { adminBackLinkClass } from "./AdminBackLink";
 
 export default function AdminTopbar() {
   const pathname = usePathname();
@@ -46,12 +48,9 @@ export default function AdminTopbar() {
             </button>
           ))}
         </div>
-        <Link
-          href="/"
-          className="rounded-md border border-[#0b0b0b]/15 px-3 py-1.5 text-xs font-medium text-[#52514e] transition-colors hover:border-[#0b0b0b]/30 dark:border-white/15 dark:text-[#c3c2b7]"
-        >
-          {t.topbar.backToTemplates}
-        </Link>
+        <Suspense fallback={<Link href="/#templates" className={adminBackLinkClass}>{t.topbar.backToTemplates}</Link>}>
+          <AdminBackLink />
+        </Suspense>
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eb6834] text-xs font-semibold text-white">
           QT
         </div>

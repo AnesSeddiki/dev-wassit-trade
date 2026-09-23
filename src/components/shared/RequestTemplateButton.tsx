@@ -42,7 +42,7 @@ export default function RequestTemplateButton({ templateName }: RequestTemplateB
           <button
             type="button"
             onClick={open}
-            className="fixed right-0 top-0 z-40 flex items-center gap-2 rounded-bl-2xl px-5 py-3.5 text-sm font-extrabold uppercase tracking-wider text-white shadow-xl shadow-black/30 transition-transform hover:scale-[1.03] sm:gap-2.5 sm:px-6 sm:py-4 sm:text-base"
+            className="fixed right-0 top-0 z-40 flex items-center gap-1.5 rounded-bl-2xl px-3 py-2.5 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-xl shadow-black/30 transition-transform hover:scale-[1.03] sm:gap-2.5 sm:px-6 sm:py-4 sm:text-base"
             style={{
               background:
                 "linear-gradient(120deg, #f59e0b, #ec4899, #8b5cf6, #06b6d4, #f59e0b)",
@@ -50,8 +50,8 @@ export default function RequestTemplateButton({ templateName }: RequestTemplateB
               animation: "gradient-shift 5s ease infinite",
             }}
           >
-            <MessageIcon className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
-            {t.requestButton}
+            <MessageIcon className="h-4 w-4 shrink-0 sm:h-6 sm:w-6" />
+            <span className="max-w-[28vw] truncate sm:max-w-none">{t.requestButton}</span>
           </button>,
           document.body
         );

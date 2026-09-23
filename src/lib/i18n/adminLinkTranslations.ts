@@ -9,3 +9,13 @@ const dict = {
 export function adminDashboardLabel(locale: Locale): string {
   return dict[locale];
 }
+
+const backToTemplatesDict = {
+  en: "Back to templates",
+  fr: "Retour aux modèles",
+  ar: "العودة إلى النماذج",
+} satisfies Record<Locale, string>;
+
+export function backToTemplatesLabel(locale: Locale): string {
+  return backToTemplatesDict[locale];
+}

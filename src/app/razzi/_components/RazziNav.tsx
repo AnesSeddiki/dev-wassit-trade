@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { razziText } from "../_i18n/translations";
 
@@ -59,6 +60,7 @@ export default function RazziNav() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Razzi" />
           <div
             className="flex items-center gap-0.5 rounded-full border-[3px] border-[#1a1a1a] bg-white p-0.5 shadow-[3px_3px_0_0_#1a1a1a]"

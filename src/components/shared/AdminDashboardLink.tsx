@@ -22,8 +22,9 @@ function DashboardIcon({ className }: { className?: string }) {
   );
 }
 
-/** Links to the shared /admin dashboard demo. Pinned top-left on every template, always
- * visible on mobile and desktop, mirroring the top-right "Request this template" badge. */
+/** Links to the shared /admin dashboard demo. Pinned top-center on every template, always
+ * visible on mobile and desktop, between "back to templates" (top-left) and "request this
+ * template" (top-right). */
 export default function AdminDashboardLink({ templateName }: AdminDashboardLinkProps) {
   const { locale } = useLanguage();
   const href = templateName ? `/admin?template=${encodeURIComponent(templateName)}` : "/admin";
@@ -38,10 +39,10 @@ export default function AdminDashboardLink({ templateName }: AdminDashboardLinkP
   return createPortal(
     <Link
       href={href}
-      className="fixed left-0 top-0 z-40 flex items-center gap-2 rounded-br-2xl bg-[#1e293b] px-5 py-3.5 text-sm font-extrabold uppercase tracking-wider text-white shadow-xl shadow-black/30 transition-transform hover:scale-[1.03] sm:gap-2.5 sm:px-6 sm:py-4 sm:text-base"
+      className="fixed left-1/2 top-0 z-40 flex -translate-x-1/2 items-center gap-1 rounded-b-2xl bg-[#1e293b] px-2.5 py-2 text-[9px] font-extrabold uppercase tracking-wider text-white shadow-xl shadow-black/30 transition-transform hover:scale-[1.03] sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-sm"
     >
-      <DashboardIcon className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
-      {adminDashboardLabel(locale)}
+      <DashboardIcon className="h-3.5 w-3.5 shrink-0 sm:h-5 sm:w-5" />
+      <span className="max-w-[20vw] truncate sm:max-w-none">{adminDashboardLabel(locale)}</span>
     </Link>,
     document.body
   );

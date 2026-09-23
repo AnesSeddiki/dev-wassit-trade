@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { subtleText } from "../_i18n/translations";
 
@@ -52,6 +53,7 @@ export default function SubtleNav() {
         </div>
 
         <div className="flex items-center gap-2">
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Subtle" />
           <div className="hidden items-center gap-0.5 rounded-full border border-[#3a3a34]/10 bg-[#f6f3ef] p-0.5 sm:flex">
             {LOCALES.map((l) => (

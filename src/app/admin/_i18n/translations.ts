@@ -15,6 +15,7 @@ const dict = {
     },
     topbar: {
       backToTemplates: "← Back to templates",
+      backToTemplate: "← Back to this template",
       lastUpdated: "Last updated a few minutes ago",
     },
     dashboard: {
@@ -188,6 +189,7 @@ const dict = {
     },
     topbar: {
       backToTemplates: "← Retour aux modèles",
+      backToTemplate: "← Retour à ce modèle",
       lastUpdated: "Mis à jour il y a quelques minutes",
     },
     dashboard: {
@@ -361,6 +363,7 @@ const dict = {
     },
     topbar: {
       backToTemplates: "→ العودة إلى النماذج",
+      backToTemplate: "→ العودة إلى النموذج",
       lastUpdated: "آخر تحديث قبل دقائق",
     },
     dashboard: {

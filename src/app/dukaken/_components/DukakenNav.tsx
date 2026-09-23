@@ -8,6 +8,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations, translateProduct } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { dukakenText } from "../_i18n/translations";
 
@@ -37,6 +38,7 @@ export default function DukakenNav() {
         <span className="hidden text-white/55 sm:inline">{t.ticker.trailing}</span>
 
         <div className="ml-auto flex items-center gap-3">
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Dukaken" />
           <div className="flex items-center gap-1 border-l border-white/20 pl-3">
           {LOCALES.map((l) => (

@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { autoPartCategoryTranslations } from "@/lib/i18n/autoPartTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { autoPartsText } from "../_i18n/translations";
 
@@ -22,6 +23,7 @@ export default function AutoNav() {
       >
         <span className="truncate uppercase tracking-wider">{t.topBarNotice}</span>
         <div className="flex items-center gap-3">
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Auto Parts" />
           <div className="flex items-center gap-1 border-l border-white/15 pl-3">
             {LOCALES.map((l) => (

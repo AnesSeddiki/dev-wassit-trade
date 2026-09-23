@@ -12,6 +12,8 @@ import { homeText } from "./_i18n/translations";
 import CustomTemplateCard from "./_components/CustomTemplateCard";
 import CustomTemplateModal from "@/components/shared/CustomTemplateModal";
 import { customTemplateText } from "@/lib/i18n/customTemplateTranslations";
+import { trackPixelEvent } from "@/lib/metaPixel";
+import LandingAnalytics from "./_components/LandingAnalytics";
 
 const WHATSAPP_NUMBER = "213553418288"; // +213 553 41 82 88
 
@@ -32,6 +34,7 @@ export default function Home() {
 
   return (
     <div className="grain relative flex-1 overflow-hidden">
+      <LandingAnalytics />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full opacity-25 blur-[120px]"
@@ -89,7 +92,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
+      <section id="pitch" className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
         <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-amber-400/[0.06] to-transparent p-5 sm:p-7">
           <h3 className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
             {t.results.whyTitle}
@@ -255,7 +258,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-28 sm:px-10">
+      <section id="templates" className="relative z-10 mx-auto max-w-6xl scroll-mt-6 px-6 pb-28 sm:px-10">
         <p className="mb-4 font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
           {t.templatesEyebrow}
         </p>
@@ -326,6 +329,16 @@ export default function Home() {
                       style={{ background: "rgba(0,0,0,0.25)" }}
                     >
                       {tt.direction}
+                    </span>
+                    {/* Makes clear the screenshot itself is clickable, not decorative — some
+                        visitors (mobile especially) weren't realizing the card was a link. */}
+                    <span
+                      aria-hidden
+                      className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full px-2.5 py-1 font-mono text-[10px] text-white/80 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100"
+                      style={{ background: "rgba(0,0,0,0.3)" }}
+                    >
+                      {t.tapToView}
+                      <span className="transition-transform duration-300 group-hover:translate-x-0.5">↗</span>
                     </span>
                   </div>
 
@@ -402,15 +415,41 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="relative z-10 mx-auto max-w-6xl px-6 pb-10 sm:px-10">
+      <footer id="page-end" className="relative z-10 mx-auto max-w-6xl px-6 pb-10 sm:px-10">
         <p className="font-mono text-[11px] uppercase tracking-wider text-white/30">
           {t.footerNote}
         </p>
       </footer>
 
-      <div dir="ltr" className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5">
+      {/* Persistent shortcut to the templates grid — lets impatient/ad-driven visitors skip
+          straight past the pitch content instead of bouncing before they ever see a design. */}
+      <div dir="ltr" className="fixed bottom-6 left-4 z-50 flex items-center gap-2 sm:left-6 sm:gap-2.5">
+        <button
+          type="button"
+          onClick={() => document.getElementById("templates")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          aria-label={t.templatesJumpAria}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500 text-[#0b0b0d] shadow-xl shadow-black/40 transition-transform hover:scale-110 sm:h-14 sm:w-14"
+          style={{ animation: "pulse-glow 2.4s ease-in-out infinite" }}
+        >
+          <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M12 4v15M12 19l-6-6M12 19l6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
         <span
-          className="whitespace-nowrap rounded-full bg-[#1a1a1d] px-3.5 py-2 text-[12.5px] font-medium text-white/85 shadow-lg shadow-black/40 transition-all duration-500"
+          className="max-w-[46vw] truncate whitespace-nowrap rounded-full bg-[#1a1a1d] px-3 py-1.5 text-[11px] font-medium text-white/85 shadow-lg shadow-black/40 transition-all duration-500 sm:px-3.5 sm:py-2 sm:text-[12.5px]"
+          style={{
+            opacity: showWaText ? 1 : 0,
+            transform: showWaText ? "translateX(0)" : "translateX(-8px)",
+            pointerEvents: showWaText ? "auto" : "none",
+          }}
+        >
+          {t.templatesJumpCta}
+        </span>
+      </div>
+
+      <div dir="ltr" className="fixed bottom-6 right-4 z-50 flex items-center gap-2 sm:right-6 sm:gap-2.5">
+        <span
+          className="max-w-[46vw] truncate whitespace-nowrap rounded-full bg-[#1a1a1d] px-3 py-1.5 text-[11px] font-medium text-white/85 shadow-lg shadow-black/40 transition-all duration-500 sm:px-3.5 sm:py-2 sm:text-[12.5px]"
           style={{
             opacity: showWaText ? 1 : 0,
             transform: showWaText ? "translateX(0)" : "translateX(8px)",
@@ -424,10 +463,11 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t.whatsapp.ariaLabel}
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/40 transition-transform hover:scale-110"
+          onClick={() => trackPixelEvent("Lead", { content_name: "WhatsApp inquiry", content_category: "whatsapp_click" })}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/40 transition-transform hover:scale-110 sm:h-14 sm:w-14"
           style={{ animation: "pulse-glow 2.4s ease-in-out infinite" }}
         >
-          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
+          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.17 0 4.21.84 5.74 2.37a8.07 8.07 0 0 1 2.38 5.74c0 4.48-3.64 8.12-8.12 8.12a8.1 8.1 0 0 1-4.14-1.13l-.3-.17-3.11.82.83-3.03-.19-.31a8.07 8.07 0 0 1-1.24-4.3c0-4.48 3.65-8.11 8.15-8.11zm-4.52 4.64c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28-.25-.13-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.13-.16.25-.63.79-.77.95-.14.16-.28.18-.53.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.28.38-.42.13-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.13-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47z" />
           </svg>
         </a>

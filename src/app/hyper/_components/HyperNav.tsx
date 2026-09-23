@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { hyperText } from "../_i18n/translations";
 
@@ -22,6 +23,7 @@ export default function HyperNav() {
         <span className="truncate">{t.announcement1}</span>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">{t.announcement2}</span>
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Hyper" />
           <div className="flex items-center gap-1 border-l border-[#d4af37]/20 pl-4">
             {LOCALES.map((l) => (

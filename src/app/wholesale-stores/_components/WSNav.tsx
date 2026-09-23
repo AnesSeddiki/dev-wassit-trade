@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { wsText } from "../_i18n/translations";
 
@@ -29,6 +30,7 @@ export default function WSNav() {
         <span>{t.manifestLine1}</span>
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline">{t.manifestLine2}</span>
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Wholesale Stores" />
           <div className="flex items-center gap-1 border-l-2 border-[#e5e2da]/25 pl-2">
             {LOCALES.map((l) => (

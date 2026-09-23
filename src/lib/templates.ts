@@ -19,6 +19,28 @@ export interface TemplateMeta {
   to: string;
 }
 
+// Nav components pass their own display templateName into AdminDashboardLink /
+// RequestTemplateButton (e.g. AutoNav uses "Auto Parts", not this file's "Partline"),
+// so map that display name back to a slug explicitly rather than deriving it — keeps
+// the admin "back to this template" link correct without guessing at string transforms.
+const TEMPLATE_NAME_TO_SLUG: Record<string, string> = {
+  Trade: "trade",
+  Hyper: "hyper",
+  Modiva: "modiva",
+  Subtle: "subtle",
+  Dukaken: "dukaken",
+  Razzi: "razzi",
+  "Wholesale Stores": "wholesale-stores",
+  B2Bstore: "b2bstore",
+  Zorka: "zorka",
+  Orson: "orson",
+  "Auto Parts": "auto-parts",
+};
+
+export function slugFromDisplayName(name: string): string | undefined {
+  return TEMPLATE_NAME_TO_SLUG[name];
+}
+
 export const templates: TemplateMeta[] = [
   {
     category: "apparel",

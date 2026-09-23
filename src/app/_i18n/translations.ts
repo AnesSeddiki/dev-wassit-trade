@@ -20,6 +20,9 @@ const dict = {
     },
     inspiredBy: "Inspired by",
     viewTemplate: "View template",
+    tapToView: "Tap to view site",
+    templatesJumpCta: "Jump to templates",
+    templatesJumpAria: "Jump to templates",
     footerNote: "Frontend only — pricing, accounts & inventory connect once a client signs.",
     staticNotice: {
       label: "Note",
@@ -128,7 +131,7 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "Chat on WhatsApp",
-      inquiryText: "For any inquiry, contact us on WhatsApp",
+      inquiryText: "Message us on WhatsApp",
       message: "Hello! I'd like to know more about your wholesale website service.",
     },
   },
@@ -151,6 +154,9 @@ const dict = {
     },
     inspiredBy: "Inspiré de",
     viewTemplate: "Voir le modèle",
+    tapToView: "Cliquez pour voir le site",
+    templatesJumpCta: "Voir les modèles",
+    templatesJumpAria: "Aller aux modèles",
     footerNote: "Frontend uniquement — tarifs, comptes & inventaire connectés dès qu'un client signe.",
     staticNotice: {
       label: "Remarque",
@@ -259,7 +265,7 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "Discuter sur WhatsApp",
-      inquiryText: "Pour toute question, contactez-nous sur WhatsApp",
+      inquiryText: "Écrivez-nous sur WhatsApp",
       message: "Bonjour ! J'aimerais en savoir plus sur votre service de sites de vente en gros.",
     },
   },
@@ -281,6 +287,9 @@ const dict = {
     },
     inspiredBy: "مستوحى من",
     viewTemplate: "شاهد الموقع",
+    tapToView: "اضغط لمشاهدة الموقع",
+    templatesJumpCta: "مشاهدة النماذج",
+    templatesJumpAria: "الانتقال إلى نماذج المواقع",
     footerNote: "هذا عرض تصميم فقط — الأسعار والحسابات والمخزون تُفعّل بعد توقيع العقد.",
     staticNotice: {
       label: "ملاحظة",
@@ -389,7 +398,7 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "تواصل عبر واتساب",
-      inquiryText: "لأي استفسار تواصل معنا عبر الواتساب",
+      inquiryText: "راسلنا عبر الواتساب",
       message: "مرحبًا! أرغب في معرفة المزيد عن خدمة مواقع البيع بالجملة الخاصة بكم.",
     },
   },

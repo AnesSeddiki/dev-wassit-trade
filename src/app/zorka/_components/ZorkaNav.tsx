@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { zorkaText } from "../_i18n/translations";
 
@@ -36,6 +37,7 @@ export default function ZorkaNav() {
           ))}
           <RequestTemplateButton templateName="Zorka" />
           <CartButton className="text-black/70 transition-colors hover:text-black" badgeClassName="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-black px-1 text-[9px] font-bold leading-none text-white" />
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Zorka" />
           <div className="flex items-center gap-2">
             {LOCALES.map((l, i) => (

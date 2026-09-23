@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { modivaText } from "../_i18n/translations";
 
@@ -20,6 +21,7 @@ export default function ModivaNav() {
         <span className="truncate">{t.issueLine}</span>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">{t.buyersLine}</span>
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Modiva" />
           <div className="flex items-center gap-2 border-l border-[#2b2420]/15 pl-4 normal-case tracking-normal">
             {LOCALES.map((l, i) => (

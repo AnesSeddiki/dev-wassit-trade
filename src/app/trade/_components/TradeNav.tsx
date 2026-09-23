@@ -7,6 +7,7 @@ import { LOCALES } from "@/lib/i18n/locales";
 import { categoryTranslations } from "@/lib/i18n/productTranslations";
 import RequestTemplateButton from "@/components/shared/RequestTemplateButton";
 import AdminDashboardLink from "@/components/shared/AdminDashboardLink";
+import BackToTemplatesButton from "@/components/shared/BackToTemplatesButton";
 import CartButton from "@/components/shared/CartButton";
 import { tradeText } from "../_i18n/translations";
 
@@ -23,6 +24,7 @@ export default function TradeNav() {
         <span className="truncate">{t.termsNotice}</span>
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline">{t.acctNotice}</span>
+          <BackToTemplatesButton />
           <AdminDashboardLink templateName="Trade" />
           <div className="flex items-center gap-1 border-l border-white/20 pl-3">
             {LOCALES.map((l) => (
