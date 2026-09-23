@@ -9,6 +9,11 @@ const dict = {
       "Wassit TradeDEV presents our suppliers' storefronts — each concept below is inspired by a leading wholesale & B2B commerce theme, rebuilt from scratch in React so we can reskin fast and hand a finished site to a client without licensing anything. Pick a direction, we build the backend once you're in.",
     builtBadge: "10 / 10 built",
     templatesEyebrow: "Pick the website built for your business",
+    domainNotice: {
+      message:
+        "Sorry — we've temporarily switched to this link due to a technical issue with our domain dev.wassittrade.com. It'll be back online within a few hours.",
+      close: "Dismiss",
+    },
     inspiredBy: "Inspired by",
     viewTemplate: "View template",
     footerNote: "Frontend only — pricing, accounts & inventory connect once a client signs.",
@@ -76,6 +81,11 @@ const dict = {
       "Wassit TradeDEV présente les boutiques de nos fournisseurs — chaque concept ci-dessous s'inspire d'un thème e-commerce B2B et grossiste de référence, reconstruit de zéro en React afin de pouvoir le reskinner rapidement et livrer un site terminé à un client sans aucune licence à payer. Choisissez une direction, nous construisons le backend une fois que vous êtes prêt.",
     builtBadge: "10 / 10 réalisés",
     templatesEyebrow: "Choisissez le site adapté à votre activité",
+    domainNotice: {
+      message:
+        "Désolé — nous avons temporairement basculé sur ce lien en raison d'un problème technique avec notre domaine dev.wassittrade.com. Il sera de nouveau en ligne dans quelques heures.",
+      close: "Fermer",
+    },
     inspiredBy: "Inspiré de",
     viewTemplate: "Voir le modèle",
     footerNote: "Frontend uniquement — tarifs, comptes & inventaire connectés dès qu'un client signe.",
@@ -143,6 +153,10 @@ const dict = {
       "واسط ترايد ديف يعرض لكم مواقع جاهزة لتجارة الجملة، كل موقع مستوحى من مواقع عالمية ناجحة في هذا المجال. اختاروا الموقع الذي يناسب نشاطكم، وبعد التواصل معنا نجهز لكم كل شيء.",
     builtBadge: "10 / 10 مكتمل",
     templatesEyebrow: "اختر الموقع المناسب لنوع تجارتك",
+    domainNotice: {
+      message: "نعتذر — قمنا بتحويل الموقع مؤقتًا إلى هذا الرابط بسبب خطأ تقني في نطاقنا dev.wassittrade.com، وسيعود للعمل خلال بضع ساعات.",
+      close: "إغلاق",
+    },
     inspiredBy: "مستوحى من",
     viewTemplate: "شاهد الموقع",
     footerNote: "هذا عرض تصميم فقط — الأسعار والحسابات والمخزون تُفعّل بعد توقيع العقد.",

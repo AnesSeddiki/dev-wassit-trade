@@ -4,6 +4,7 @@ import { Fraunces, JetBrains_Mono, Cairo } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { CartProvider } from "@/lib/cart/CartContext";
 import { DEFAULT_LOCALE, dirFor } from "@/lib/i18n/locales";
+import DomainNoticeBanner from "./_components/DomainNoticeBanner";
 import "./globals.css";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </>
         ) : null}
         <LanguageProvider>
+          <DomainNoticeBanner />
           <CartProvider>{children}</CartProvider>
         </LanguageProvider>
       </body>
