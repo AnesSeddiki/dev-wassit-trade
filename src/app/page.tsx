@@ -14,6 +14,7 @@ import CustomTemplateModal from "@/components/shared/CustomTemplateModal";
 import { customTemplateText } from "@/lib/i18n/customTemplateTranslations";
 import { trackPixelEvent } from "@/lib/metaPixel";
 import LandingAnalytics from "./_components/LandingAnalytics";
+import OfferCalculatorModal from "./_components/OfferCalculatorModal";
 
 const WHATSAPP_NUMBER = "213553418288"; // +213 553 41 82 88
 
@@ -90,6 +91,9 @@ export default function Home() {
         <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
           {t.description}
         </p>
+        <div className="mt-7">
+          <OfferCalculatorModal />
+        </div>
       </section>
 
       <section id="pitch" className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">

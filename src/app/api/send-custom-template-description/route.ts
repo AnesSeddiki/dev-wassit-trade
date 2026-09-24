@@ -20,7 +20,9 @@ export async function POST(request: Request) {
   console.log(`[custom-template-request] Incoming request at ${startedAt}, UA: ${request.headers.get("user-agent")}`);
 
   const body = (await request.json().catch(() => null)) as Partial<CustomTemplateRequest> | null;
-  console.log(`[custom-template-request] Parsed body:`, body ? { name: body.name, email: body.email } : "FAILED TO PARSE");
+  console.log(
+    `[custom-template-request] Parsed body: name="${body?.name ?? ""}" email="${body?.email ?? ""}"${body ? "" : " (FAILED TO PARSE)"}`
+  );
 
   if (!body?.name || !body.email || !body.description) {
     console.log(`[custom-template-request] Rejected: missing required fields.`);

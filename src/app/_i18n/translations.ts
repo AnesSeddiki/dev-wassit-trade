@@ -288,7 +288,7 @@ const dict = {
     inspiredBy: "مستوحى من",
     viewTemplate: "شاهد الموقع",
     tapToView: "اضغط لمشاهدة الموقع",
-    templatesJumpCta: "مشاهدة النماذج",
+    templatesJumpCta: "مشاهدة التصاميم",
     templatesJumpAria: "الانتقال إلى نماذج المواقع",
     footerNote: "هذا عرض تصميم فقط — الأسعار والحسابات والمخزون تُفعّل بعد توقيع العقد.",
     staticNotice: {
