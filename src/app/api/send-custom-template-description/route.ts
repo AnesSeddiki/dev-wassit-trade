@@ -12,9 +12,18 @@ interface CustomTemplateRequest {
 const NOTIFY_EMAIL = "anesseddiki879@gmail.com";
 
 export async function POST(request: Request) {
+  // TEMPORARY diagnostic logging — tracking down Meta Pixel "Lead" events that have
+  // no matching Resend send attempt. Logs every stage so Netlify's function logs show
+  // definitively whether a given submission ever reached the server at all. Safe to
+  // remove once that's resolved.
+  const startedAt = new Date().toISOString();
+  console.log(`[custom-template-request] Incoming request at ${startedAt}, UA: ${request.headers.get("user-agent")}`);
+
   const body = (await request.json().catch(() => null)) as Partial<CustomTemplateRequest> | null;
+  console.log(`[custom-template-request] Parsed body:`, body ? { name: body.name, email: body.email } : "FAILED TO PARSE");
 
   if (!body?.name || !body.email || !body.description) {
+    console.log(`[custom-template-request] Rejected: missing required fields.`);
     return NextResponse.json({ ok: false, error: "Missing required fields." }, { status: 400 });
   }
 
@@ -32,7 +41,8 @@ export async function POST(request: Request) {
   ].filter(Boolean);
   const bodyText = `${body.description}\n\n—\n${contactLines.join("\n")}`;
 
-  const { error } = await resend.emails.send({
+  console.log(`[custom-template-request] Calling Resend...`);
+  const { data, error } = await resend.emails.send({
     from: "Wassit DEV <onboarding@resend.dev>",
     to: NOTIFY_EMAIL,
     replyTo: body.email,
@@ -45,5 +55,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Failed to send email." }, { status: 502 });
   }
 
+  console.log(`[custom-template-request] Resend accepted the send, id: ${data?.id}`);
   return NextResponse.json({ ok: true });
 }
