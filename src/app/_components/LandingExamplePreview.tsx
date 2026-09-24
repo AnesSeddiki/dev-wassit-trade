@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -26,6 +27,7 @@ interface LandingExamplePreviewProps {
 export default function LandingExamplePreview({ hideBackLink }: LandingExamplePreviewProps) {
   const { locale } = useLanguage();
   const t = landingExampleText(locale);
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   function waLink(message: string) {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -83,15 +85,13 @@ export default function LandingExamplePreview({ hideBackLink }: LandingExamplePr
                 <p className="font-mono text-sm text-[#c1602f]">
                   {product.price} {t.daSuffix}
                 </p>
-                <a
-                  href={waLink(t.whatsappOrderText(product.name))}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto flex items-center justify-center gap-1.5 rounded-full bg-[#25D366] py-2 text-[12px] font-semibold text-white transition-transform hover:scale-[1.02]"
+                <button
+                  type="button"
+                  onClick={() => setOrderConfirmed(true)}
+                  className="mt-auto rounded-full bg-[#c1602f] py-2 text-[12px] font-semibold text-white transition-transform hover:scale-[1.02]"
                 >
-                  <WhatsAppIcon className="h-3.5 w-3.5" />
                   {t.orderButton}
-                </a>
+                </button>
               </div>
             </div>
           ))}
@@ -106,6 +106,30 @@ export default function LandingExamplePreview({ hideBackLink }: LandingExamplePr
           </Link>
         )}
       </footer>
+
+      {orderConfirmed ? (
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-4"
+          onClick={() => setOrderConfirmed(false)}
+        >
+          <div
+            className="flex w-full max-w-xs flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-600">
+              ✓
+            </span>
+            <p className="text-[15px] font-medium text-[#2b2420]">{t.orderConfirmedMessage}</p>
+            <button
+              type="button"
+              onClick={() => setOrderConfirmed(false)}
+              className="mt-1 rounded-full border border-[#e8ddd0] px-4 py-1.5 text-[12px] font-medium text-[#6b5d4d] transition-colors hover:border-[#c1602f]/50 hover:text-[#c1602f]"
+            >
+              {t.orderConfirmedClose}
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
