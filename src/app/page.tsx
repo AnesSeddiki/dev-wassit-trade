@@ -15,6 +15,7 @@ import { customTemplateText } from "@/lib/i18n/customTemplateTranslations";
 import { trackPixelEvent } from "@/lib/metaPixel";
 import LandingAnalytics from "./_components/LandingAnalytics";
 import OfferCalculatorModal from "./_components/OfferCalculatorModal";
+import LazyMount from "./_components/LazyMount";
 
 const WHATSAPP_NUMBER = "213553418288"; // +213 553 41 82 88
 
@@ -97,169 +98,177 @@ export default function Home() {
       </section>
 
       <section id="pitch" className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
-        <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-amber-400/[0.06] to-transparent p-5 sm:p-7">
-          <h3 className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
-            {t.results.whyTitle}
-          </h3>
-          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {t.results.whyPoints.map((item, i) => (
-              <details
-                key={item.header}
-                className="why-accordion group rounded-lg border border-white/10 bg-white/[0.02] px-3.5 py-2.5 transition-colors open:border-pink-400/30 open:bg-white/[0.04]"
-                style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
-              >
-                <summary className="flex cursor-pointer list-none items-center gap-2.5 text-[13px] font-medium leading-snug text-white/80">
-                  <span aria-hidden className="shrink-0 text-base">
-                    {item.icon}
-                  </span>
-                  <span className="flex-1">{item.header}</span>
-                  <span aria-hidden className="why-chevron shrink-0 text-white/35 transition-transform duration-200">
-                    ▾
-                  </span>
-                </summary>
-                <p className="mt-2 pl-[26px] text-[12.5px] leading-relaxed text-white/55">{item.description}</p>
-              </details>
-            ))}
-          </div>
+        <LazyMount minHeight={520}>
+          <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-amber-400/[0.06] to-transparent p-5 sm:p-7">
+            <h3 className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
+              {t.results.whyTitle}
+            </h3>
+            <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {t.results.whyPoints.map((item, i) => (
+                <details
+                  key={item.header}
+                  className="why-accordion group rounded-lg border border-white/10 bg-white/[0.02] px-3.5 py-2.5 transition-colors open:border-pink-400/30 open:bg-white/[0.04]"
+                  style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
+                >
+                  <summary className="flex cursor-pointer list-none items-center gap-2.5 text-[13px] font-medium leading-snug text-white/80">
+                    <span aria-hidden className="shrink-0 text-base">
+                      {item.icon}
+                    </span>
+                    <span className="flex-1">{item.header}</span>
+                    <span aria-hidden className="why-chevron shrink-0 text-white/35 transition-transform duration-200">
+                      ▾
+                    </span>
+                  </summary>
+                  <p className="mt-2 pl-[26px] text-[12.5px] leading-relaxed text-white/55">{item.description}</p>
+                </details>
+              ))}
+            </div>
 
-          <h2 className="mt-8 font-[family-name:var(--font-display)] text-2xl italic text-white">
-            {t.results.title}
-          </h2>
-          <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {t.results.checklist.map((item, i) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-[14px] leading-snug text-white/75"
-                style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
-              >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-400">
-                  ✓
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+            <h2 className="mt-8 font-[family-name:var(--font-display)] text-2xl italic text-white">
+              {t.results.title}
+            </h2>
+            <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {t.results.checklist.map((item, i) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-[14px] leading-snug text-white/75"
+                  style={{ animation: "card-in 0.5s ease-out both", animationDelay: `${i * 80}ms` }}
+                >
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-[11px] text-emerald-400">
+                    ✓
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </LazyMount>
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
-        <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
-          {t.highlightsTitle}
-        </h2>
-        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {t.heroHighlights.map((highlight, i) => (
-            <div
-              key={highlight.label}
-              className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
-              style={{
-                animation: "card-in 0.5s ease-out both",
-                animationDelay: `${i * 100}ms`,
-              }}
-            >
-              <span
-                aria-hidden
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-400/10 text-lg"
+        <LazyMount minHeight={260}>
+          <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
+            {t.highlightsTitle}
+          </h2>
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {t.heroHighlights.map((highlight, i) => (
+              <div
+                key={highlight.label}
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
                 style={{
-                  animation: "fade-pulse 3s ease-in-out infinite",
-                  animationDelay: `${i * 0.6}s`,
+                  animation: "card-in 0.5s ease-out both",
+                  animationDelay: `${i * 100}ms`,
                 }}
               >
-                {highlight.emoji}
-              </span>
-              <span className="text-[13px] font-medium leading-snug text-white/80">
-                {highlight.label}
-              </span>
-            </div>
-          ))}
-        </div>
+                <span
+                  aria-hidden
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-400/10 text-lg"
+                  style={{
+                    animation: "fade-pulse 3s ease-in-out infinite",
+                    animationDelay: `${i * 0.6}s`,
+                  }}
+                >
+                  {highlight.emoji}
+                </span>
+                <span className="text-[13px] font-medium leading-snug text-white/80">
+                  {highlight.label}
+                </span>
+              </div>
+            ))}
+          </div>
 
-        <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-amber-400/15 bg-amber-400/[0.03] px-4 py-3">
-          <span className="mt-0.5 shrink-0 font-mono text-xs font-semibold text-amber-400/90">
-            {t.paymentWarning.label}
-          </span>
-          <p className="text-[12.5px] leading-relaxed text-white/50">{t.paymentWarning.body}</p>
-        </div>
+          <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-amber-400/15 bg-amber-400/[0.03] px-4 py-3">
+            <span className="mt-0.5 shrink-0 font-mono text-xs font-semibold text-amber-400/90">
+              {t.paymentWarning.label}
+            </span>
+            <p className="text-[12.5px] leading-relaxed text-white/50">{t.paymentWarning.body}</p>
+          </div>
+        </LazyMount>
       </section>
 
       <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
-        <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:flex-row sm:items-center sm:gap-8 sm:p-6">
-          <div className="relative h-[220px] w-[165px] shrink-0 self-center overflow-hidden rounded-xl border border-white/10 bg-[#e8dcc4] sm:self-auto">
-            <Image
-              src="/professional-personal-image.png"
-              alt={t.about.name}
-              width={165}
-              height={220}
-              className="h-full w-full object-cover object-top"
-              style={{ filter: "drop-shadow(0 3px 6px rgba(0,0,0,0.3))" }}
-            />
-          </div>
-          <div className="min-w-0">
-            <p className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
-              {t.about.eyebrow}
-            </p>
-            <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl italic text-white">
-              {t.about.name}
-            </h2>
-            <p className="mt-1 text-sm text-white/70">{t.about.role}</p>
-            <p className="mt-3 max-w-md text-[13px] leading-relaxed text-white/55">{t.about.note}</p>
-
-            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[13px] text-white/60">
-              <a href={`tel:${t.about.phone.replace(/\s+/g, "")}`} className="transition-colors hover:text-amber-400">
-                📞 {t.about.phone}
-              </a>
-              <a href={`mailto:${t.about.email}`} className="transition-colors hover:text-amber-400">
-                ✉️ {t.about.email}
-              </a>
-              <span>📍 {t.about.location}</span>
+        <LazyMount minHeight={260}>
+          <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:flex-row sm:items-center sm:gap-8 sm:p-6">
+            <div className="relative h-[220px] w-[165px] shrink-0 self-center overflow-hidden rounded-xl border border-white/10 bg-[#e8dcc4] sm:self-auto">
+              <Image
+                src="/professional-personal-image.png"
+                alt={t.about.name}
+                width={165}
+                height={220}
+                className="h-full w-full object-cover object-top"
+                style={{ filter: "drop-shadow(0 3px 6px rgba(0,0,0,0.3))" }}
+              />
             </div>
+            <div className="min-w-0">
+              <p className="font-mono text-2xl uppercase tracking-[0.3em] text-amber-400">
+                {t.about.eyebrow}
+              </p>
+              <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl italic text-white">
+                {t.about.name}
+              </h2>
+              <p className="mt-1 text-sm text-white/70">{t.about.role}</p>
+              <p className="mt-3 max-w-md text-[13px] leading-relaxed text-white/55">{t.about.note}</p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
-                {t.about.stackLabel}:
-              </span>
-              {t.about.stack.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-white/60"
-                >
-                  {item}
+              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[13px] text-white/60">
+                <a href={`tel:${t.about.phone.replace(/\s+/g, "")}`} className="transition-colors hover:text-amber-400">
+                  📞 {t.about.phone}
+                </a>
+                <a href={`mailto:${t.about.email}`} className="transition-colors hover:text-amber-400">
+                  ✉️ {t.about.email}
+                </a>
+                <span>📍 {t.about.location}</span>
+              </div>
+
+              <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
+                  {t.about.stackLabel}:
                 </span>
-              ))}
-            </div>
-            <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
-                {t.about.deployLabel}:
-              </span>
-              {t.about.deploy.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-white/60"
-                >
-                  {item}
+                {t.about.stack.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-white/60"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">
+                  {t.about.deployLabel}:
                 </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
-        <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
-          {t.howItWorks.title}
-        </h2>
-        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {t.howItWorks.steps.map((step, i) => (
-            <div key={step.title} className="flex gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-amber-400/40 font-mono text-xs text-amber-400">
-                {i + 1}
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-white">{step.title}</p>
-                <p className="mt-1 text-[13px] leading-relaxed text-white/55">{step.desc}</p>
+                {t.about.deploy.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-white/60"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </LazyMount>
+      </section>
+
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-16 sm:px-10">
+        <LazyMount minHeight={160}>
+          <h2 className="font-mono text-2xl uppercase tracking-[0.35em] text-amber-400">
+            {t.howItWorks.title}
+          </h2>
+          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {t.howItWorks.steps.map((step, i) => (
+              <div key={step.title} className="flex gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-amber-400/40 font-mono text-xs text-amber-400">
+                  {i + 1}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-white">{step.title}</p>
+                  <p className="mt-1 text-[13px] leading-relaxed text-white/55">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </LazyMount>
       </section>
 
       <section id="templates" className="relative z-10 mx-auto max-w-6xl scroll-mt-6 px-6 pb-28 sm:px-10">
@@ -302,12 +311,12 @@ export default function Home() {
           {filteredTemplates.map((t2, i) => {
             const tt = translateTemplate(t2, locale);
             return (
+              <LazyMount key={t2.slug} minHeight={380} rootMargin="150px 0px">
               <div
-                key={t2.slug}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-transform duration-300 hover:-translate-y-1 hover:border-white/25"
                 style={{
                   animation: `card-in 0.5s ease-out both`,
-                  animationDelay: `${i * 60}ms`,
+                  animationDelay: `${Math.min(i, 4) * 60}ms`,
                 }}
               >
                 <Link href={`/${t2.slug}`} className="flex flex-1 flex-col">
@@ -387,14 +396,17 @@ export default function Home() {
                   />
                 </div>
               </div>
+              </LazyMount>
             );
           })}
-          <CustomTemplateCard
-            style={{
-              animation: `card-in 0.5s ease-out both`,
-              animationDelay: `${templates.length * 60}ms`,
-            }}
-          />
+          <LazyMount minHeight={380} rootMargin="150px 0px">
+            <CustomTemplateCard
+              style={{
+                animation: `card-in 0.5s ease-out both`,
+                animationDelay: `0ms`,
+              }}
+            />
+          </LazyMount>
         </div>
       </section>
 
