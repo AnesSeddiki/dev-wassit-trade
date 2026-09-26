@@ -8,6 +8,7 @@ import {
   calculateOffer,
   formatDA,
   getNextStep,
+  QUESTION_STEPS,
   type OfferAnswers,
   type OfferStepId,
 } from "@/lib/offerCalculator";
@@ -85,16 +86,21 @@ export default function OfferCalculatorModal() {
   const stepText: OfferStepText | null = step === "results" ? null : t.steps[step];
   const result = step === "results" ? calculateOffer(answers) : null;
 
-  const tierInfo = result
-    ? result.tier === 1
-      ? t.results.tier1
-      : result.tier === 2
-        ? t.results.tier2
-        : t.results.tier3
-    : null;
+  // Every answered question, in order, in its own already-translated question/option
+  // text — this is what actually reaches the email, since price no longer reflects
+  // most of these answers; they're purely so the build matches what the client needs.
+  const answersSummary = QUESTION_STEPS.map((id) => {
+    const value = answers[id];
+    if (!value) return null;
+    const optionLabel = t.steps[id].options[value];
+    return optionLabel ? `${t.steps[id].question} ← ${optionLabel}` : null;
+  })
+    .filter((line): line is string => Boolean(line))
+    .join("\n");
 
-  const summaryMessage =
-    result && tierInfo ? t.results.summaryMessage(tierInfo.name, formatDA(result.total)) : "";
+  const summaryMessage = result
+    ? `${t.results.summaryMessage(formatDA(result.total))}\n${answersSummary}`
+    : "";
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -187,63 +193,31 @@ export default function OfferCalculatorModal() {
                   </button>
                 ) : null}
               </div>
-            ) : result && tierInfo ? (
+            ) : result ? (
               <div className="mt-6 flex flex-col gap-5">
                 <div className="rounded-xl border border-amber-400/25 bg-amber-400/[0.05] p-4">
-                  <h3 className="font-[family-name:var(--font-display)] text-xl italic text-white">
-                    {tierInfo.name}
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-white/65">{tierInfo.description}</p>
+                  <p className="text-[13px] leading-relaxed text-white/65">{t.results.description}</p>
                 </div>
 
                 <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm">
                   <div className="flex items-center justify-between text-white/70">
-                    <span>{t.results.baseLabel}</span>
-                    <span className="font-mono">
-                      {formatDA(result.basePrice)} {t.results.daSuffix}
-                    </span>
+                    <span>{result.hasDomain ? t.results.domainAddOnLabel : t.results.noDomainLabel}</span>
                   </div>
-                  {result.domainFee ? (
-                    <div className="flex items-center justify-between text-white/70">
-                      <span>{t.results.domainAddOnLabel}</span>
-                      <span className="font-mono">
-                        +{formatDA(result.domainFee)} {t.results.daSuffix}
-                      </span>
-                    </div>
-                  ) : result.tier !== 3 ? (
-                    <div className="flex items-center justify-between text-white/50">
-                      <span>{t.results.freeSubdomainNote}</span>
-                    </div>
-                  ) : null}
                   <div className="mt-1 flex items-center justify-between border-t border-white/10 pt-2 text-base font-semibold text-white">
                     <span>{t.results.totalLabel}</span>
                     <span className="font-mono text-amber-400">
                       {formatDA(result.total)} {t.results.daSuffix}
                     </span>
                   </div>
-                  {result.tier === 3 ? <p className="text-[12px] text-white/45">{t.results.customQuoteNote}</p> : null}
                 </div>
 
-                {result.tier === 1 ? (
-                  <button
-                    type="button"
-                    onClick={() => setShowExample(true)}
-                    className="rounded-full border border-white/15 px-4 py-2 text-center font-mono text-[11px] uppercase tracking-wider text-white/80 transition-colors hover:border-amber-400/50 hover:text-amber-400"
-                  >
-                    {t.results.exampleButton}
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      close();
-                      document.getElementById("templates")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                    className="rounded-full border border-white/15 px-4 py-2 text-center font-mono text-[11px] uppercase tracking-wider text-white/80 transition-colors hover:border-amber-400/50 hover:text-amber-400"
-                  >
-                    {t.results.exampleButton}
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={() => setShowExample(true)}
+                  className="rounded-full border border-white/15 px-4 py-2 text-center font-mono text-[11px] uppercase tracking-wider text-white/80 transition-colors hover:border-amber-400/50 hover:text-amber-400"
+                >
+                  {t.results.exampleButton}
+                </button>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 border-t border-white/10 pt-4">
                   <p className="text-sm text-white/70">{t.results.formIntro}</p>
@@ -338,7 +312,7 @@ export default function OfferCalculatorModal() {
             >
               ✕
             </button>
-            <LandingExamplePreview hideBackLink />
+            <LandingExamplePreview hideBackLink businessName={businessName || undefined} />
           </div>
         </div>
       ) : null}

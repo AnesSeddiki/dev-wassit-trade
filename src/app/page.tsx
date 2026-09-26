@@ -86,14 +86,40 @@ export default function Home() {
           className="mt-6 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[1.05] font-light italic text-white sm:text-6xl"
         >
           {t.headline1}
-          <br />
-          {t.headline2}
+          {t.headline2 ? (
+            <>
+              <br />
+              {t.headline2}
+            </>
+          ) : null}
         </h1>
-        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/60">
-          {t.description}
-        </p>
+        <div className="mt-6 flex max-w-xl flex-col gap-2">
+          {t.description.map((item) => (
+            <p key={item.text} className="flex items-center gap-2.5 text-[15px] leading-relaxed text-white/60">
+              <span aria-hidden className="shrink-0 text-base">
+                {item.icon}
+              </span>
+              {item.text}
+            </p>
+          ))}
+        </div>
         <div className="mt-7">
           <OfferCalculatorModal />
+        </div>
+        <div className="mt-3">
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t.whatsapp.message)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.whatsapp.ariaLabel}
+            onClick={() => trackPixelEvent("Lead", { content_name: "WhatsApp inquiry", content_category: "whatsapp_click" })}
+            className="flex w-fit items-center gap-2.5 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-6 py-3 font-mono text-[12px] font-bold uppercase tracking-wider text-[#25D366] transition-colors hover:bg-[#25D366]/20"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0" fill="currentColor">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.17 0 4.21.84 5.74 2.37a8.07 8.07 0 0 1 2.38 5.74c0 4.48-3.64 8.12-8.12 8.12a8.1 8.1 0 0 1-4.14-1.13l-.3-.17-3.11.82.83-3.03-.19-.31a8.07 8.07 0 0 1-1.24-4.3c0-4.48 3.65-8.11 8.15-8.11zm-4.52 4.64c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28-.25-.13-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.13-.16.25-.63.79-.77.95-.14.16-.28.18-.53.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.28.38-.42.13-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.13-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47z" />
+            </svg>
+            {t.whatsapp.startButton}
+          </a>
         </div>
       </section>
 
@@ -461,32 +487,6 @@ export default function Home() {
         >
           {t.templatesJumpCta}
         </span>
-      </div>
-
-      <div dir="ltr" className="fixed bottom-6 right-4 z-50 flex items-center gap-2 sm:right-6 sm:gap-2.5">
-        <span
-          className="max-w-[46vw] truncate whitespace-nowrap rounded-full bg-[#1a1a1d] px-3 py-1.5 text-[11px] font-medium text-white/85 shadow-lg shadow-black/40 transition-all duration-500 sm:px-3.5 sm:py-2 sm:text-[12.5px]"
-          style={{
-            opacity: showWaText ? 1 : 0,
-            transform: showWaText ? "translateX(0)" : "translateX(8px)",
-            pointerEvents: showWaText ? "auto" : "none",
-          }}
-        >
-          {t.whatsapp.inquiryText}
-        </span>
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t.whatsapp.message)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.whatsapp.ariaLabel}
-          onClick={() => trackPixelEvent("Lead", { content_name: "WhatsApp inquiry", content_category: "whatsapp_click" })}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/40 transition-transform hover:scale-110 sm:h-14 sm:w-14"
-          style={{ animation: "pulse-glow 2.4s ease-in-out infinite" }}
-        >
-          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.8c2.17 0 4.21.84 5.74 2.37a8.07 8.07 0 0 1 2.38 5.74c0 4.48-3.64 8.12-8.12 8.12a8.1 8.1 0 0 1-4.14-1.13l-.3-.17-3.11.82.83-3.03-.19-.31a8.07 8.07 0 0 1-1.24-4.3c0-4.48 3.65-8.11 8.15-8.11zm-4.52 4.64c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28-.25-.13-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.13-.16.25-.63.79-.77.95-.14.16-.28.18-.53.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.28.38-.42.13-.14.16-.24.25-.4.08-.16.04-.3-.02-.42-.06-.13-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47z" />
-          </svg>
-        </a>
       </div>
     </div>
   );

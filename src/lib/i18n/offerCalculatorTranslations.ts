@@ -25,19 +25,17 @@ export interface OfferCalculatorText {
   nav: { next: string; back: string; close: string };
   results: {
     title: string;
-    tier1: { name: string; description: string };
-    tier2: { name: string; description: string };
-    tier3: { name: string; description: string };
+    description: string;
     baseLabel: string;
     domainAddOnLabel: string;
-    freeSubdomainNote: string;
+    noDomainLabel: string;
     totalLabel: string;
     daSuffix: string;
-    customQuoteNote: string;
     ctaButton: string;
     restartButton: string;
     exampleButton: string;
-    summaryMessage: (tierName: string, priceText: string) => string;
+    summaryMessage: (priceText: string) => string;
+    answersSummaryTitle: string;
     formIntro: string;
     phoneLabel: string;
     phonePlaceholder: string;
@@ -119,31 +117,19 @@ const dict: Record<Locale, OfferCalculatorText> = {
     },
     nav: { next: "التالي", back: "رجوع", close: "إغلاق" },
     results: {
-      title: "هذي التكلفة التقديرية لموقعك",
-      tier1: {
-        name: "الباقة الأساسية — صفحة عرض",
-        description: "صفحة واحدة نظيفة تعرض منتجاتك وتستقبل طلبات زبائنك عبر واتساب. نتكفلو نحن بتحديث المنتوجات كي تحتاج.",
-      },
-      tier2: {
-        name: "باقة الموقع الكامل",
-        description: "موقع كامل تقدر تزيد وتنقص منتوجاتك بنفسك في أي وقت، مبني على قالب جاهز، مستضاف مجانًا.",
-      },
-      tier3: {
-        name: "باقة النظام المتكامل",
-        description:
-          "مشروع مخصص بالكامل: تحكم كامل، جدول طلبيات، حسابات متعددة، دمج الدفع الإلكتروني، واسم نطاق خاص بالكامل. السعر يُحدد بدقة أكبر بعد ما نتناقشو في تفاصيل مشروعك.",
-      },
-      baseLabel: "سعر الباقة",
-      domainAddOnLabel: "اسم نطاق خاص (.com / .dz)",
-      freeSubdomainNote: "نطاق فرعي مجاني مشمول",
-      totalLabel: "المجموع التقديري",
+      title: "هذي تكلفة موقعك",
+      description: "موقع كامل خاص بيك، مبني بالضبط حسب احتياجات نشاطك، وتقدر تتواصل معانا في أي وقت لأي تعديل.",
+      baseLabel: "سعر الموقع",
+      domainAddOnLabel: "مع اسم نطاق خاص (.com / .dz)",
+      noDomainLabel: "بلا اسم نطاق خاص (نطاق فرعي مجاني)",
+      totalLabel: "السعر الإجمالي",
       daSuffix: "دج",
-      customQuoteNote: "هذا السعر يشمل كل شيء — لا رسوم إضافية على النطاق.",
       ctaButton: "تواصل معنا نبدأو مشروعك",
       restartButton: "أعد الحساب من البداية",
       exampleButton: "شاهد مثال على عرضك",
-      summaryMessage: (tierName, priceText) =>
-        `مهتم بـ "${tierName}" — السعر التقديري اللي طلع لي: ${priceText} دج. حاب نتواصل معاكم لنبداو المشروع.`,
+      summaryMessage: (priceText) =>
+        `مهتم بموقعي الخاص — السعر: ${priceText} دج. حاب نتواصل معاكم لنبداو المشروع.\n\nتفاصيل إجاباتي:`,
+      answersSummaryTitle: "تفاصيل الإجابات:",
       formIntro: "خلي لينا معلومات التواصل باش نبداو معاك:",
       phoneLabel: "رقم الهاتف (واتساب)",
       phonePlaceholder: "+213 5XX XX XX XX",
@@ -224,31 +210,19 @@ const dict: Record<Locale, OfferCalculatorText> = {
     },
     nav: { next: "Suivant", back: "Retour", close: "Fermer" },
     results: {
-      title: "Voici le coût estimé de votre site",
-      tier1: {
-        name: "Formule de base — Page vitrine",
-        description: "Une page unique et soignée qui présente vos produits et reçoit les commandes via WhatsApp. Nous mettons à jour les produits pour vous.",
-      },
-      tier2: {
-        name: "Formule Site complet",
-        description: "Un site complet où vous ajoutez et retirez vos produits vous-même à tout moment, basé sur un modèle prêt à l'emploi, hébergé gratuitement.",
-      },
-      tier3: {
-        name: "Formule Système complet",
-        description:
-          "Un projet entièrement sur mesure : contrôle total, tableau de commandes, comptes multiples, paiement en ligne intégré, et nom de domaine personnalisé. Le prix exact se précise après avoir discuté des détails de votre projet.",
-      },
-      baseLabel: "Prix de la formule",
-      domainAddOnLabel: "Nom de domaine personnalisé (.com / .dz)",
-      freeSubdomainNote: "Sous-domaine gratuit inclus",
-      totalLabel: "Total estimé",
+      title: "Voici le prix de votre site",
+      description: "Un site complet et personnel, construit exactement selon les besoins de votre activité, avec un contact possible à tout moment pour des modifications.",
+      baseLabel: "Prix du site",
+      domainAddOnLabel: "Avec nom de domaine personnalisé (.com / .dz)",
+      noDomainLabel: "Sans nom de domaine personnalisé (sous-domaine gratuit)",
+      totalLabel: "Prix total",
       daSuffix: "DA",
-      customQuoteNote: "Ce prix inclut tout — aucun frais de domaine supplémentaire.",
       ctaButton: "Contactez-nous pour démarrer",
       restartButton: "Recommencer le calcul",
       exampleButton: "Voir un exemple de votre offre",
-      summaryMessage: (tierName, priceText) =>
-        `Intéressé(e) par "${tierName}" — l'estimation obtenue : ${priceText} DA. J'aimerais qu'on démarre le projet.`,
+      summaryMessage: (priceText) =>
+        `Intéressé(e) par mon propre site — Prix : ${priceText} DA. J'aimerais qu'on démarre le projet.\n\nDétails de mes réponses :`,
+      answersSummaryTitle: "Détails des réponses :",
       formIntro: "Laissez-nous vos coordonnées pour qu'on démarre avec vous :",
       phoneLabel: "Numéro de téléphone (WhatsApp)",
       phonePlaceholder: "+213 5XX XX XX XX",
@@ -329,31 +303,19 @@ const dict: Record<Locale, OfferCalculatorText> = {
     },
     nav: { next: "Next", back: "Back", close: "Close" },
     results: {
-      title: "Here's your estimated website cost",
-      tier1: {
-        name: "Basic Package — Showcase Page",
-        description: "One clean page showing your products and receiving customer orders via WhatsApp. We update the products for you.",
-      },
-      tier2: {
-        name: "Full Website Package",
-        description: "A complete website where you add and remove your own products anytime, built on a ready-made template, hosted for free.",
-      },
-      tier3: {
-        name: "Full Integrated System Package",
-        description:
-          "A fully custom project: complete control, an order-tracking table, multiple accounts, integrated online payment, and a fully custom domain. The exact price is confirmed once we discuss your project's details.",
-      },
-      baseLabel: "Package price",
-      domainAddOnLabel: "Custom domain name (.com / .dz)",
-      freeSubdomainNote: "Free subdomain included",
-      totalLabel: "Estimated total",
+      title: "Here's your website's price",
+      description: "A complete website of your own, built exactly around your business's needs, with ongoing contact for any changes.",
+      baseLabel: "Website price",
+      domainAddOnLabel: "With a custom domain (.com / .dz)",
+      noDomainLabel: "Without a custom domain (free subdomain)",
+      totalLabel: "Total price",
       daSuffix: "DA",
-      customQuoteNote: "This price includes everything — no extra domain fees.",
       ctaButton: "Contact us to get started",
       restartButton: "Restart the calculation",
       exampleButton: "See an example of your offer",
-      summaryMessage: (tierName, priceText) =>
-        `Interested in "${tierName}" — the estimate I got: ${priceText} DA. I'd like to get started.`,
+      summaryMessage: (priceText) =>
+        `Interested in my own website — Price: ${priceText} DA. I'd like to get started.\n\nAnswer details:`,
+      answersSummaryTitle: "Answer details:",
       formIntro: "Leave us your contact info so we can get started with you:",
       phoneLabel: "Phone number (WhatsApp)",
       phonePlaceholder: "+213 5XX XX XX XX",

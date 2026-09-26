@@ -2,11 +2,16 @@ import type { Locale } from "@/lib/i18n/locales";
 
 const dict = {
   en: {
-    eyebrow: "For wholesale stores",
-    headline1: "Ten storefronts,",
-    headline2: "one catalog of styles.",
-    description:
-      "Wassit TradeDEV presents our suppliers' storefronts — each concept below is inspired by a leading wholesale & B2B commerce theme, rebuilt from scratch in React so we can reskin fast and hand a finished site to a client without licensing anything. Pick a direction, we build the backend once you're in.",
+    eyebrow: "For every trader & business owner",
+    headline1: "Website Design Service",
+    headline2: "",
+    description: [
+      { icon: "🌐", text: "Your own website" },
+      { icon: "🏷️", text: "The site's name matches your shop or page" },
+      { icon: "🔒", text: "Your own private database" },
+      { icon: "💳", text: "Pay once, for life" },
+      { icon: "🚀", text: "Break free from dependency and take a step toward professionalism" },
+    ],
     builtBadge: "10 / 10 built",
     templatesEyebrow: "Pick the website built for your business",
     domainNotice: {
@@ -131,16 +136,21 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "Chat on WhatsApp",
-      inquiryText: "Message us on WhatsApp",
-      message: "Hello! I'd like to know more about your wholesale website service.",
+      startButton: "Start with us on WhatsApp",
+      message: "Hello! I'd like to know more about your website service.",
     },
   },
   fr: {
-    eyebrow: "Vente en gros",
-    headline1: "Dix boutiques,",
-    headline2: "un seul catalogue de styles.",
-    description:
-      "Wassit TradeDEV présente les boutiques de nos fournisseurs — chaque concept ci-dessous s'inspire d'un thème e-commerce B2B et grossiste de référence, reconstruit de zéro en React afin de pouvoir le reskinner rapidement et livrer un site terminé à un client sans aucune licence à payer. Choisissez une direction, nous construisons le backend une fois que vous êtes prêt.",
+    eyebrow: "Pour chaque commerçant",
+    headline1: "Service de Création de Sites Web",
+    headline2: "",
+    description: [
+      { icon: "🌐", text: "Votre propre site" },
+      { icon: "🏷️", text: "Le nom du site porte celui de votre commerce ou de votre page" },
+      { icon: "🔒", text: "Une base de données qui vous appartient" },
+      { icon: "💳", text: "Payez une seule fois, à vie" },
+      { icon: "🚀", text: "Libérez-vous de la dépendance et franchissez un pas vers le professionnalisme" },
+    ],
     builtBadge: "10 / 10 réalisés",
     templatesEyebrow: "Choisissez le site adapté à votre activité",
     domainNotice: {
@@ -265,16 +275,21 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "Discuter sur WhatsApp",
-      inquiryText: "Écrivez-nous sur WhatsApp",
-      message: "Bonjour ! J'aimerais en savoir plus sur votre service de sites de vente en gros.",
+      startButton: "Commencez avec nous sur WhatsApp",
+      message: "Bonjour ! J'aimerais en savoir plus sur votre service de création de sites.",
     },
   },
   ar: {
-    eyebrow: "لتجار الجملة",
-    headline1: "10 مواقع جاهزة،",
-    headline2: "كل واحد بتصميم مختلف.",
-    description:
-      "واسط ترايد ديف يعرض لكم مواقع جاهزة لتجارة الجملة، كل موقع مستوحى من مواقع عالمية ناجحة في هذا المجال. اختاروا الموقع الذي يناسب نشاطكم، وبعد التواصل معنا نجهز لكم كل شيء.",
+    eyebrow: "لكل تاجر وصاحب مشروع",
+    headline1: "خدمة تصميم المواقع الإلكترونية",
+    headline2: "",
+    description: [
+      { icon: "🌐", text: "موقعك الخاص" },
+      { icon: "🏷️", text: "اسم الموقع باسم محلك أو صفحتك" },
+      { icon: "🔒", text: "قاعدة بيانات خاصة بك" },
+      { icon: "💳", text: "الدفع مرة واحدة، مدى الحياة" },
+      { icon: "🚀", text: "تخلص من التبعية واخطُ خطوة نحو الاحترافية" },
+    ],
     builtBadge: "10 / 10 مكتمل",
     templatesEyebrow: "اختر الموقع المناسب لنوع تجارتك",
     domainNotice: {
@@ -288,7 +303,7 @@ const dict = {
     inspiredBy: "مستوحى من",
     viewTemplate: "شاهد الموقع",
     tapToView: "اضغط لمشاهدة الموقع",
-    templatesJumpCta: "مشاهدة التصاميم",
+    templatesJumpCta: "مشاهدة تصاميمنا",
     templatesJumpAria: "الانتقال إلى نماذج المواقع",
     footerNote: "هذا عرض تصميم فقط — الأسعار والحسابات والمخزون تُفعّل بعد توقيع العقد.",
     staticNotice: {
@@ -398,8 +413,8 @@ const dict = {
     },
     whatsapp: {
       ariaLabel: "تواصل عبر واتساب",
-      inquiryText: "راسلنا عبر الواتساب",
-      message: "مرحبًا! أرغب في معرفة المزيد عن خدمة مواقع البيع بالجملة الخاصة بكم.",
+      startButton: "ابدأ معنا عبر الواتساب",
+      message: "مرحبًا! أرغب في معرفة المزيد عن خدمة تصميم المواقع الخاصة بكم.",
     },
   },
 } satisfies Record<Locale, unknown>;
